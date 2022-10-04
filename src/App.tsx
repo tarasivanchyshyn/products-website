@@ -1,4 +1,4 @@
-import { Route } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
 import Header from '@components/Header';
 import Products from '@pages/Products';
@@ -11,9 +11,11 @@ function App() {
     <>
       <Header />
       <main>
-        <Route exact path={productsURL} component={Products} />
-        <Route path={productURL} component={Product} />
-        <Route path={checkoutURL} component={Checkout} />
+        <Routes>
+          <Route path={productsURL} element={<Products />} />
+          <Route path={productURL} element={<Product />} />
+          <Route path={checkoutURL} element={<Checkout />} />
+        </Routes>
       </main>
     </>
   );

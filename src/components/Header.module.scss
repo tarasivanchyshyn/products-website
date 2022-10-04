@@ -1,0 +1,22 @@
+.list {
+  display: flex;
+  list-style: none;
+}
+
+.link {
+  margin-left: 1rem;
+  & a {
+    color: grey;
+    text-decoration: none;
+  }
+
+  & a:hover {
+    color: black;
+    border-bottom: 4px solid grey;
+  }
+}
+
+.link a.active {
+  color: black;
+  border-bottom: 4px solid grey;
+}
