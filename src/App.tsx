@@ -1,6 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
 
-import Header from '@components/Header';
 import Products from '@pages/Products';
 import Product from '@pages/Product';
 import Checkout from '@pages/Checkout';
@@ -8,7 +7,7 @@ import Home from '@pages/Home';
 import NotFound from '@pages/NotFound';
 import Layout from '@components/Layout';
 import { productsURL, productURL, checkoutURL } from '@constants';
-import { homeURL, notFoundURL } from '@constants';
+import { notFoundURL } from '@constants';
 
 function App() {
   return (
