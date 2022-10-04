@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 
-import { productsURL, productURL, checkoutURL } from '@constants';
+import { productsURL, checkoutURL, homeURL } from '@constants';
 
 import classes from './Header.module.scss';
 
@@ -13,7 +13,16 @@ function Header() {
         <ul className={list}>
           <li className={link}>
             <NavLink
-              className={(navData) => (navData.isActive ? active : '')}
+              className={({ isActive }) => (isActive ? active : '')}
+              to={homeURL}
+              end
+            >
+              Home
+            </NavLink>
+          </li>
+          <li className={link}>
+            <NavLink
+              className={({ isActive }) => (isActive ? active : '')}
               to={productsURL}
             >
               Products
@@ -21,15 +30,7 @@ function Header() {
           </li>
           <li className={link}>
             <NavLink
-              className={(navData) => (navData.isActive ? active : '')}
-              to={productURL}
-            >
-              Product
-            </NavLink>
-          </li>
-          <li className={link}>
-            <NavLink
-              className={(navData) => (navData.isActive ? active : '')}
+              className={({ isActive }) => (isActive ? active : '')}
               to={checkoutURL}
             >
               Checkout

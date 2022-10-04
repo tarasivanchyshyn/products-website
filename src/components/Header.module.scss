@@ -5,12 +5,14 @@
 
 .link {
   margin-left: 1rem;
+
   & a {
     color: grey;
     text-decoration: none;
   }
 
   & a:hover,
+  a:active,
   a.active {
     color: black;
     border-bottom: 4px solid grey;

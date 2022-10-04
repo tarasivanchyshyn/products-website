@@ -1,3 +1,4 @@
+export const homeURL = '/';
 export const productsURL = '/products';
-export const productURL = '/products/product/:id';
+export const productURL = '/products/:productId';
 export const checkoutURL = '/checkout';

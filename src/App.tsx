@@ -4,7 +4,8 @@ import Header from '@components/Header';
 import Products from '@pages/Products';
 import Product from '@pages/Product';
 import Checkout from '@pages/Checkout';
-import { productsURL, productURL, checkoutURL } from '@constants';
+import Home from '@pages/Home';
+import { productsURL, productURL, checkoutURL, homeURL } from '@constants';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Header />
       <main>
         <Routes>
+          <Route path={homeURL} element={<Home />} />
           <Route path={productsURL} element={<Products />} />
           <Route path={productURL} element={<Product />} />
           <Route path={checkoutURL} element={<Checkout />} />
