@@ -1,18 +1,18 @@
-import { Link } from 'react-router-dom';
-
-import { mockedProducts as products } from '@constants';
+import Sorting from '@components/Products/Sorting';
+import Categories from '@components/Products/Categories';
+import Filters from '@components/Products/Filters';
+import ProductCards from '@components/Products/ProductCards/ProductCards';
+import Footer from '@components/Products/Footer';
 
 function Products() {
   return (
     <>
       <h1>All Products</h1>
-      <ul>
-        {products.map((product) => (
-          <li key={product.id}>
-            <Link to={`/products/${product.id}`}>{product.title}</Link>
-          </li>
-        ))}
-      </ul>
+      <Sorting />
+      <Categories />
+      <Filters />
+      <ProductCards />
+      <Footer />
     </>
   );
 }
