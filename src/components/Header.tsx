@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-
 import { productsURL, productURL, checkoutURL } from '@constants';
 
 function Header() {
