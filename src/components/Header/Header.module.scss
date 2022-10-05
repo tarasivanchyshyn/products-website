@@ -1,22 +1,24 @@
 @import '../../variables.scss';
 
-// .list {
-//   display: flex;
-//   list-style: none;
-// }
-// .link {
-//   margin-left: 1rem;
-//   & a {
-//     color: grey;
-//     text-decoration: none;
-//   }
-//   & a:hover,
-//   a:active,
-//   a.active {
-//     color: black;
-//     border-bottom: 4px solid grey;
-//   }
-// }
+.list {
+  display: flex;
+  list-style: none;
+}
+.link {
+  margin-left: 1rem;
+  & a {
+    color: grey;
+    text-decoration: none;
+  }
+  & a:hover,
+  a:active,
+  a.active {
+    color: black;
+    border-bottom: 4px solid $green;
+  }
+}
+///////////////////////////////////////
+
 .header {
   @include flex-column;
 }
@@ -41,15 +43,16 @@
 
   &__left span {
     margin-right: 2.37rem;
-    cursor: default;
   }
-  &__left span:first-child {
-    @include link;
-  }
-
   &__right span {
     margin-left: 2.37rem;
+  }
+
+  &__link {
     @include link;
+  }
+  &__info {
+    cursor: default;
   }
 }
 

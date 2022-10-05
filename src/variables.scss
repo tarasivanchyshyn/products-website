@@ -11,6 +11,11 @@ $open-sans: 'Open Sans', sans-serif;
 @mixin link {
   color: $green;
   cursor: pointer;
+
+  &:hover {
+    color: black;
+    text-decoration: underline;
+  }
 }
 
 @mixin flex-centerY {
