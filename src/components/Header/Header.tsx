@@ -7,7 +7,8 @@ import logo from '@assets/logo.svg';
 import user from '@assets/user.svg';
 import cart from '@assets/cart.svg';
 import { checkoutURL, homeURL } from '@constants';
-import { dropdownsHeaders, searchPlaceholder, productsURL } from '@constants';
+import { searchPlaceholder, productsURL } from '@constants';
+import { dropdownsHeaders } from 'mockedData';
 
 import classes from './Header.module.scss';
 
@@ -26,14 +27,26 @@ function Header() {
     <header className={header}>
       <div className={info}>
         <div className={info__left}>
-          <span className={info__link}>Chat with us</span>
-          <span className={info__info}>+420 336 775 664</span>
-          <span className={info__info}>info@freshnesecom.com</span>
+          <Link to={'#'} className={info__link}>
+            Chat with us
+          </Link>
+          <a className={info__info} href="tel:+420336775664">
+            +420 336 775 664
+          </a>
+          <a className={info__info} href="mailto:info@freshnesecom.com">
+            info@freshnesecom.com
+          </a>
         </div>
         <div className={info__right}>
-          <span className={info__link}>Blog</span>
-          <span className={info__link}>About Us</span>
-          <span className={info__link}>Careers</span>
+          <Link to={'#'} className={info__link}>
+            Blog
+          </Link>
+          <Link to={'#'} className={info__link}>
+            About Us
+          </Link>
+          <Link to={'#'} className={info__link}>
+            Careers
+          </Link>
         </div>
       </div>
       <hr className={line} />

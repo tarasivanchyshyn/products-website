@@ -29,11 +29,13 @@
   padding: 1rem 3rem;
   height: 3rem;
 
-  & span {
+  & a {
     @include open-sans;
     font-weight: 400;
     font-size: 0.75rem;
     line-height: 1rem;
+    text-decoration: none;
+    cursor: pointer;
   }
 
   &__left,
@@ -41,18 +43,23 @@
     @include flex-centerY;
   }
 
-  &__left span {
+  &__left a {
     margin-right: 2.37rem;
   }
-  &__right span {
+  &__right a {
     margin-left: 2.37rem;
   }
 
   &__link {
     @include link;
   }
+
   &__info {
-    cursor: default;
+    color: black;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 

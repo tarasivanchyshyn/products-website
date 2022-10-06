@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 
 import ProducInfo from '@components/Product/ProducInfo';
 import Recomended from '@components/Product/Recomended';
-import { mockedProducts } from '@constants';
+import { mockedProducts } from 'mockedData';
 
 function Product() {
   const { productId } = useParams();

@@ -1,0 +1,35 @@
+@import 'variables';
+
+.tags {
+  margin-bottom: 3rem;
+
+  &__header {
+    margin: 0;
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__tag {
+    @include poppins;
+    font-weight: 600;
+    font-size: 0.75rem;
+    line-height: 1.125rem;
+    background: $tags-bg;
+    margin: 1rem 1rem 0 0;
+    border-radius: 12px;
+    padding: 0.25rem 0.625rem;
+    cursor: default;
+  }
+}
+
+.tags__header {
+  @include poppins;
+  margin: 0 0 1rem;
+  font-weight: 600;
+  font-size: 1.125rem;
+  line-height: 1.687rem;
+  cursor: default;
+}
