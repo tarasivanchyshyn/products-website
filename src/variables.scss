@@ -4,6 +4,7 @@ $lines-grey: #d1d1d1;
 $lighter-grey: #fdfdfd;
 $tags-bg: #f5f5f5;
 $cart-items: #e6704b;
+$black: #151515;
 
 $poppins: 'Poppins', sans-serif;
 $open-sans: 'Open Sans', sans-serif;
@@ -13,7 +14,7 @@ $open-sans: 'Open Sans', sans-serif;
   cursor: pointer;
 
   &:hover {
-    color: black;
+    color: $black;
     text-decoration: underline;
   }
 }

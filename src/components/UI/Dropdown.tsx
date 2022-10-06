@@ -15,10 +15,9 @@ function Dropdown({ header }: Dropdownprops) {
   const ref = useRef<HTMLDivElement>(null);
 
   const toggleWindow = () => setOpen(!open);
-  const selectItem = () => setOpen(false);
 
   useEffect(() => {
-    let handler = (e: any) => {
+    let handler = (e: MouseEvent) => {
       if (!ref.current?.contains(e.target as Node)) {
         setOpen(false);
       }
@@ -43,13 +42,13 @@ function Dropdown({ header }: Dropdownprops) {
       </button>
       {open && (
         <div className={dropdown}>
-          <div className={dropdown__item} onClick={selectItem}>
+          <div className={dropdown__item} onClick={toggleWindow}>
             Option1
           </div>
-          <div className={dropdown__item} onClick={selectItem}>
+          <div className={dropdown__item} onClick={toggleWindow}>
             Option2
           </div>
-          <div className={dropdown__item} onClick={selectItem}>
+          <div className={dropdown__item} onClick={toggleWindow}>
             Option3
           </div>
         </div>
