@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
 import ProductCard from './ProductCard/ProductCard';
-import { mockedProducts as products } from '@constants';
+import { mockedProducts as products } from 'mockedData';
 
 function ProductCards() {
   return (

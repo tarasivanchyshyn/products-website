@@ -1,0 +1,29 @@
+@import '../../variables.scss';
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  padding: 4rem 2.8rem;
+}
+
+.contacts {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+}
+
+.copyright {
+  text-align: left;
+  @include open-sans;
+  font-weight: 400;
+  font-size: 0.875rem;
+  line-height: 1.187rem;
+  cursor: default;
+}
+
+@media (min-width: 1261px) {
+  .contacts {
+    justify-content: space-evenly;
+  }
+}

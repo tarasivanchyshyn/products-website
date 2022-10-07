@@ -1,0 +1,55 @@
+@import '../../variables.scss';
+
+.button {
+  border: none;
+  background: $bg-grey;
+  @include poppins;
+  font-weight: 500;
+  font-size: 0.95rem;
+  @include flex-centerY;
+
+  &__header {
+    margin-right: 0.2rem;
+  }
+  &__icon {
+    color: $green;
+    font-size: 0.6rem;
+  }
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.dropdown {
+  position: absolute;
+  width: 7rem;
+  @include flex-column;
+  border-radius: 4px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  animation: slide-down 300ms ease-out forwards;
+  background: white;
+
+  &__item {
+    height: 1.5rem;
+    line-height: 1.5rem;
+    width: 100%;
+    cursor: pointer;
+    @include flex-center;
+
+    &:hover {
+      background: grey;
+      color: white;
+    }
+  }
+}
+
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-0.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

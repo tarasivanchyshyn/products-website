@@ -1,30 +1,97 @@
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
-import { productsURL, checkoutURL, homeURL } from '@constants';
+import Dropdown from '@components/UI/Dropdown';
+import logo from '@assets/logo.svg';
+import user from '@assets/user.svg';
+import cart from '@assets/cart.svg';
+import { checkoutURL, homeURL } from '@constants';
+import { searchPlaceholder, productsURL } from '@constants';
+import { dropdownsHeaders } from 'mockedData';
 
 import classes from './Header.module.scss';
 
 function Header() {
-  const { list, link, active } = classes;
+  const { active } = classes;
 
   const setActive = ({ isActive }: { isActive: boolean }) =>
     isActive ? active : '';
 
   return (
-    <header>
+    <header className={classes.header}>
+      <div className={classes.info}>
+        <div className={classes.info__left}>
+          <Link to={'#'} className={classes.info__link}>
+            Chat with us
+          </Link>
+          <a className={classes.info__info} href="tel:+420336775664">
+            +420 336 775 664
+          </a>
+          <a className={classes.info__info} href="mailto:info@freshnesecom.com">
+            info@freshnesecom.com
+          </a>
+        </div>
+        <div className={classes.info__right}>
+          <Link to={'#'} className={classes.info__link}>
+            Blog
+          </Link>
+          <Link to={'#'} className={classes.info__link}>
+            About Us
+          </Link>
+          <Link to={'#'} className={classes.info__link}>
+            Careers
+          </Link>
+        </div>
+      </div>
+      <hr className={classes.line} />
+      <div className={classes.main}>
+        <div className={classes.main__top}>
+          <div className={classes.main__logo}>
+            <Link to={homeURL}>
+              <img src={logo} alt="logo" />
+            </Link>
+          </div>
+          <div className={classes.main__search}>
+            <div className={classes.main__categories}>
+              <Dropdown header="All categories" />
+              <div className={classes.main__divider}></div>
+            </div>
+            <div className={classes.main__inputContainer}>
+              <input type="text" placeholder={searchPlaceholder} />
+              <FontAwesomeIcon icon={faMagnifyingGlass} />
+            </div>
+          </div>
+          <div className={classes.main__icons}>
+            <img src={user} alt="User" />
+            <div className={classes.main__cart}>
+              <Link to={checkoutURL}>
+                <img src={cart} alt="Cart" />
+                <span>4</span>
+              </Link>
+            </div>
+          </div>
+        </div>
+        <div className={classes.main__bottom}>
+          {dropdownsHeaders.map((el) => (
+            <Dropdown key={el} header={el} />
+          ))}
+        </div>
+      </div>
+
       <nav>
-        <ul className={list}>
-          <li className={link}>
+        <ul className={classes.list}>
+          <li className={classes.link}>
             <NavLink className={setActive} to={homeURL} end>
               Home
             </NavLink>
           </li>
-          <li className={link}>
+          <li className={classes.link}>
             <NavLink className={setActive} to={productsURL}>
               Products
             </NavLink>
           </li>
-          <li className={link}>
+          <li className={classes.link}>
             <NavLink className={setActive} to={checkoutURL}>
               Checkout
             </NavLink>

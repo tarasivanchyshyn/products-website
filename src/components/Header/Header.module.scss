@@ -1,20 +1,188 @@
+@import 'variables.scss';
+
 .list {
   display: flex;
   list-style: none;
 }
-
 .link {
   margin-left: 1rem;
-
   & a {
     color: grey;
     text-decoration: none;
   }
-
   & a:hover,
   a:active,
   a.active {
-    color: black;
-    border-bottom: 4px solid grey;
+    color: $black;
+    border-bottom: 4px solid $green;
+  }
+}
+///////////////////////////////////////
+
+.header {
+  @include flex-column;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 3rem;
+  height: 3rem;
+
+  a {
+    @include open-sans;
+    font-weight: 400;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  &__left,
+  &__right {
+    @include flex-centerY;
+  }
+
+  &__left a {
+    margin-right: 2.37rem;
+  }
+  &__right a {
+    margin-left: 2.37rem;
+  }
+
+  &__link {
+    @include link;
+  }
+
+  &__info {
+    color: $black;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.line {
+  border-top: 1px solid #eeeeee;
+  border-bottom: none;
+  margin: 0 3rem;
+}
+
+.main {
+  height: 8.81rem;
+  padding: 0.81rem 1.68rem 0.81rem 3.87rem;
+  @include flex-column;
+  justify-content: space-between;
+  background: $lighter-grey;
+
+  &__top {
+    @include flex-centerY;
+    justify-content: space-between;
+    height: 50%;
+  }
+
+  &__logo {
+    @include flex-centerY;
+  }
+
+  &__search {
+    height: 2.62rem;
+    width: 50%;
+    max-width: 30rem;
+    border-radius: 12px;
+    @include flex-centerY;
+    justify-content: space-evenly;
+    border: 1px solid $lines-grey;
+    background: $bg-grey;
+    padding: 0.5rem 1rem;
+  }
+
+  &__categories {
+    @include flex-centerY;
+    cursor: pointer;
+    white-space: nowrap;
+
+    span {
+      @include poppins;
+      font-weight: 700;
+      margin-right: 0.7rem;
+      font-size: 0.95rem;
+    }
+
+    svg {
+      color: $green;
+      font-size: 0.6rem;
+      margin-right: 1.2rem;
+    }
+  }
+
+  &__divider {
+    border-left: 1px solid $lines-grey;
+    height: 1.3rem;
+  }
+
+  &__inputContainer {
+    margin-left: 1.2rem;
+    @include flex-centerY;
+    justify-content: space-between;
+    position: relative;
+    width: 60%;
+
+    input {
+      width: 100%;
+      border: none;
+      outline: none;
+      padding-right: 1.75rem;
+      background: inherit;
+
+      &::placeholder {
+        @include open-sans;
+        color: #a9a9a9;
+      }
+    }
+
+    svg {
+      position: absolute;
+      right: 0;
+      font-size: 0.8rem;
+      transform: scaleX(-1);
+    }
+  }
+
+  &__icons {
+    height: 100%;
+    @include flex-centerY;
+  }
+
+  &__cart {
+    margin-left: 2.5rem;
+    position: relative;
+
+    span {
+      position: absolute;
+      top: 0.8rem;
+      right: 0.75rem;
+      padding: 0rem 0.3rem;
+      border-radius: 50%;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: white;
+      background: $cart-items;
+    }
+  }
+
+  &__bottom {
+    height: 3.43rem;
+    background: $bg-grey;
+    padding: 1rem 2.8rem;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+@media (min-width: 1261px) {
+  .main__bottom {
+    justify-content: space-evenly;
   }
 }
