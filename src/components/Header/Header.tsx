@@ -13,10 +13,10 @@ import { dropdownsHeaders } from 'mockedData';
 import classes from './Header.module.scss';
 
 function Header() {
-  const { active } = classes;
+  // const { active } = classes;
 
-  const setActive = ({ isActive }: { isActive: boolean }) =>
-    isActive ? active : '';
+  // const setActive = ({ isActive }: { isActive: boolean }) =>
+  //   isActive ? active : '';
 
   return (
     <header className={classes.header}>
@@ -79,7 +79,7 @@ function Header() {
         </div>
       </div>
 
-      <nav>
+      {/* <nav>
         <ul className={classes.list}>
           <li className={classes.link}>
             <NavLink className={setActive} to={homeURL} end>
@@ -97,7 +97,7 @@ function Header() {
             </NavLink>
           </li>
         </ul>
-      </nav>
+      </nav> */}
     </header>
   );
 }

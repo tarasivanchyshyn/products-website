@@ -1,18 +1,15 @@
-import Sorting from '@components/Products/Sorting';
-import Categories from '@components/Products/Categories';
-import Filters from '@components/Products/Filters';
-import ProductCards from '@components/Products/ProductCards/ProductCards';
-import Footer from '@components/Products/Footer';
+import BreadCrumbs from '@components/Products/BreadCrumbs/BreadCrumbs';
+import Header from '@components/Products/Header/Header';
+import Sorting from '@components/Products/Sorting/Sorting';
+import Main from '@components/Products/Main/Main';
 
 function Products() {
   return (
     <>
-      <h1>All Products</h1>
+      <BreadCrumbs />
+      <Header />
       <Sorting />
-      <Categories />
-      <Filters />
-      <ProductCards />
-      <Footer />
+      <Main />
     </>
   );
 }

@@ -1,7 +1,5 @@
 import { useParams } from 'react-router-dom';
 
-import ProducInfo from '@components/Product/ProducInfo';
-import Recomended from '@components/Product/Recomended';
 import { mockedProducts } from 'mockedData';
 
 function Product() {
@@ -9,13 +7,7 @@ function Product() {
 
   const product = mockedProducts.find((el) => el.id === productId);
 
-  return (
-    <div>
-      <h1>{product?.title}</h1>
-      <ProducInfo />
-      <Recomended />
-    </div>
-  );
+  return <h1>{product?.title}</h1>;
 }
 
 export default Product;

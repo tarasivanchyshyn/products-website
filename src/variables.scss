@@ -2,9 +2,18 @@ $green: #6a983c;
 $bg-grey: #f9f9f9;
 $lines-grey: #d1d1d1;
 $lighter-grey: #fdfdfd;
+$black: #151515;
+
+$breadcrumb-gray: #a9a9a9;
+$breadcrumb-current: #151515;
+
 $tags-bg: #f5f5f5;
 $cart-items: #e6704b;
-$black: #151515;
+
+$header-amount-heading: #a9a9a9;
+$card-description: #575757;
+$card-details-grey: #a9a9a9;
+$card-btnWish-bg: #f5f5f5;
 
 $poppins: 'Poppins', sans-serif;
 $open-sans: 'Open Sans', sans-serif;
@@ -33,11 +42,4 @@ $open-sans: 'Open Sans', sans-serif;
 @mixin flex-column {
   display: flex;
   flex-direction: column;
-}
-
-@mixin poppins {
-  font-family: $poppins;
-}
-@mixin open-sans {
-  font-family: $open-sans;
 }

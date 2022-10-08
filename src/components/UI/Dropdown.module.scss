@@ -3,10 +3,9 @@
 .button {
   border: none;
   background: $bg-grey;
-  @include poppins;
-  font-weight: 500;
-  font-size: 0.95rem;
+  font: 500 0.95rem $poppins;
   @include flex-centerY;
+  color: $black;
 
   &__header {
     margin-right: 0.2rem;
