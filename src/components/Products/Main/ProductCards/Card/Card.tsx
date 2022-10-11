@@ -1,60 +1,78 @@
-import star from '@assets/star.svg';
-import starWhite from '@assets/star-white.svg';
+import { FC } from 'react';
+
 import arrowRight from '@assets/arrow-right.svg';
 import heart from '@assets/heart.svg';
+import { IProduct } from 'models/IProduct';
+import starsConfigurer from 'helpers/starsConfigurer';
 
 import classes from './Card.module.scss';
 
-function Card() {
+interface CardProps {
+  product: IProduct;
+}
+
+const Card: FC<CardProps> = ({ product }) => {
+  const { title, description, image, rating, freshness, farm } = product;
+  const {
+    delivery,
+    units,
+    stock,
+    price,
+    priceBefore,
+    freeShipping,
+    deliveryTime
+  } = product;
+
+  const stars = starsConfigurer(rating);
+
   return (
     <li className={classes.card}>
-      <img src="#" alt="product look" className={classes.card__image} />
+      <div className={classes.imgWrapper}>
+        <img src={image} alt="product look" className={classes.card__image} />
+      </div>
       <div className={classes.card__info}>
         <div className={classes.card__infoLeft}>
           <div className={classes.card__header}>
-            <h3 className={classes.card__title}>Product title</h3>
-            <p className={classes.card__description}>
-              Space for a small product description
-            </p>
+            <h3 className={classes.card__title}>{title}</h3>
+            <p className={classes.card__description}>{description}</p>
           </div>
-          <div className={classes.card__rating}>
-            <img src={star} alt="rating star" />
-            <img src={star} alt="rating star" />
-            <img src={star} alt="rating star" />
-            <img src={star} alt="rating star" />
-            <img src={starWhite} alt="rating star" />
-          </div>
+          <div className={classes.card__rating}>{stars}</div>
           <ul className={classes.card__details}>
             <li className={classes.card__detail}>
               <span className={classes.card__detailHeader}>Freshness</span>
-              <span className={classes.card__detailValue}>
-                New (Extra fresh)
-              </span>
+              <span className={classes.card__detailValue}>{freshness}</span>
             </li>
             <li className={classes.card__detail}>
               <span className={classes.card__detailHeader}>Farm</span>
-              <span className={classes.card__detailValue}>
-                Grocery Tarm Fields
-              </span>
+              <span className={classes.card__detailValue}>{farm}</span>
             </li>
             <li className={classes.card__detail}>
               <span className={classes.card__detailHeader}>Delivery</span>
-              <span className={classes.card__detailValue}>Europe</span>
+              <span className={classes.card__detailValue}>{delivery}</span>
             </li>
             <li className={classes.card__detail}>
               <span className={classes.card__detailHeader}>Stock</span>
-              <span className={classes.card__detailValue}>320 pcs</span>
+              <span className={classes.card__detailValue}>
+                {stock} {units}
+              </span>
             </li>
           </ul>
         </div>
         <div className={classes.card__infoRight}>
           <div className={classes.card__price}>
-            <p className={classes.card__currentPrice}>36.99 USD</p>
-            <p className={classes.card__oldPrice}>48.56</p>
+            <p className={classes.card__currentPrice}>{price}$</p>
+            <p className={classes.card__oldPrice}>{priceBefore}$</p>
           </div>
           <div className={classes.card__delivery}>
-            <p className={classes.card__deliveryFree}>Free Shipping</p>
-            <p className={classes.card__deliveryTime}>Delivery in 1 day</p>
+            {freeShipping && (
+              <p className={classes.card__deliveryFree}>Free Shipping</p>
+            )}
+            <p className={classes.card__deliveryTime}>
+              Delivery in
+              {deliveryTime > 1
+                ? ` ${deliveryTime} days`
+                : ` ${deliveryTime} day`}
+            </p>
           </div>
           <div className={classes.card__actions}>
             <button className={classes.card__btnDetail}>
@@ -70,6 +88,6 @@ function Card() {
       </div>
     </li>
   );
-}
+};
 
 export default Card;

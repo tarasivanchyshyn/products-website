@@ -10,8 +10,15 @@
     margin: 0;
   }
 
-  &__image {
+  .imgWrapper {
     width: 32.5%;
+  }
+
+  &__image {
+    display: block;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
     border-radius: 12px;
     background: #a9a9a9;
   }
@@ -26,6 +33,7 @@
 
   &__infoLeft {
     @include flex-column;
+    width: 50%;
   }
 
   &__infoRight {
