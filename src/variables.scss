@@ -43,3 +43,9 @@ $open-sans: 'Open Sans', sans-serif;
   display: flex;
   flex-direction: column;
 }
+
+@mixin elipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

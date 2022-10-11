@@ -69,15 +69,14 @@
   &__detail {
     margin-bottom: 0.75rem;
     font: 0.875rem/1.187rem $open-sans;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    @include elipsis;
     color: $card-details-grey;
 
     &Header {
       display: inline-block;
       width: 5rem;
       margin-right: 2rem;
+      @include elipsis;
     }
 
     span {
