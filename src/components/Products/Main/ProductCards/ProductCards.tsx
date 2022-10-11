@@ -12,9 +12,9 @@ function ProductCards() {
 
   return (
     <div className={classes.cards}>
+      {isLoading && <h1>Downloading...</h1>}
+      {error && <h1>Error occured</h1>}
       <ul>
-        {isLoading && <h1>Downloading...</h1>}
-        {error && <h1>Error occured</h1>}
         {products &&
           products.map((product) => (
             <Card product={product} key={product.id} />

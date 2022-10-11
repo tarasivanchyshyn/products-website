@@ -1,17 +1,21 @@
-import star from '@assets/star.svg';
-import starWhite from '@assets/star-white.svg';
+import { ReactComponent as Star } from '@assets/star.svg';
+import { ReactComponent as WhiteStar } from '@assets/star-white.svg';
 
 const starsConfigurer = (rating: number) => {
   const stars = [];
   for (let i = 0; i < Math.round(rating); i++) {
     stars.push(
-      <img src={star} alt="rating star" key={Math.random().toString()} />
+      <li key={Math.random().toString()}>
+        <Star />
+      </li>
     );
   }
   const whiteStarsLength = 5 - stars.length;
   for (let i = 0; i < whiteStarsLength; i++) {
     stars.push(
-      <img src={starWhite} alt="rating star" key={Math.random().toString()} />
+      <li key={Math.random().toString()}>
+        <WhiteStar />
+      </li>
     );
   }
 

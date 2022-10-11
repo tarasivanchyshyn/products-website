@@ -12,9 +12,21 @@ interface CardProps {
 }
 
 const Card: FC<CardProps> = ({ product }) => {
-  const { title, description, image, rating, freshness, farm } = product;
-  const { delivery, units, stock, price, priceBefore } = product;
-  const { freeShipping, deliveryTime } = product;
+  const {
+    title,
+    description,
+    image,
+    rating,
+    freshness,
+    farm,
+    delivery,
+    units,
+    stock,
+    price,
+    priceBefore,
+    freeShipping,
+    deliveryTime
+  } = product;
 
   const stars = starsConfigurer(rating);
   const deliveryT =
@@ -31,7 +43,7 @@ const Card: FC<CardProps> = ({ product }) => {
             <h3 className={classes.card__title}>{title}</h3>
             <p className={classes.card__description}>{description}</p>
           </div>
-          <div className={classes.card__rating}>{stars}</div>
+          <ul className={classes.card__rating}>{stars}</ul>
           <ul className={classes.card__details}>
             <li className={classes.card__detail}>
               <span className={classes.card__detailHeader}>Freshness</span>

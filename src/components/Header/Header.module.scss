@@ -170,6 +170,9 @@
     height: 3.43rem;
     background: $bg-grey;
     padding: 1rem 2.8rem;
+  }
+
+  &__dropdowns {
     display: flex;
     justify-content: space-between;
   }

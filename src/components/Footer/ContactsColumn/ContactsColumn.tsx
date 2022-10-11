@@ -12,11 +12,13 @@ function ContactsColumn({ header, links }: ContactsColumnProps) {
   return (
     <div className={contacts__column}>
       <h2 className={contacts__header}>{header}</h2>
-      {links.map((item) => (
-        <Link to={'#'} className={contacts__contact} key={item}>
-          {item}
-        </Link>
-      ))}
+      <ul>
+        {links.map((item) => (
+          <li key={item} className={contacts__contact}>
+            <Link to={'#'}>{item}</Link>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

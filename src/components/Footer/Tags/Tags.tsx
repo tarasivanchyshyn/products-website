@@ -7,13 +7,13 @@ function Tags() {
   return (
     <div className={tags}>
       <h2 className={tags__header}>Product tags</h2>
-      <div className={tags__list}>
+      <ul className={tags__list}>
         {tagsItems.map((tag) => (
-          <span key={tag} className={tags__tag}>
+          <li key={tag} className={tags__tag}>
             {tag}
-          </span>
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   );
 }

@@ -1,19 +1,23 @@
 @import 'variables';
 
 .contacts__column {
-  a {
-    display: block;
-  }
-
   .contacts__header {
-    margin: 0 0 1rem;
+    margin-bottom: 1rem;
     font: 600 1.125rem/1.687rem $poppins;
   }
 
   .contacts__contact {
-    margin: 0 0 1rem;
+    margin-bottom: 1rem;
     font: 0.875rem/1.119rem $open-sans;
-    @include link;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  a {
+    display: block;
     text-decoration: none;
+    @include link;
   }
 }
