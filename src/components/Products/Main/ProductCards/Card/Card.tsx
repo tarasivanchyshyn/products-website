@@ -13,17 +13,12 @@ interface CardProps {
 
 const Card: FC<CardProps> = ({ product }) => {
   const { title, description, image, rating, freshness, farm } = product;
-  const {
-    delivery,
-    units,
-    stock,
-    price,
-    priceBefore,
-    freeShipping,
-    deliveryTime
-  } = product;
+  const { delivery, units, stock, price, priceBefore } = product;
+  const { freeShipping, deliveryTime } = product;
 
   const stars = starsConfigurer(rating);
+  const deliveryT =
+    deliveryTime > 1 ? ` ${deliveryTime} days` : ` ${deliveryTime} day`;
 
   return (
     <li className={classes.card}>
@@ -67,12 +62,7 @@ const Card: FC<CardProps> = ({ product }) => {
             {freeShipping && (
               <p className={classes.card__deliveryFree}>Free Shipping</p>
             )}
-            <p className={classes.card__deliveryTime}>
-              Delivery in
-              {deliveryTime > 1
-                ? ` ${deliveryTime} days`
-                : ` ${deliveryTime} day`}
-            </p>
+            <p className={classes.card__deliveryTime}>Delivery in{deliveryT}</p>
           </div>
           <div className={classes.card__actions}>
             <button className={classes.card__btnDetail}>
