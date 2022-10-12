@@ -6,23 +6,24 @@ import { faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import { useAppDispatch } from 'hooks/redux';
 import { productsActions } from 'store/reducers/ProductsSlice';
 
-import classes from './Dropdown.module.scss';
+import classes from './SearchDropdown.module.scss';
 
-type Dropdownprops = {
-  header: string;
+type SearchDropdownProps = {
   options: string[];
 };
 
-const Dropdown: FC<Dropdownprops> = ({ header, options }) => {
+const SearchDropdown: FC<SearchDropdownProps> = ({ options }) => {
   const [open, setOpen] = useState(false);
+  const [header, setHeader] = useState('All categories');
   const dispatch = useAppDispatch();
 
   const toggleWindowHandler = () => setOpen(!open);
 
   const chooseOptionHandler = (option: string) => {
     toggleWindowHandler();
-    dispatch(productsActions.searchCategory(header));
-    dispatch(productsActions.chooseFarm(option));
+    setHeader(option);
+    dispatch(productsActions.searchCategory(option));
+    dispatch(productsActions.chooseFarm(''));
   };
 
   const { dropdown, button, button__header, button__icon, dropdown__item } =
@@ -61,4 +62,4 @@ const Dropdown: FC<Dropdownprops> = ({ header, options }) => {
   );
 };
 
-export default Dropdown;
+export default SearchDropdown;

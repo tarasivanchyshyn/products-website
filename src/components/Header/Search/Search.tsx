@@ -2,10 +2,11 @@ import { FormEvent, useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
-import Dropdown from '@components/UI/Dropdown';
+import SearchDropdown from '@components/UI/SearchDropdown';
 import { productsActions } from 'store/reducers/ProductsSlice';
 import { useAppDispatch } from 'hooks/redux';
 import { searchPlaceholder } from '@constants';
+import { categories } from 'mockedData';
 
 import classes from './Search.module.scss';
 
@@ -29,7 +30,7 @@ function Search() {
   return (
     <div className={classes.main__search}>
       <div className={classes.main__categories}>
-        <Dropdown header="All categories" />
+        <SearchDropdown options={categories} />
         <div className={classes.main__divider}></div>
       </div>
       <div className={classes.main__inputContainer}>

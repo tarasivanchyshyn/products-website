@@ -49,6 +49,10 @@
       background: $green;
       color: white;
     }
+
+    &:first-child {
+      border-bottom: 1px solid $all-categories-border;
+    }
   }
 }
 

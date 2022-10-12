@@ -2,7 +2,6 @@ import BreadCrumbs from '@components/Products/BreadCrumbs/BreadCrumbs';
 import Header from '@components/Products/Header/Header';
 import Sorting from '@components/Products/Sorting/Sorting';
 import Main from '@components/Products/Main/Main';
-
 import { productsAPI } from 'services/ProductsService';
 import { useAppSelector } from 'hooks/redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -20,6 +19,25 @@ function Products() {
   const searchValue = useAppSelector(
     (state) => state.productsReducer.searchValue
   );
+  const searchCategory = useAppSelector(
+    (state) => state.productsReducer.searchCategory
+  );
+  const choosedFarm = useAppSelector(
+    (state) => state.productsReducer.choosedFarm
+  );
+
+  if (searchCategory && products) {
+    products =
+      searchCategory === 'All categories'
+        ? products
+        : products.filter((el) =>
+            el.categories.includes(searchCategory.toLowerCase())
+          );
+  }
+
+  if (choosedFarm && products) {
+    products = products.filter((el) => el.farm === choosedFarm);
+  }
 
   if (searchValue.trim() && products) {
     products = products.filter((el) =>
@@ -27,19 +45,20 @@ function Products() {
     );
   }
 
-  const { message, spinner } = classes;
+  const loadingSpinner = (
+    <div className={classes.spinner}>
+      <FontAwesomeIcon icon={faSpinner} spinPulse />
+    </div>
+  );
+  const errMessage = <h2 className={classes.message}>Error occured</h2>;
 
   return (
     <>
       <BreadCrumbs />
       <Header products={products} />
       <Sorting />
-      {isLoading && (
-        <div className={spinner}>
-          <FontAwesomeIcon icon={faSpinner} spinPulse />
-        </div>
-      )}
-      {error && <h2 className={message}>Error occured</h2>}
+      {isLoading && loadingSpinner}
+      {error && errMessage}
       {!isLoading && !error && <Main products={products} />}
     </>
   );

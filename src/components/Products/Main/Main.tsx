@@ -11,6 +11,10 @@ interface MainProps {
 }
 
 const Main: FC<MainProps> = ({ products }) => {
+  if (!products?.length) {
+    return <h1 className={classes.message}>No products</h1>;
+  }
+
   return (
     <div className={classes.main}>
       <Filters />

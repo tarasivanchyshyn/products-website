@@ -59,8 +59,8 @@ function Header() {
         <div className={classes.main__bottom}>
           <ul className={classes.main__dropdowns}>
             {dropdownsHeaders.map((el) => (
-              <li key={el}>
-                <Dropdown header={el} />
+              <li key={el.header}>
+                <Dropdown header={el.header} options={el.options} />
               </li>
             ))}
           </ul>

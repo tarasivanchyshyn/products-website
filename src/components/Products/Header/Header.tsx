@@ -1,5 +1,6 @@
-import { IProduct } from 'models/IProduct';
 import { FC } from 'react';
+
+import { IProduct } from 'models/IProduct';
 import classes from './Header.module.scss';
 
 interface HeaderProps {
@@ -14,7 +15,9 @@ const Header: FC<HeaderProps> = ({ products }) => {
         <div className={classes.header__number}>
           <span>{products?.length}</span>
         </div>
-        <span className={classes.header__name}>Products</span>
+        <span className={classes.header__name}>
+          {products && products?.length === 1 ? 'Product' : 'Products'}
+        </span>
       </div>
     </div>
   );
