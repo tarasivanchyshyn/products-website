@@ -1,7 +1,6 @@
 @import 'variables.scss';
 
 .main {
-  // position: relative;
   @include flex-column;
   align-items: center;
 }
@@ -27,7 +26,6 @@
 
 .dropdown {
   position: absolute;
-  // width: 100%;
   min-width: 11rem;
   top: 2rem;
   left: 0;
