@@ -32,7 +32,7 @@ function Dropdown({ header }: Dropdownprops) {
     classes;
 
   return (
-    <div ref={ref}>
+    <div ref={ref} className={classes.main}>
       <button className={button} onClick={toggleWindow}>
         <span className={button__header}>{header}</span>
         <FontAwesomeIcon

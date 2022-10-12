@@ -83,68 +83,6 @@
     @include flex-centerY;
   }
 
-  &__search {
-    height: 2.62rem;
-    width: 50%;
-    max-width: 30rem;
-    border-radius: 12px;
-    @include flex-centerY;
-    justify-content: space-evenly;
-    border: 1px solid $lines-grey;
-    background: $bg-grey;
-    padding: 0.5rem 1rem;
-  }
-
-  &__categories {
-    @include flex-centerY;
-    cursor: pointer;
-    white-space: nowrap;
-
-    span {
-      margin-right: 0.7rem;
-      font: 700 0.95rem $poppins;
-    }
-
-    svg {
-      color: $green;
-      font-size: 0.6rem;
-      margin-right: 1.2rem;
-    }
-  }
-
-  &__divider {
-    border-left: 1px solid $lines-grey;
-    height: 1.3rem;
-  }
-
-  &__inputContainer {
-    margin-left: 1.2rem;
-    @include flex-centerY;
-    justify-content: space-between;
-    position: relative;
-    width: 60%;
-
-    input {
-      width: 100%;
-      border: none;
-      outline: none;
-      padding-right: 1.75rem;
-      background: inherit;
-
-      &::placeholder {
-        font-family: $open-sans;
-        color: #a9a9a9;
-      }
-    }
-
-    svg {
-      position: absolute;
-      right: 0;
-      font-size: 0.8rem;
-      transform: scaleX(-1);
-    }
-  }
-
   &__icons {
     height: 100%;
     @include flex-centerY;

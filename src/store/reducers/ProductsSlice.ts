@@ -3,16 +3,22 @@ import { IProduct } from 'models/IProduct';
 
 interface ProductsState {
   products: IProduct[];
+  searchValue: string;
 }
 
 const initialState: ProductsState = {
-  products: []
+  products: [],
+  searchValue: ''
 };
 
 const productsSlice = createSlice({
   name: 'products',
   initialState,
-  reducers: {}
+  reducers: {
+    search: (state, action) => {
+      state.searchValue = action.payload;
+    }
+  }
 });
 
 export const productsActions = productsSlice.actions;

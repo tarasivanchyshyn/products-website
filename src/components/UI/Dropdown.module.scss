@@ -1,5 +1,11 @@
 @import '../../variables.scss';
 
+.main {
+  position: relative;
+  @include flex-column;
+  align-items: center;
+}
+
 .button {
   border: none;
   background: $bg-grey;
@@ -21,12 +27,15 @@
 
 .dropdown {
   position: absolute;
-  width: 7rem;
+  width: 100%;
+  min-width: 8rem;
+  top: 1.6rem;
   @include flex-column;
   border-radius: 4px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
   animation: slide-down 300ms ease-out forwards;
   background: white;
+  z-index: 20;
 
   &__item {
     height: 1.5rem;
