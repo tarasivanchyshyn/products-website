@@ -21,7 +21,7 @@
   &__number {
     @include flex-center;
     margin-right: 0.25rem;
-    background: #f4f8ec;
+    background: $products-counter-bg;
     border-radius: 12px;
     padding: 0 0.5rem;
     width: 2rem;
