@@ -1,4 +1,4 @@
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
@@ -7,17 +7,12 @@ import logo from '@assets/logo.svg';
 import user from '@assets/user.svg';
 import cart from '@assets/cart.svg';
 import { checkoutURL, homeURL } from '@constants';
-import { searchPlaceholder, productsURL } from '@constants';
+import { searchPlaceholder } from '@constants';
 import { dropdownsHeaders } from 'mockedData';
 
 import classes from './Header.module.scss';
 
 function Header() {
-  const { active } = classes;
-
-  const setActive = ({ isActive }: { isActive: boolean }) =>
-    isActive ? active : '';
-
   return (
     <header className={classes.header}>
       <div className={classes.info}>
@@ -73,31 +68,15 @@ function Header() {
           </div>
         </div>
         <div className={classes.main__bottom}>
-          {dropdownsHeaders.map((el) => (
-            <Dropdown key={el} header={el} />
-          ))}
+          <ul className={classes.main__dropdowns}>
+            {dropdownsHeaders.map((el) => (
+              <li key={el}>
+                <Dropdown header={el} />
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
-
-      <nav>
-        <ul className={classes.list}>
-          <li className={classes.link}>
-            <NavLink className={setActive} to={homeURL} end>
-              Home
-            </NavLink>
-          </li>
-          <li className={classes.link}>
-            <NavLink className={setActive} to={productsURL}>
-              Products
-            </NavLink>
-          </li>
-          <li className={classes.link}>
-            <NavLink className={setActive} to={checkoutURL}>
-              Checkout
-            </NavLink>
-          </li>
-        </ul>
-      </nav>
     </header>
   );
 }

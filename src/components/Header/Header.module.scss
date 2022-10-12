@@ -30,10 +30,7 @@
   height: 3rem;
 
   a {
-    @include open-sans;
-    font-weight: 400;
-    font-size: 0.75rem;
-    line-height: 1rem;
+    font: 0.75rem/1rem $open-sans;
     text-decoration: none;
     cursor: pointer;
   }
@@ -104,10 +101,8 @@
     white-space: nowrap;
 
     span {
-      @include poppins;
-      font-weight: 700;
       margin-right: 0.7rem;
-      font-size: 0.95rem;
+      font: 700 0.95rem $poppins;
     }
 
     svg {
@@ -137,7 +132,7 @@
       background: inherit;
 
       &::placeholder {
-        @include open-sans;
+        font-family: $open-sans;
         color: #a9a9a9;
       }
     }
@@ -165,8 +160,7 @@
       right: 0.75rem;
       padding: 0rem 0.3rem;
       border-radius: 50%;
-      font-size: 0.7rem;
-      font-weight: 700;
+      font: 600 0.75rem/1.125rem $poppins;
       color: white;
       background: $cart-items;
     }
@@ -176,6 +170,9 @@
     height: 3.43rem;
     background: $bg-grey;
     padding: 1rem 2.8rem;
+  }
+
+  &__dropdowns {
     display: flex;
     justify-content: space-between;
   }

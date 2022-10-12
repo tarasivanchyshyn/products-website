@@ -1,26 +1,23 @@
 @import 'variables';
 
 .contacts__column {
-  a {
-    display: block;
-  }
-
   .contacts__header {
-    @include poppins;
-    margin: 0 0 1rem;
-    font-weight: 600;
-    font-size: 1.125rem;
-    line-height: 1.687rem;
-    cursor: default;
+    margin-bottom: 1rem;
+    font: 600 1.125rem/1.687rem $poppins;
   }
 
   .contacts__contact {
-    margin: 0 0 1rem;
-    @include open-sans;
-    font-weight: 400;
-    font-size: 0.875rem;
-    line-height: 1.119;
-    @include link;
+    margin-bottom: 1rem;
+    font: 0.875rem/1.119rem $open-sans;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  a {
+    display: block;
     text-decoration: none;
+    @include link;
   }
 }

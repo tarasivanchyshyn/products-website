@@ -15,11 +15,8 @@
 
 .copyright {
   text-align: left;
-  @include open-sans;
-  font-weight: 400;
-  font-size: 0.875rem;
-  line-height: 1.187rem;
-  cursor: default;
+  font: 0.875rem/1.187rem $open-sans;
+  color: $black;
 }
 
 @media (min-width: 1261px) {

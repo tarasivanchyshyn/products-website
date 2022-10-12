@@ -1,0 +1,8 @@
+@import 'variables';
+
+.wrapper {
+  height: 4.437rem;
+  padding: 1rem 3.03rem;
+  @include flex-centerY;
+  justify-content: flex-start;
+}
