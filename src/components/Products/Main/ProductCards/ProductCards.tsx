@@ -1,30 +1,16 @@
-import Card from './Card/Card';
-import { productsAPI } from 'services/ProductsService';
+import { FC } from 'react';
 
-import { useAppSelector } from 'hooks/redux';
+import Card from './Card/Card';
+import { IProduct } from 'models/IProduct';
 import classes from './ProductCards.module.scss';
 
-function ProductCards() {
-  let {
-    data: products,
-    isLoading,
-    error
-  } = productsAPI.useFetchAllProductsQuery(2);
+interface ProductCardsProps {
+  products?: IProduct[];
+}
 
-  const searchValue = useAppSelector(
-    (state) => state.productsReducer.searchValue
-  );
-
-  if (searchValue.trim() && products) {
-    products = products.filter((el) =>
-      el.title.toLowerCase().includes(searchValue.toLowerCase())
-    );
-  }
-
+const ProductCards: FC<ProductCardsProps> = ({ products }) => {
   return (
     <div className={classes.cards}>
-      {isLoading && <h1>Downloading...</h1>}
-      {error && <h1>Error occured</h1>}
       <ul>
         {products &&
           products.map((product) => (
@@ -33,6 +19,6 @@ function ProductCards() {
       </ul>
     </div>
   );
-}
+};
 
 export default ProductCards;
