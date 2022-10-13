@@ -1,18 +1,22 @@
 import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
+import Search from '@components/Header/Search/Search';
 import Dropdown from '@components/UI/Dropdown';
 import logo from '@assets/logo.svg';
 import user from '@assets/user.svg';
 import cart from '@assets/cart.svg';
 import { checkoutURL, homeURL } from '@constants';
-import { searchPlaceholder } from '@constants';
 import { dropdownsHeaders } from 'mockedData';
 
 import classes from './Header.module.scss';
 
 function Header() {
+  const dropdowns = dropdownsHeaders.map(({ header, options }) => (
+    <li key={header}>
+      <Dropdown header={header} options={options} />
+    </li>
+  ));
+
   return (
     <header className={classes.header}>
       <div className={classes.info}>
@@ -47,16 +51,7 @@ function Header() {
               <img src={logo} alt="logo" />
             </Link>
           </div>
-          <div className={classes.main__search}>
-            <div className={classes.main__categories}>
-              <Dropdown header="All categories" />
-              <div className={classes.main__divider}></div>
-            </div>
-            <div className={classes.main__inputContainer}>
-              <input type="text" placeholder={searchPlaceholder} />
-              <FontAwesomeIcon icon={faMagnifyingGlass} />
-            </div>
-          </div>
+          <Search />
           <div className={classes.main__icons}>
             <img src={user} alt="User" />
             <div className={classes.main__cart}>
@@ -68,13 +63,7 @@ function Header() {
           </div>
         </div>
         <div className={classes.main__bottom}>
-          <ul className={classes.main__dropdowns}>
-            {dropdownsHeaders.map((el) => (
-              <li key={el}>
-                <Dropdown header={el} />
-              </li>
-            ))}
-          </ul>
+          <ul className={classes.main__dropdowns}>{dropdowns}</ul>
         </div>
       </div>
     </header>

@@ -1,27 +1,37 @@
-export const mockedProducts = [
+const farms = [`Bob's Farm`, 'Grocery Tarm Fields', 'Johnsonuk & Sons'];
+
+export const dropdownsHeaders = [
   {
-    id: '1',
-    title: 'Apple'
+    header: 'Fruits',
+    options: farms
   },
   {
-    id: '2',
-    title: 'Carrot'
+    header: 'Citrus',
+    options: farms
   },
   {
-    id: '3',
-    title: 'Mushroom'
+    header: 'Vegetables',
+    options: farms
+  },
+  {
+    header: 'Meet',
+    options: farms
+  },
+  {
+    header: 'Fish',
+    options: farms
   }
 ];
 
-export const dropdownsHeaders = [
-  'Electronics',
-  'Food',
-  'Clothes',
-  'Skin and care',
-  'Toys',
-  'Special nutrition',
-  'Sports and outdoors',
-  'Books'
+export const allCategories = 'All categories';
+
+export const categories = [
+  'All categories',
+  'Fruits',
+  'Citrus',
+  'Vegetables',
+  'Meet',
+  'Fish'
 ];
 
 export const tagsItems = [

@@ -1,0 +1,63 @@
+@import 'variables';
+
+.main__search {
+  height: 2.62rem;
+  width: 50%;
+  max-width: 30rem;
+  border-radius: 12px;
+  @include flex-centerY;
+  justify-content: space-between;
+  border: 1px solid $lines-grey;
+  background: $bg-grey;
+  padding: 0.5rem 1rem;
+  position: relative;
+}
+
+.main__categories {
+  @include flex-centerY;
+  cursor: pointer;
+  white-space: nowrap;
+
+  span {
+    margin-right: 0.7rem;
+    font: 700 0.95rem $poppins;
+  }
+
+  svg {
+    color: $green;
+    font-size: 0.6rem;
+    margin-right: 1.2rem;
+  }
+}
+
+.main__divider {
+  border-left: 1px solid $lines-grey;
+  height: 1.3rem;
+}
+
+.main__inputContainer {
+  margin-left: 1.2rem;
+  @include flex-centerY;
+  position: relative;
+  width: 74%;
+
+  input {
+    width: 100%;
+    border: none;
+    outline: none;
+    padding-right: 1.75rem;
+    background: inherit;
+
+    &::placeholder {
+      font-family: $open-sans;
+      color: $search-placeholder;
+    }
+  }
+
+  svg {
+    position: absolute;
+    right: 0;
+    font-size: 0.8rem;
+    transform: scaleX(-1);
+  }
+}

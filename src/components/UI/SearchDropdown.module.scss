@@ -1,7 +1,6 @@
 @import 'variables.scss';
 
 .main {
-  position: relative;
   @include flex-column;
   align-items: center;
 }
@@ -27,9 +26,9 @@
 
 .dropdown {
   position: absolute;
-  width: 100%;
   min-width: 11rem;
-  top: 1.6rem;
+  top: 2rem;
+  left: 0;
   font: 400 0.95rem $poppins;
   @include flex-column;
   border-radius: 4px;
@@ -48,6 +47,10 @@
     &:hover {
       background: $green;
       color: white;
+    }
+
+    &:first-child {
+      border-bottom: 1px solid $all-categories-border;
     }
   }
 }

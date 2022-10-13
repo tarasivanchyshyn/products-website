@@ -1,0 +1,15 @@
+@import 'variables';
+
+.message {
+  color: $fetch-msg;
+  text-align: center;
+}
+
+.spinner {
+  text-align: center;
+
+  & svg {
+    font-size: 3rem;
+    color: $spinner;
+  }
+}

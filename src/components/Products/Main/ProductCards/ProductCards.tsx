@@ -1,27 +1,23 @@
-import Card from './Card/Card';
-import { productsAPI } from 'services/ProductsService';
+import { FC } from 'react';
 
+import Card from './Card/Card';
+import { IProduct } from 'models/IProduct';
 import classes from './ProductCards.module.scss';
 
-function ProductCards() {
-  const {
-    data: products,
-    isLoading,
-    error
-  } = productsAPI.useFetchAllProductsQuery(2);
+interface ProductCardsProps {
+  products?: IProduct[];
+}
 
+const ProductCards: FC<ProductCardsProps> = ({ products }) => {
   return (
     <div className={classes.cards}>
-      {isLoading && <h1>Downloading...</h1>}
-      {error && <h1>Error occured</h1>}
       <ul>
-        {products &&
-          products.map((product) => (
-            <Card product={product} key={product.id} />
-          ))}
+        {products?.map((product) => (
+          <Card product={product} key={product.id} />
+        ))}
       </ul>
     </div>
   );
-}
+};
 
 export default ProductCards;

@@ -1,4 +1,11 @@
+@import 'variables';
+
 .main {
   display: flex;
   padding: 4rem 2.81rem 2.12rem;
+}
+
+.message {
+  text-align: center;
+  color: $fetch-msg;
 }
