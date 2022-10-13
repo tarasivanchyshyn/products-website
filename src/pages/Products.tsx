@@ -7,6 +7,7 @@ import { useAppSelector } from 'hooks/redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
+import { allCategories } from 'mockedData';
 import classes from './Products.module.scss';
 
 function Products() {
@@ -28,7 +29,7 @@ function Products() {
 
   if (searchCategory && products) {
     products =
-      searchCategory === 'All categories'
+      searchCategory === allCategories
         ? products
         : products.filter((el) =>
             el.categories.includes(searchCategory.toLowerCase())

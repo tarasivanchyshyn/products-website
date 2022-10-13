@@ -30,18 +30,19 @@ const Dropdown: FC<Dropdownprops> = ({ header, options }) => {
 
   const optionsList = (
     <ul className={dropdown}>
-      {options &&
-        options.map((option) => (
-          <li
-            className={dropdown__item}
-            onClick={() => chooseOptionHandler(option)}
-            key={option}
-          >
-            {option}
-          </li>
-        ))}
+      {options?.map((option) => (
+        <li
+          className={dropdown__item}
+          onClick={() => chooseOptionHandler(option)}
+          key={option}
+        >
+          {option}
+        </li>
+      ))}
     </ul>
   );
+
+  const icon = open ? faChevronUp : faChevronDown;
 
   return (
     <div
@@ -51,10 +52,7 @@ const Dropdown: FC<Dropdownprops> = ({ header, options }) => {
     >
       <button className={button}>
         <span className={button__header}>{header}</span>
-        <FontAwesomeIcon
-          icon={open ? faChevronUp : faChevronDown}
-          className={button__icon}
-        />
+        <FontAwesomeIcon icon={icon} className={button__icon} />
       </button>
       {open && optionsList}
     </div>

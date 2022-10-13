@@ -12,10 +12,9 @@ const ProductCards: FC<ProductCardsProps> = ({ products }) => {
   return (
     <div className={classes.cards}>
       <ul>
-        {products &&
-          products.map((product) => (
-            <Card product={product} key={product.id} />
-          ))}
+        {products?.map((product) => (
+          <Card product={product} key={product.id} />
+        ))}
       </ul>
     </div>
   );

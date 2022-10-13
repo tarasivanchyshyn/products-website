@@ -11,6 +11,12 @@ import { dropdownsHeaders } from 'mockedData';
 import classes from './Header.module.scss';
 
 function Header() {
+  const dropdowns = dropdownsHeaders.map(({ header, options }) => (
+    <li key={header}>
+      <Dropdown header={header} options={options} />
+    </li>
+  ));
+
   return (
     <header className={classes.header}>
       <div className={classes.info}>
@@ -57,13 +63,7 @@ function Header() {
           </div>
         </div>
         <div className={classes.main__bottom}>
-          <ul className={classes.main__dropdowns}>
-            {dropdownsHeaders.map((el) => (
-              <li key={el.header}>
-                <Dropdown header={el.header} options={el.options} />
-              </li>
-            ))}
-          </ul>
+          <ul className={classes.main__dropdowns}>{dropdowns}</ul>
         </div>
       </div>
     </header>

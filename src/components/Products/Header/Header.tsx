@@ -8,16 +8,17 @@ interface HeaderProps {
 }
 
 const Header: FC<HeaderProps> = ({ products }) => {
+  const amountNumber = products?.length;
+  const amaountHeaderName = products?.length === 1 ? 'Product' : 'Products';
+
   return (
     <div className={classes.header}>
       <h1>All products</h1>
       <div className={classes.header__amount}>
         <div className={classes.header__number}>
-          <span>{products?.length}</span>
+          <span>{amountNumber}</span>
         </div>
-        <span className={classes.header__name}>
-          {products && products?.length === 1 ? 'Product' : 'Products'}
-        </span>
+        <span className={classes.header__name}>{amaountHeaderName}</span>
       </div>
     </div>
   );

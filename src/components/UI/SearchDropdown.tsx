@@ -5,6 +5,7 @@ import { faChevronUp } from '@fortawesome/free-solid-svg-icons';
 
 import { useAppDispatch } from 'hooks/redux';
 import { productsActions } from 'store/reducers/ProductsSlice';
+import { allCategories } from 'mockedData';
 
 import classes from './SearchDropdown.module.scss';
 
@@ -14,7 +15,7 @@ type SearchDropdownProps = {
 
 const SearchDropdown: FC<SearchDropdownProps> = ({ options }) => {
   const [open, setOpen] = useState(false);
-  const [header, setHeader] = useState('All categories');
+  const [header, setHeader] = useState(allCategories);
   const dispatch = useAppDispatch();
 
   const toggleWindowHandler = () => setOpen(!open);
@@ -31,18 +32,19 @@ const SearchDropdown: FC<SearchDropdownProps> = ({ options }) => {
 
   const optionsList = (
     <ul className={dropdown}>
-      {options &&
-        options.map((option) => (
-          <li
-            className={dropdown__item}
-            onClick={() => chooseOptionHandler(option)}
-            key={option}
-          >
-            {option}
-          </li>
-        ))}
+      {options?.map((option) => (
+        <li
+          className={dropdown__item}
+          onClick={() => chooseOptionHandler(option)}
+          key={option}
+        >
+          {option}
+        </li>
+      ))}
     </ul>
   );
+
+  const icon = open ? faChevronUp : faChevronDown;
 
   return (
     <div
@@ -52,10 +54,7 @@ const SearchDropdown: FC<SearchDropdownProps> = ({ options }) => {
     >
       <button className={button}>
         <span className={button__header}>{header}</span>
-        <FontAwesomeIcon
-          icon={open ? faChevronUp : faChevronDown}
-          className={button__icon}
-        />
+        <FontAwesomeIcon icon={icon} className={button__icon} />
       </button>
       {open && optionsList}
     </div>

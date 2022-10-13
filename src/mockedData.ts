@@ -23,6 +23,8 @@ export const dropdownsHeaders = [
   }
 ];
 
+export const allCategories = 'All categories';
+
 export const categories = [
   'All categories',
   'Fruits',
