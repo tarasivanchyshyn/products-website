@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import { Link } from 'react-router-dom';
 
 import Search from '@components/Header/Search/Search';
@@ -6,14 +7,22 @@ import logo from '@assets/logo.svg';
 import user from '@assets/user.svg';
 import cart from '@assets/cart.svg';
 import { checkoutURL, homeURL } from '@constants';
-import { dropdownsHeaders } from 'mockedData';
+import { IProduct } from 'models/IProduct';
+import { getAllCategories, getAllFarms } from 'helpers/dataGetters';
 
 import classes from './Header.module.scss';
 
-function Header() {
-  const dropdowns = dropdownsHeaders.map(({ header, options }) => (
-    <li key={header}>
-      <Dropdown header={header} options={options} />
+interface HeaderProps {
+  products?: IProduct[];
+}
+
+const Header: FC<HeaderProps> = ({ products }) => {
+  const farms = getAllFarms(products);
+  const categories = getAllCategories(products);
+
+  const dropdowns = categories.map((el) => (
+    <li key={el}>
+      <Dropdown header={el} options={farms} />
     </li>
   ));
 
@@ -51,7 +60,7 @@ function Header() {
               <img src={logo} alt="logo" />
             </Link>
           </div>
-          <Search />
+          <Search products={products} />
           <div className={classes.main__icons}>
             <img src={user} alt="User" />
             <div className={classes.main__cart}>
@@ -68,6 +77,6 @@ function Header() {
       </div>
     </header>
   );
-}
+};
 
 export default Header;

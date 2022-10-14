@@ -5,7 +5,7 @@ import { faChevronUp } from '@fortawesome/free-solid-svg-icons';
 
 import { useAppDispatch } from 'hooks/redux';
 import { productsActions } from 'store/reducers/ProductsSlice';
-import { allCategories } from 'mockedData';
+import { allCategories } from '@constants';
 
 import classes from './SearchDropdown.module.scss';
 

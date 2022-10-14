@@ -6,6 +6,8 @@ export const notFoundURL = '*';
 
 export const searchPlaceholder = 'Search products, categories ...';
 
+export const allCategories = 'All categories';
+
 export const footerGetInTouchLinks = [
   'About Us',
   'Careers',

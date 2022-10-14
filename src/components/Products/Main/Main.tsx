@@ -15,7 +15,7 @@ const Main: FC<MainProps> = ({ products }) => {
     <h1 className={classes.message}>No products</h1>
   ) : (
     <div className={classes.main}>
-      <Filters />
+      <Filters products={products} />
       <ProductCards products={products} />
     </div>
   );

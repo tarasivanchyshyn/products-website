@@ -8,14 +8,23 @@ import NotFound from '@pages/NotFound';
 import Layout from '@components/Layout/Layout';
 import { productsURL, productURL, checkoutURL } from '@constants';
 import { notFoundURL } from '@constants';
+import { productsAPI } from 'services/ProductsService';
 
 function App() {
+  const {
+    data: products,
+    isLoading,
+    error
+  } = productsAPI.useFetchAllProductsQuery(2);
+
+  const data = { products, isLoading, error };
+
   return (
     <>
       <Routes>
-        <Route path="/" element={<Layout />}>
+        <Route path="/" element={<Layout products={products} />}>
           <Route index element={<Home />} />
-          <Route path={productsURL} element={<Products />} />
+          <Route path={productsURL} element={<Products data={data} />} />
           <Route path={productURL} element={<Product />} />
           <Route path={checkoutURL} element={<Checkout />} />
           <Route path={notFoundURL} element={<NotFound />} />

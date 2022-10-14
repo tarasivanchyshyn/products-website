@@ -9,7 +9,7 @@ interface HeaderProps {
 
 const Header: FC<HeaderProps> = ({ products }) => {
   const amountNumber = products?.length;
-  const amaountHeaderName = products?.length === 1 ? 'Product' : 'Products';
+  const amountHeaderName = products?.length === 1 ? 'Product' : 'Products';
 
   return (
     <div className={classes.header}>
@@ -18,7 +18,7 @@ const Header: FC<HeaderProps> = ({ products }) => {
         <div className={classes.header__number}>
           <span>{amountNumber}</span>
         </div>
-        <span className={classes.header__name}>{amaountHeaderName}</span>
+        <span className={classes.header__name}>{amountHeaderName}</span>
       </div>
     </div>
   );
