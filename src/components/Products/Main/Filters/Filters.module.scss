@@ -38,6 +38,18 @@
       font: 600 0.75rem/1.125rem $poppins;
     }
 
+    &:hover {
+      cursor: pointer;
+      background-image: linear-gradient(to right, $green, white);
+      transform: scale(1.05);
+
+      .categories__itemName {
+        color: white;
+        font-weight: 600;
+        padding-left: 1rem;
+      }
+    }
+
     &:last-child {
       margin: 0;
     }
@@ -88,5 +100,14 @@
 
   li {
     margin-right: 0.28rem;
+  }
+}
+
+.active {
+  background-image: linear-gradient(to right, $green, white);
+
+  .categories__itemName {
+    color: white;
+    padding-left: 1rem;
   }
 }

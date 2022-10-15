@@ -6,13 +6,15 @@ interface ProductsState {
   searchValue: string;
   searchCategory: string;
   choosedFarm: string;
+  choosedBrands: string[];
 }
 
 const initialState: ProductsState = {
   products: [],
   searchValue: '',
   searchCategory: '',
-  choosedFarm: ''
+  choosedFarm: '',
+  choosedBrands: []
 };
 
 const productsSlice = createSlice({
@@ -27,6 +29,15 @@ const productsSlice = createSlice({
     },
     chooseFarm: (state, action: PayloadAction<string>) => {
       state.choosedFarm = action.payload;
+    },
+    chooseBrands: (state, action: PayloadAction<string>) => {
+      if (state.choosedBrands.includes(action.payload)) {
+        state.choosedBrands = state.choosedBrands.filter(
+          (el) => el !== action.payload
+        );
+      } else {
+        state.choosedBrands.push(action.payload);
+      }
     }
   }
 });

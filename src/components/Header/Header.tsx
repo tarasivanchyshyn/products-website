@@ -8,7 +8,7 @@ import user from '@assets/user.svg';
 import cart from '@assets/cart.svg';
 import { checkoutURL, homeURL } from '@constants';
 import { IProduct } from 'models/IProduct';
-import { getAllCategories, getAllFarms } from 'helpers/dataGetters';
+import { getAllFarms, getCategoriesData } from 'helpers/dataGetters';
 
 import classes from './Header.module.scss';
 
@@ -18,11 +18,11 @@ interface HeaderProps {
 
 const Header: FC<HeaderProps> = ({ products }) => {
   const farms = getAllFarms(products);
-  const categories = getAllCategories(products);
+  const categories = getCategoriesData(products);
 
   const dropdowns = categories.map((el) => (
-    <li key={el}>
-      <Dropdown header={el} options={farms} />
+    <li key={el.name}>
+      <Dropdown header={el.name} options={farms} />
     </li>
   ));
 

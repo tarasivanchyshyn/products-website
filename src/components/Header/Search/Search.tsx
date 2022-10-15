@@ -6,7 +6,7 @@ import SearchDropdown from '@components/UI/SearchDropdown';
 import { productsActions } from 'store/reducers/ProductsSlice';
 import { useAppDispatch } from 'hooks/redux';
 import { allCategories, searchPlaceholder } from '@constants';
-import { getAllCategories } from 'helpers/dataGetters';
+import { getCategoriesData } from 'helpers/dataGetters';
 import { IProduct } from 'models/IProduct';
 
 import classes from './Search.module.scss';
@@ -19,7 +19,8 @@ const Search: FC<SearchProps> = ({ products }) => {
   const [searchValue, setSearchValue] = useState('');
   const dispatch = useAppDispatch();
 
-  const categories = getAllCategories(products);
+  const categoriesObjects = getCategoriesData(products);
+  const categories = categoriesObjects.map((el) => el.name);
   categories.unshift(allCategories);
 
   const inputChangeHandler = (e: FormEvent<HTMLInputElement>) =>

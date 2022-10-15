@@ -35,6 +35,14 @@ const Products: FC<ProductsProps> = ({ data }) => {
   const choosedFarm = useAppSelector(
     (state) => state.productsReducer.choosedFarm
   );
+  const choosedBrands = useAppSelector(
+    (state) => state.productsReducer.choosedBrands
+  );
+
+  console.log('category:', searchCategory);
+  console.log('farm:', choosedFarm);
+  console.log('brands:', choosedBrands);
+  console.log('///////////////////');
 
   if (searchCategory && products) {
     products =
@@ -42,11 +50,12 @@ const Products: FC<ProductsProps> = ({ data }) => {
         ? products
         : products.filter((el) => el.categories.includes(searchCategory));
   }
-
   if (choosedFarm && products) {
     products = products.filter((el) => el.farm === choosedFarm);
   }
-
+  if (choosedBrands.length && products) {
+    products = products.filter((el) => choosedBrands.includes(el.brand));
+  }
   if (searchValue.trim() && products) {
     products = products.filter((el) =>
       el.title.toLowerCase().includes(searchValue.toLowerCase())
