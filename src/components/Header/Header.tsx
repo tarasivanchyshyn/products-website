@@ -20,9 +20,9 @@ const Header: FC<HeaderProps> = ({ products }) => {
   const farms = getAllFarms(products);
   const categories = getCategoriesData(products);
 
-  const dropdowns = categories.map((el) => (
-    <li key={el.name}>
-      <Dropdown header={el.name} options={farms} />
+  const dropdowns = categories.map(({ name }) => (
+    <li key={name}>
+      <Dropdown header={name} options={farms} />
     </li>
   ));
 

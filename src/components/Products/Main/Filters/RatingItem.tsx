@@ -21,7 +21,7 @@ const RatingItem: FC<RatingItemProps> = ({ rating }) => {
   const chooseRatingHandler = (rating: number) => {
     dispatch(productsActions.chooseRatings(rating));
   };
-  const checked = choosedRatings.includes(rating) ? true : false;
+  const checked = choosedRatings.includes(rating);
 
   return (
     <li className={classes.rating__item}>
