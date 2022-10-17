@@ -7,16 +7,16 @@ import classes from './Home.module.scss';
 
 function Home() {
   return (
-    <div style={{ textAlign: 'center', marginTop: '2rem' }}>
+    <div className={classes.container}>
       <h1>Welcome to Freshnesecom!</h1>
-      <Link to={productsURL}>
-        <div className={classes.wrapper}>
+      <div className={classes.wrapper}>
+        <Link to={productsURL}>
           <button className={classes.button}>
             <span>Go to products</span>
             <Arrow />
           </button>
-        </div>
-      </Link>
+        </Link>
+      </div>
     </div>
   );
 }
