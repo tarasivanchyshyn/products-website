@@ -79,7 +79,7 @@ const Filters: FC<FilterProps> = () => {
               <input
                 className={classes.brands__itemCheckbox}
                 type="checkbox"
-                checked={choosedBrands.includes(brand) ? true : false}
+                checked={choosedBrands.includes(brand)}
                 onChange={() => chooseBrandHandler(brand)}
               />
               <span className={classes.brands__itemName}>{brand}</span>
