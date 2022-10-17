@@ -5,16 +5,18 @@ interface ProductsState {
   products: IProduct[];
   searchValue: string;
   searchCategory: string;
-  choosedFarm: string;
   choosedBrands: string[];
+  choosedRatings: number[];
+  choosedPrice: number[];
 }
 
 const initialState: ProductsState = {
   products: [],
   searchValue: '',
   searchCategory: '',
-  choosedFarm: '',
-  choosedBrands: []
+  choosedBrands: [],
+  choosedRatings: [],
+  choosedPrice: []
 };
 
 const productsSlice = createSlice({
@@ -27,10 +29,11 @@ const productsSlice = createSlice({
     searchCategory: (state, action: PayloadAction<string>) => {
       state.searchCategory = action.payload;
     },
-    chooseFarm: (state, action: PayloadAction<string>) => {
-      state.choosedFarm = action.payload;
-    },
     chooseBrands: (state, action: PayloadAction<string>) => {
+      if (!action.payload) {
+        state.choosedBrands = [];
+        return;
+      }
       if (state.choosedBrands.includes(action.payload)) {
         state.choosedBrands = state.choosedBrands.filter(
           (el) => el !== action.payload
@@ -38,6 +41,32 @@ const productsSlice = createSlice({
       } else {
         state.choosedBrands.push(action.payload);
       }
+    },
+    chooseRatings: (state, action: PayloadAction<number>) => {
+      if (!action.payload) {
+        state.choosedRatings = [];
+        return;
+      }
+      if (state.choosedRatings.includes(action.payload)) {
+        state.choosedRatings = state.choosedRatings.filter(
+          (el) => el !== action.payload
+        );
+      } else {
+        state.choosedRatings.push(action.payload);
+      }
+    },
+    choosePrice: (state, action: PayloadAction<number[]>) => {
+      if (!action.payload) {
+        state.choosedPrice = [];
+        return;
+      }
+      state.choosedPrice = action.payload;
+    },
+    reset: (state) => {
+      state.searchCategory = '';
+      state.choosedBrands = [];
+      state.choosedRatings = [];
+      state.choosedPrice = [];
     }
   }
 });

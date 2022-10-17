@@ -24,7 +24,6 @@ const SearchDropdown: FC<SearchDropdownProps> = ({ options }) => {
     toggleWindowHandler();
     setHeader(option);
     dispatch(productsActions.searchCategory(option));
-    dispatch(productsActions.chooseFarm(''));
   };
 
   const { dropdown, button, button__header, button__icon, dropdown__item } =

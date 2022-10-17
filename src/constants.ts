@@ -4,8 +4,8 @@ export const productURL = '/products/:productId';
 export const checkoutURL = '/checkout';
 export const notFoundURL = '*';
 
+export const ratings = [5, 4, 3, 2, 1];
 export const searchPlaceholder = 'Search products, categories ...';
-
 export const allCategories = 'All categories';
 
 export const footerGetInTouchLinks = [

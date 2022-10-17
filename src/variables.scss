@@ -23,6 +23,14 @@ $btn-main-hover-bg: #46760a;
 $btn-wish-hover-bg: #e9e9e9;
 $btn-wish-hover-border: #e9e9e9;
 
+$filters-slider-bar: #ebebeb;
+$filters-slider-circle-border: #d1d1d1;
+$filters-price-input-bg: #f9f9f9;
+$filters-price-input-border: #d1d1d1;
+$filters-price-input-text: #a9a9a9;
+$filters-price-dash: #a9a9a9;
+$filters-reset: #a9a9a9;
+
 $header-ingo-divider: #eeeeee;
 $search-placeholder: #a9a9a9;
 
@@ -47,6 +55,11 @@ $open-sans: 'Open Sans', sans-serif;
 @mixin flex-centerY {
   display: flex;
   align-items: center;
+}
+
+@mixin flex-centerX {
+  display: flex;
+  justify-content: center;
 }
 
 @mixin flex-center {

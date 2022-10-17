@@ -2,24 +2,11 @@
 
 .filters {
   width: 27.5%;
-  border: 1px solid lightblue;
   @include flex-column;
-}
-
-.categories__header,
-.brands__header,
-.rating__header {
-  font: 600 1.125rem/1.687rem $poppins;
-  margin-bottom: 1rem;
-  color: $black;
 }
 
 .categories {
-  @include flex-column;
-  margin-bottom: 3rem;
-
   &__list {
-    @include flex-column;
     padding-right: 2.04rem;
   }
 
@@ -56,15 +43,7 @@
   }
 }
 
-.brands,
-.rating {
-  @include flex-column;
-  margin-bottom: 3rem;
-
-  &__list {
-    @include flex-column;
-  }
-
+.brands {
   &__item {
     @include flex-centerY;
     margin-bottom: 1rem;
@@ -89,17 +68,119 @@
   }
 }
 
+.rating,
+.brands,
+.categories {
+  @include flex-column;
+  margin-bottom: 3rem;
+
+  &__list {
+    @include flex-column;
+  }
+
+  &__header {
+    font: 600 1.125rem/1.687rem $poppins;
+    margin-bottom: 1rem;
+    color: $black;
+  }
+}
+
 .categories__itemName,
 .brands__itemName {
   font: 0.875rem/1.187rem $open-sans;
   color: $black;
 }
 
-.rating__itemStars {
-  display: flex;
+.price {
+  margin-bottom: 2.375rem;
+  padding-right: 3.187rem;
+  @include flex-column;
 
-  li {
-    margin-right: 0.28rem;
+  &__header {
+    font: 600 1.125rem/1.687rem $poppins;
+    margin-bottom: 1.2rem;
+    color: $black;
+  }
+
+  &__inputs {
+    @include flex-centerX;
+  }
+
+  &__input {
+    @include flex-column;
+    max-width: 6.81rem;
+
+    label {
+      font: 600 0.75rem/1.125rem $poppins;
+      color: $black;
+    }
+
+    input {
+      width: 100%;
+      background: $filters-price-input-bg;
+      border: 1px solid $filters-price-input-border;
+      border-radius: 12px;
+      font: 0.875rem/1.187rem $open-sans;
+      color: $filters-price-input-text;
+      padding: 0.75rem 1rem 0.75rem 1.312rem;
+      cursor: default;
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
+  &__dash {
+    align-self: center;
+    margin: 0 0.875rem;
+    padding-top: 1.8rem;
+    height: 100%;
+    color: $filters-price-dash;
+  }
+
+  .slider {
+    margin: 0 0 1.2rem 0;
+
+    div:first-child {
+      background: $filters-slider-bar;
+      height: 6px;
+      border-radius: 12px;
+    }
+    div:nth-child(2) {
+      background: $green;
+      height: 6px;
+    }
+    div:nth-child(4),
+    div:nth-child(5) {
+      width: 20px;
+      height: 20px;
+      margin-top: -8px;
+      border: 1px solid $filters-slider-circle-border;
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
+    }
+
+    &:hover div:nth-child(4),
+    &:hover div:nth-child(5) {
+      border: 1px solid $filters-slider-circle-border;
+    }
+  }
+}
+
+.actions {
+  @include flex-centerX;
+
+  &__reset {
+    padding: 0.375rem 0.75rem;
+    background: white;
+    border: none;
+    cursor: pointer;
+    font: 700 0.937rem/1.375rem $poppins;
+    color: $filters-reset;
+
+    &:hover {
+      color: $green;
+    }
   }
 }
 

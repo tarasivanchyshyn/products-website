@@ -20,6 +20,5 @@ export interface IProduct {
   reviews: string[];
   questions: string[];
   image: string;
-  brand: string;
   id: string;
 }
