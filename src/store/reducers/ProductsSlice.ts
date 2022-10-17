@@ -29,7 +29,9 @@ const productsSlice = createSlice({
       state.searchValue = action.payload;
     },
     searchCategory: (state, action: PayloadAction<string>) => {
-      state.searchCategory = action.payload;
+      state.searchCategory === action.payload
+        ? (state.searchCategory = allCategories)
+        : (state.searchCategory = action.payload);
     },
     chooseBrands: (state, action: PayloadAction<string>) => {
       if (!action.payload) {
