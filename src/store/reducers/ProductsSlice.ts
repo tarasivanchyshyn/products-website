@@ -1,6 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IProduct } from 'models/IProduct';
 
+import { allCategories } from '@constants';
+
 interface ProductsState {
   products: IProduct[];
   searchValue: string;
@@ -13,7 +15,7 @@ interface ProductsState {
 const initialState: ProductsState = {
   products: [],
   searchValue: '',
-  searchCategory: '',
+  searchCategory: allCategories,
   choosedBrands: [],
   choosedRatings: [],
   choosedPrice: []
@@ -63,7 +65,7 @@ const productsSlice = createSlice({
       state.choosedPrice = action.payload;
     },
     reset: (state) => {
-      state.searchCategory = '';
+      state.searchCategory = allCategories;
       state.choosedBrands = [];
       state.choosedRatings = [];
       state.choosedPrice = [];
