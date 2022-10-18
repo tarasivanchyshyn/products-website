@@ -20,19 +20,20 @@ const Filters: FC<FilterProps> = () => {
   const { data: products } = productsAPI.useFetchAllProductsQuery(2);
   const dispatch = useAppDispatch();
 
-  const [min, setMin] = useState(0);
-  const [max, setMax] = useState(0);
-  const onChange = (value: number[]) => {
-    setMin(value[0]);
-    setMax(value[1]);
-  };
-
   const { searchCategory, choosedBrands } = useAppSelector(
     (state) => state.productsReducer
   );
 
   const prices = products?.map((product: IProduct) => product.price);
   const maxPrice = Math.max(...prices!);
+  const minPrice = Math.min(...prices!);
+
+  const [min, setMin] = useState(minPrice);
+  const [max, setMax] = useState(maxPrice);
+  const onChange = (value: number[]) => {
+    setMin(value[0]);
+    setMax(value[1]);
+  };
 
   const categories = getCategoriesData(products);
   const brands = getAllFarms(products);
@@ -48,8 +49,8 @@ const Filters: FC<FilterProps> = () => {
 
   const resetHandler = () => {
     dispatch(productsActions.reset());
-    setMin(0);
-    setMax(0);
+    setMin(minPrice);
+    setMax(maxPrice);
   };
 
   return (
@@ -99,10 +100,10 @@ const Filters: FC<FilterProps> = () => {
         <h3 className={classes.price__header}>Price</h3>
         <Slider
           range
-          min={0}
+          min={minPrice}
           max={maxPrice}
           step={0.01}
-          defaultValue={[1, 2]}
+          value={[min, max]}
           onChange={onChange}
           onAfterChange={choosePriceHandler}
           className={classes.slider}
@@ -110,12 +111,12 @@ const Filters: FC<FilterProps> = () => {
         <div className={classes.price__inputs}>
           <div className={classes.price__input}>
             <label htmlFor="min">Min</label>
-            <input type="text" id="min" placeholder="0" value={min} readOnly />
+            <input type="text" id="min" value={min} readOnly />
           </div>
           <div className={classes.price__dash}>-</div>
           <div className={classes.price__input}>
             <label htmlFor="max">Max</label>
-            <input type="text" id="max" placeholder="0" value={max} readOnly />
+            <input type="text" id="max" value={max} readOnly />
           </div>
         </div>
       </section>
