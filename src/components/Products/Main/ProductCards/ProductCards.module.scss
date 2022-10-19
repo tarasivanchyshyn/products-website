@@ -9,3 +9,9 @@
   color: $fetch-msg;
   margin-top: 10rem;
 }
+
+@media (min-width: 1500px) {
+  .cards {
+    width: 76%;
+  }
+}

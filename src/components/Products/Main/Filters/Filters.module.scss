@@ -6,10 +6,6 @@
 }
 
 .categories {
-  &__list {
-    padding-right: 2.04rem;
-  }
-
   &__item {
     display: flex;
     justify-content: space-between;
@@ -73,6 +69,7 @@
 .categories {
   @include flex-column;
   margin-bottom: 3rem;
+  padding-right: 2.04rem;
 
   &__list {
     @include flex-column;
@@ -190,5 +187,11 @@
   .categories__itemName {
     color: white;
     padding-left: 1rem;
+  }
+}
+
+@media (min-width: 1500px) {
+  .filters {
+    width: 24%;
   }
 }

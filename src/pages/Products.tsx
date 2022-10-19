@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import { FetchBaseQueryError } from '@reduxjs/toolkit/dist/query';
+import { SerializedError } from '@reduxjs/toolkit';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
-import { SerializedError } from '@reduxjs/toolkit';
 
 import BreadCrumbs from '@components/Products/BreadCrumbs/BreadCrumbs';
 import Header from '@components/Products/Header/Header';
@@ -11,6 +11,7 @@ import Main from '@components/Products/Main/Main';
 import { useAppSelector } from 'hooks/redux';
 import { allCategories } from '@constants';
 import { IProduct } from 'models/IProduct';
+import productsSorter from 'helpers/productsSorter';
 
 import classes from './Products.module.scss';
 
@@ -31,7 +32,8 @@ const Products: FC<ProductsProps> = ({ data }) => {
     choosedBrands,
     choosedRatings,
     choosedPrice,
-    searchValue
+    searchValue,
+    sortOption
   } = useAppSelector((state) => state.productsReducer);
 
   if (searchCategory && products) {
@@ -57,6 +59,9 @@ const Products: FC<ProductsProps> = ({ data }) => {
     products = products.filter((el) =>
       el.title.toLowerCase().includes(searchValue.toLowerCase())
     );
+  }
+  if (sortOption && products) {
+    products = productsSorter(products, sortOption);
   }
 
   const loadingSpinner = (

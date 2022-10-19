@@ -6,3 +6,51 @@
   @include flex-centerY;
   justify-content: flex-start;
 }
+
+.sort {
+  height: 100%;
+  @include flex-centerY;
+  gap: 1.5rem;
+  padding: 0.562rem 1rem;
+  border: 1px solid $sort-border;
+  border-radius: 12px;
+  background: $sort-bg;
+  position: relative;
+
+  &__header {
+    font: 0.875rem/1.187rem $open-sans;
+    color: $black;
+  }
+
+  &__divider {
+    border-left: 1px solid $lines-grey;
+    height: 1.3rem;
+  }
+
+  &__dropdown {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__select {
+    @include flex-centerY;
+    gap: 0.25rem;
+
+    &Title {
+      font: 600 0.75rem/1.125rem $poppins;
+      color: $black;
+    }
+
+    &Icon {
+      font-size: 0.5rem;
+    }
+
+    &OrderIconUp {
+      padding-top: 6px;
+    }
+    &OrderIconDown {
+      padding-bottom: 6px;
+    }
+  }
+}

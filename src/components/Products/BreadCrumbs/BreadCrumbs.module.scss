@@ -11,6 +11,10 @@
     margin-right: 0.5rem;
     font: 0.75rem/1rem $open-sans;
     text-decoration: none;
+
+    &:hover {
+      color: $breadcrumb-gray;
+    }
   }
 
   a {
