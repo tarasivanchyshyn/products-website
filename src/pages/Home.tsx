@@ -1,13 +1,22 @@
 import { Link } from 'react-router-dom';
+
+import { ReactComponent as Arrow } from '@assets/arrow-right.svg';
 import { productsURL } from '@constants';
+
+import classes from './Home.module.scss';
 
 function Home() {
   return (
-    <div style={{ textAlign: 'center', marginTop: '2rem' }}>
+    <div className={classes.container}>
       <h1>Welcome to Freshnesecom!</h1>
-      <Link to={productsURL}>
-        <button>Go to products</button>
-      </Link>
+      <div className={classes.wrapper}>
+        <Link to={productsURL}>
+          <button className={classes.button}>
+            <span>Go to products</span>
+            <Arrow />
+          </button>
+        </Link>
+      </div>
     </div>
   );
 }

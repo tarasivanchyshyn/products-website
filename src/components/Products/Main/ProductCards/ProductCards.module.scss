@@ -1,3 +1,11 @@
+@import 'variables';
+
 .cards {
   width: 72.5%;
+}
+
+.message {
+  text-align: center;
+  color: $fetch-msg;
+  margin-top: 10rem;
 }

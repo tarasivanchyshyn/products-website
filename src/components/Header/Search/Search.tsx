@@ -1,18 +1,27 @@
-import { FormEvent, useEffect, useState } from 'react';
+import { FC, FormEvent, useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
 import SearchDropdown from '@components/UI/SearchDropdown';
 import { productsActions } from 'store/reducers/ProductsSlice';
 import { useAppDispatch } from 'hooks/redux';
-import { searchPlaceholder } from '@constants';
-import { categories } from 'mockedData';
+import { allCategories, searchPlaceholder } from '@constants';
+import { getCategoriesData } from 'helpers/dataGetters';
+import { IProduct } from 'models/IProduct';
 
 import classes from './Search.module.scss';
 
-function Search() {
+interface SearchProps {
+  products?: IProduct[];
+}
+
+const Search: FC<SearchProps> = ({ products }) => {
   const [searchValue, setSearchValue] = useState('');
   const dispatch = useAppDispatch();
+
+  const categoriesObjects = getCategoriesData(products);
+  const categories = categoriesObjects.map((el) => el.name);
+  categories.unshift(allCategories);
 
   const inputChangeHandler = (e: FormEvent<HTMLInputElement>) =>
     setSearchValue(e.currentTarget.value);
@@ -44,6 +53,6 @@ function Search() {
       </div>
     </div>
   );
-}
+};
 
 export default Search;

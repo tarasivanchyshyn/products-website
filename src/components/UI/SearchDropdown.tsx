@@ -3,9 +3,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { faChevronUp } from '@fortawesome/free-solid-svg-icons';
 
-import { useAppDispatch } from 'hooks/redux';
+import { useAppDispatch, useAppSelector } from 'hooks/redux';
 import { productsActions } from 'store/reducers/ProductsSlice';
-import { allCategories } from 'mockedData';
 
 import classes from './SearchDropdown.module.scss';
 
@@ -15,16 +14,16 @@ type SearchDropdownProps = {
 
 const SearchDropdown: FC<SearchDropdownProps> = ({ options }) => {
   const [open, setOpen] = useState(false);
-  const [header, setHeader] = useState(allCategories);
+  const choosedCategory = useAppSelector(
+    (state) => state.productsReducer.searchCategory
+  );
   const dispatch = useAppDispatch();
 
   const toggleWindowHandler = () => setOpen(!open);
 
   const chooseOptionHandler = (option: string) => {
     toggleWindowHandler();
-    setHeader(option);
     dispatch(productsActions.searchCategory(option));
-    dispatch(productsActions.chooseFarm(''));
   };
 
   const { dropdown, button, button__header, button__icon, dropdown__item } =
@@ -53,7 +52,7 @@ const SearchDropdown: FC<SearchDropdownProps> = ({ options }) => {
       onMouseLeave={toggleWindowHandler}
     >
       <button className={button}>
-        <span className={button__header}>{header}</span>
+        <span className={button__header}>{choosedCategory}</span>
         <FontAwesomeIcon icon={icon} className={button__icon} />
       </button>
       {open && optionsList}

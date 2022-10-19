@@ -1,45 +1,58 @@
+import { FC } from 'react';
+import { FetchBaseQueryError } from '@reduxjs/toolkit/dist/query';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { SerializedError } from '@reduxjs/toolkit';
+
 import BreadCrumbs from '@components/Products/BreadCrumbs/BreadCrumbs';
 import Header from '@components/Products/Header/Header';
 import Sorting from '@components/Products/Sorting/Sorting';
 import Main from '@components/Products/Main/Main';
-import { productsAPI } from 'services/ProductsService';
 import { useAppSelector } from 'hooks/redux';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { allCategories } from '@constants';
+import { IProduct } from 'models/IProduct';
 
-import { allCategories } from 'mockedData';
 import classes from './Products.module.scss';
 
-function Products() {
-  let {
-    data: products,
-    isLoading,
-    error
-  } = productsAPI.useFetchAllProductsQuery(2);
+interface ProductsProps {
+  data: {
+    products?: IProduct[];
+    isLoading: boolean;
+    error?: FetchBaseQueryError | SerializedError;
+  };
+}
 
-  const searchValue = useAppSelector(
-    (state) => state.productsReducer.searchValue
-  );
-  const searchCategory = useAppSelector(
-    (state) => state.productsReducer.searchCategory
-  );
-  const choosedFarm = useAppSelector(
-    (state) => state.productsReducer.choosedFarm
-  );
+const Products: FC<ProductsProps> = ({ data }) => {
+  const { isLoading, error } = data;
+  let { products } = data;
+
+  const {
+    searchCategory,
+    choosedBrands,
+    choosedRatings,
+    choosedPrice,
+    searchValue
+  } = useAppSelector((state) => state.productsReducer);
 
   if (searchCategory && products) {
     products =
       searchCategory === allCategories
         ? products
-        : products.filter((el) =>
-            el.categories.includes(searchCategory.toLowerCase())
-          );
+        : products.filter((el) => el.categories.includes(searchCategory));
   }
-
-  if (choosedFarm && products) {
-    products = products.filter((el) => el.farm === choosedFarm);
+  if (choosedBrands.length && products) {
+    products = products.filter((el) => choosedBrands.includes(el.farm));
   }
-
+  if (choosedRatings.length && products) {
+    products = products.filter((el) =>
+      choosedRatings.includes(Math.round(el.rating))
+    );
+  }
+  if (choosedPrice.length && products) {
+    products = products.filter(
+      (el) => el.price >= choosedPrice[0] && el.price <= choosedPrice[1]
+    );
+  }
   if (searchValue.trim() && products) {
     products = products.filter((el) =>
       el.title.toLowerCase().includes(searchValue.toLowerCase())
@@ -63,6 +76,6 @@ function Products() {
       {!isLoading && !error && <Main products={products} />}
     </>
   );
-}
+};
 
 export default Products;

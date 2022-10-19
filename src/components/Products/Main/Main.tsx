@@ -11,16 +11,12 @@ interface MainProps {
 }
 
 const Main: FC<MainProps> = ({ products }) => {
-  const content = !products?.length ? (
-    <h1 className={classes.message}>No products</h1>
-  ) : (
+  return (
     <div className={classes.main}>
-      <Filters />
+      <Filters products={products} />
       <ProductCards products={products} />
     </div>
   );
-
-  return content;
 };
 
 export default Main;

@@ -9,7 +9,11 @@ interface ProductCardsProps {
 }
 
 const ProductCards: FC<ProductCardsProps> = ({ products }) => {
-  return (
+  const content = !products?.length ? (
+    <div className={classes.cards}>
+      <h1 className={classes.message}>No products</h1>
+    </div>
+  ) : (
     <div className={classes.cards}>
       <ul>
         {products?.map((product) => (
@@ -18,6 +22,8 @@ const ProductCards: FC<ProductCardsProps> = ({ products }) => {
       </ul>
     </div>
   );
+
+  return content;
 };
 
 export default ProductCards;
