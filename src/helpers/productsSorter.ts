@@ -4,25 +4,26 @@ import { compareTitleAscend, compareTitleDescend } from './compareFunctions';
 import { comparePriceAscend, comparePriceDescend } from './compareFunctions';
 import { compareRatingAscend, compareRatingDescend } from './compareFunctions';
 
+type CompareFunc = (a: IProduct, b: IProduct) => number;
+
 const productsSorter = (products: IProduct[], sortOption: string[]) => {
   const [sortBy, order] = sortOption;
   let newProducts = [...products];
 
+  const sorter = (ascendFunc: CompareFunc, descendFunc: CompareFunc) =>
+    order === ascendOrder
+      ? (newProducts = newProducts.sort(ascendFunc))
+      : (newProducts = newProducts.sort(descendFunc));
+
   switch (sortBy) {
     case byTitle:
-      order === ascendOrder
-        ? (newProducts = newProducts.sort(compareTitleAscend))
-        : (newProducts = newProducts.sort(compareTitleDescend));
+      sorter(compareTitleAscend, compareTitleDescend);
       break;
     case byPrice:
-      order === ascendOrder
-        ? (newProducts = newProducts.sort(comparePriceAscend))
-        : (newProducts = newProducts.sort(comparePriceDescend));
+      sorter(comparePriceAscend, comparePriceDescend);
       break;
     case byRating:
-      order === ascendOrder
-        ? (newProducts = newProducts.sort(compareRatingAscend))
-        : (newProducts = newProducts.sort(compareRatingDescend));
+      sorter(compareRatingAscend, compareRatingDescend);
       break;
   }
 

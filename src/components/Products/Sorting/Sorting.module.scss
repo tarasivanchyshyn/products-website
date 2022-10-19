@@ -31,61 +31,6 @@
     &:hover {
       cursor: pointer;
     }
-
-    &List {
-      position: absolute;
-      @include flex-column;
-      align-items: center;
-      top: 2.4rem;
-      left: 0;
-      width: 100%;
-      background: $sort-list-bg;
-      border-radius: 12px;
-      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
-      overflow: hidden;
-      z-index: 40;
-    }
-
-    &Item {
-      height: 1.5rem;
-      width: 100%;
-      text-align: center;
-      font: 500 0.75rem/1.5rem $poppins;
-      color: $black;
-      @include flex-centerX;
-      gap: 10%;
-
-      &:hover {
-        background: $green;
-        color: white;
-      }
-
-      &Title {
-        width: 40%;
-      }
-
-      &IconUp {
-        svg {
-          padding-top: 8px;
-        }
-      }
-
-      &IconDown {
-        svg {
-          padding-bottom: 3px;
-        }
-      }
-
-      &:last-child {
-        border-top: 1px solid $sort-reset-border;
-        color: $sort-reset-color;
-
-        &:hover {
-          color: $black;
-          background: $sort-reset-bg;
-        }
-      }
-    }
   }
 
   &__select {

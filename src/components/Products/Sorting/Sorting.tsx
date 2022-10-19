@@ -6,8 +6,8 @@ import { faSortUp, faSortDown } from '@fortawesome/free-solid-svg-icons';
 
 import { useAppDispatch } from 'hooks/redux';
 import { productsActions } from 'store/reducers/ProductsSlice';
-import { ascendOrder, descendOrder, defaultSortTitle } from '@constants';
-import { byTitle, byPrice, byRating } from '@constants';
+import { ascendOrder, defaultSortTitle } from '@constants';
+import DropdownList from './DropdownList/DropdownList';
 
 import classes from './Sorting.module.scss';
 
@@ -63,65 +63,10 @@ function Sorting() {
             <FontAwesomeIcon icon={icon} className={classes.sort__selectIcon} />
           </div>
           {open && (
-            <ul className={classes.sort__dropdownList}>
-              <li
-                className={classes.sort__dropdownItem}
-                onClick={() => chooseSortingHandler(byTitle, ascendOrder)}
-              >
-                <div className={classes.sort__dropdownItemTitle}>Title</div>
-                <div className={classes.sort__dropdownItemIconUp}>
-                  <FontAwesomeIcon icon={faSortUp} />
-                </div>
-              </li>
-              <li
-                className={classes.sort__dropdownItem}
-                onClick={() => chooseSortingHandler(byTitle, descendOrder)}
-              >
-                <div className={classes.sort__dropdownItemTitle}>Title</div>
-                <div className={classes.sort__dropdownItemIconDown}>
-                  <FontAwesomeIcon icon={faSortDown} />
-                </div>
-              </li>
-              <li
-                className={classes.sort__dropdownItem}
-                onClick={() => chooseSortingHandler(byPrice, ascendOrder)}
-              >
-                <div className={classes.sort__dropdownItemTitle}>Price</div>
-                <div className={classes.sort__dropdownItemIconUp}>
-                  <FontAwesomeIcon icon={faSortUp} />
-                </div>
-              </li>
-              <li
-                className={classes.sort__dropdownItem}
-                onClick={() => chooseSortingHandler(byPrice, descendOrder)}
-              >
-                <div className={classes.sort__dropdownItemTitle}>Price</div>
-                <div className={classes.sort__dropdownItemIconDown}>
-                  <FontAwesomeIcon icon={faSortDown} />
-                </div>
-              </li>
-              <li
-                className={classes.sort__dropdownItem}
-                onClick={() => chooseSortingHandler(byRating, ascendOrder)}
-              >
-                <div className={classes.sort__dropdownItemTitle}>Rating</div>
-                <div className={classes.sort__dropdownItemIconUp}>
-                  <FontAwesomeIcon icon={faSortUp} />
-                </div>
-              </li>
-              <li
-                className={classes.sort__dropdownItem}
-                onClick={() => chooseSortingHandler(byRating, descendOrder)}
-              >
-                <div className={classes.sort__dropdownItemTitle}>Rating</div>
-                <div className={classes.sort__dropdownItemIconDown}>
-                  <FontAwesomeIcon icon={faSortDown} />
-                </div>
-              </li>
-              <li className={classes.sort__dropdownItem} onClick={resetHandler}>
-                <div>Reset</div>
-              </li>
-            </ul>
+            <DropdownList
+              chooseSortingHandler={chooseSortingHandler}
+              resetHandler={resetHandler}
+            />
           )}
         </div>
       </div>
