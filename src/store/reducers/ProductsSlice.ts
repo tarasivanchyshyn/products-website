@@ -10,6 +10,7 @@ interface ProductsState {
   choosedBrands: string[];
   choosedRatings: number[];
   choosedPrice: number[];
+  sortOption: string[];
 }
 
 const initialState: ProductsState = {
@@ -18,7 +19,8 @@ const initialState: ProductsState = {
   searchCategory: allCategories,
   choosedBrands: [],
   choosedRatings: [],
-  choosedPrice: []
+  choosedPrice: [],
+  sortOption: []
 };
 
 const productsSlice = createSlice({
@@ -66,11 +68,14 @@ const productsSlice = createSlice({
       }
       state.choosedPrice = action.payload;
     },
-    reset: (state) => {
+    resetFilters: (state) => {
       state.searchCategory = allCategories;
       state.choosedBrands = [];
       state.choosedRatings = [];
       state.choosedPrice = [];
+    },
+    sortProducts: (state, action: PayloadAction<string[]>) => {
+      state.sortOption = action.payload;
     }
   }
 });

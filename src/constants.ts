@@ -8,6 +8,13 @@ export const ratings = [5, 4, 3, 2, 1];
 export const searchPlaceholder = 'Search products, categories ...';
 export const allCategories = 'All categories';
 
+export const ascendOrder = 'ascend';
+export const descendOrder = 'descend';
+export const byTitle = 'Title';
+export const byPrice = 'Price';
+export const byRating = 'Rating';
+export const defaultSortTitle = 'Select';
+
 export const footerGetInTouchLinks = [
   'About Us',
   'Careers',

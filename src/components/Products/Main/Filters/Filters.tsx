@@ -48,7 +48,7 @@ const Filters: FC<FilterProps> = () => {
     dispatch(productsActions.choosePrice(value));
 
   const resetHandler = () => {
-    dispatch(productsActions.reset());
+    dispatch(productsActions.resetFilters());
     setMin(minPrice);
     setMax(maxPrice);
   };
