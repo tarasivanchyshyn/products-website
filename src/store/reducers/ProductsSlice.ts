@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IProduct } from 'models/IProduct';
 
-import { allCategories } from '@constants';
+import { allCategories, productsOnPage } from '@constants';
 
 interface ProductsState {
   products: IProduct[];
@@ -11,6 +11,8 @@ interface ProductsState {
   choosedRatings: number[];
   choosedPrice: number[];
   sortOption: string[];
+  currentPage: number;
+  productsPerPage: number;
 }
 
 const initialState: ProductsState = {
@@ -20,7 +22,9 @@ const initialState: ProductsState = {
   choosedBrands: [],
   choosedRatings: [],
   choosedPrice: [],
-  sortOption: []
+  sortOption: [],
+  currentPage: 0,
+  productsPerPage: productsOnPage
 };
 
 const productsSlice = createSlice({
@@ -76,6 +80,12 @@ const productsSlice = createSlice({
     },
     sortProducts: (state, action: PayloadAction<string[]>) => {
       state.sortOption = action.payload;
+    },
+    setCurrentPage: (state, action: PayloadAction<number>) => {
+      state.currentPage = action.payload;
+    },
+    setProductsPerPage: (state, action: PayloadAction<number>) => {
+      state.productsPerPage = action.payload;
     }
   }
 });

@@ -1,31 +1,32 @@
-import { useState } from 'react';
 import ReactPaginate from 'react-paginate';
 
 import Button from '@components/UI/Button';
 import { ReactComponent as ArrowDownSvg } from '@assets/arrow-down.svg';
+import { useAppDispatch, useAppSelector } from 'hooks/redux';
+import { productsActions } from 'store/reducers/ProductsSlice';
 
 import classes from './Footer.module.scss';
 
 interface FooterProps {
   pageCount: number;
-  onPageChange: (selected: number) => void;
   addMoreProductsOnPage: () => void;
   productsLeft: number;
 }
 
 function Footer(props: FooterProps) {
-  const { pageCount, onPageChange, addMoreProductsOnPage, productsLeft } =
-    props;
-  const [currentPage, setCurrentPage] = useState(0);
+  const { pageCount, addMoreProductsOnPage, productsLeft } = props;
+  const dispatch = useAppDispatch();
+  const currentPage = useAppSelector(
+    (state) => state.productsReducer.currentPage
+  );
 
   const pageChangeHandler = ({ selected }: { selected: number }) => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    setCurrentPage(selected);
-    onPageChange(selected);
+    dispatch(productsActions.setCurrentPage(selected));
   };
 
   const buttonHandler = () => {
-    setCurrentPage(0);
+    dispatch(productsActions.setCurrentPage(0));
     addMoreProductsOnPage();
   };
 

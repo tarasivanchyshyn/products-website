@@ -8,7 +8,7 @@ import { useAppDispatch, useAppSelector } from 'hooks/redux';
 import { IProduct } from 'models/IProduct';
 import { productsAPI } from 'services/ProductsService';
 import { productsActions } from 'store/reducers/ProductsSlice';
-import { ratings } from '@constants';
+import { productsOnPage, ratings } from '@constants';
 
 import classes from './Filters.module.scss';
 
@@ -38,19 +38,30 @@ const Filters: FC<FilterProps> = () => {
   const categories = getCategoriesData(products);
   const brands = getAllFarms(products);
 
-  const chooseCategoryHandler = (category: string) =>
+  const chooseCategoryHandler = (category: string) => {
     dispatch(productsActions.searchCategory(category));
+    dispatch(productsActions.setCurrentPage(0));
+    dispatch(productsActions.setProductsPerPage(productsOnPage));
+  };
 
-  const chooseBrandHandler = (brand: string) =>
+  const chooseBrandHandler = (brand: string) => {
     dispatch(productsActions.chooseBrands(brand));
+    dispatch(productsActions.setCurrentPage(0));
+    dispatch(productsActions.setProductsPerPage(productsOnPage));
+  };
 
-  const choosePriceHandler = (value: number[]) =>
+  const choosePriceHandler = (value: number[]) => {
     dispatch(productsActions.choosePrice(value));
+    dispatch(productsActions.setCurrentPage(0));
+    dispatch(productsActions.setProductsPerPage(productsOnPage));
+  };
 
   const resetHandler = () => {
     dispatch(productsActions.resetFilters());
     setMin(minPrice);
     setMax(maxPrice);
+    dispatch(productsActions.setCurrentPage(0));
+    dispatch(productsActions.setProductsPerPage(productsOnPage));
   };
 
   return (

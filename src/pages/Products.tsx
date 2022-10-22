@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import { FetchBaseQueryError } from '@reduxjs/toolkit/dist/query';
 import { SerializedError } from '@reduxjs/toolkit';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -9,7 +9,8 @@ import Header from '@components/Products/Header/Header';
 import Sorting from '@components/Products/Sorting/Sorting';
 import Main from '@components/Products/Main/Main';
 import Footer from '@components/Products/Footer/Footer';
-import { useAppSelector } from 'hooks/redux';
+import { useAppDispatch, useAppSelector } from 'hooks/redux';
+import { productsActions } from 'store/reducers/ProductsSlice';
 import { allCategories, productsOnPage } from '@constants';
 import { IProduct } from 'models/IProduct';
 import productsSorter from 'helpers/productsSorter';
@@ -28,6 +29,14 @@ interface ProductsProps {
 const Products: FC<ProductsProps> = ({ data }) => {
   const { isLoading, error, productsCount } = data;
   let { products } = data;
+
+  const dispatch = useAppDispatch();
+  const pageNumber = useAppSelector(
+    (state) => state.productsReducer.currentPage
+  );
+  const productsPerPage = useAppSelector(
+    (state) => state.productsReducer.productsPerPage
+  );
 
   const {
     searchCategory,
@@ -73,17 +82,14 @@ const Products: FC<ProductsProps> = ({ data }) => {
   );
   const errMessage = <h2 className={classes.message}>Error occured</h2>;
 
-  const [pageNumber, setPageNumber] = useState(0);
-  const [productsPerPage, setProductsPerPage] = useState(productsOnPage);
   const pagesVisited = pageNumber * productsPerPage;
   const pageCount = products && Math.ceil(products.length / productsPerPage);
-
   products = products?.slice(pagesVisited, pagesVisited + productsPerPage);
 
-  const onPageChange = (selected: number) => setPageNumber(selected);
   const addMoreProductsOnPage = () => {
-    setPageNumber(0);
-    setProductsPerPage(productsPerPage + productsOnPage);
+    dispatch(
+      productsActions.setProductsPerPage(productsPerPage + productsOnPage)
+    );
   };
   const productsLeft =
     productsCount && products && productsCount - products.length;
@@ -100,7 +106,6 @@ const Products: FC<ProductsProps> = ({ data }) => {
           <Main products={products} />
           <Footer
             pageCount={pageCount!}
-            onPageChange={onPageChange}
             addMoreProductsOnPage={addMoreProductsOnPage}
             productsLeft={productsLeft!}
           />
