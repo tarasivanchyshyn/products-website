@@ -2,13 +2,13 @@ import { FC, useState } from 'react';
 import { Slider } from 'antd';
 import 'antd/dist/antd.min.css';
 
+import RatingItem from './RatingItem/RatingItem';
 import { getAllFarms, getCategoriesData } from 'helpers/dataGetters';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
 import { IProduct } from 'models/IProduct';
 import { productsAPI } from 'services/ProductsService';
 import { productsActions } from 'store/reducers/ProductsSlice';
 import { ratings } from '@constants';
-import RatingItem from './RatingItem';
 
 import classes from './Filters.module.scss';
 
@@ -17,7 +17,7 @@ interface FilterProps {
 }
 
 const Filters: FC<FilterProps> = () => {
-  const { data: products } = productsAPI.useFetchAllProductsQuery(2);
+  const { data: products } = productsAPI.useFetchAllProductsQuery();
   const dispatch = useAppDispatch();
 
   const { searchCategory, choosedBrands } = useAppSelector(
@@ -80,10 +80,13 @@ const Filters: FC<FilterProps> = () => {
               <input
                 className={classes.brands__itemCheckbox}
                 type="checkbox"
+                id={brand}
                 checked={choosedBrands.includes(brand)}
                 onChange={() => chooseBrandHandler(brand)}
               />
-              <span className={classes.brands__itemName}>{brand}</span>
+              <label htmlFor={brand} className={classes.brands__itemName}>
+                {brand}
+              </label>
             </li>
           ))}
         </ul>

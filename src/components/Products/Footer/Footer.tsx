@@ -1,5 +1,65 @@
-function Footer() {
-  return <div>Footer</div>;
+import { useState } from 'react';
+import ReactPaginate from 'react-paginate';
+
+import Button from '@components/UI/Button';
+import { ReactComponent as ArrowDownSvg } from '@assets/arrow-down.svg';
+
+import classes from './Footer.module.scss';
+
+interface FooterProps {
+  pageCount: number;
+  onPageChange: (selected: number) => void;
+  addMoreProductsOnPage: () => void;
+  productsLeft: number;
+}
+
+function Footer(props: FooterProps) {
+  const { pageCount, onPageChange, addMoreProductsOnPage, productsLeft } =
+    props;
+  const [currentPage, setCurrentPage] = useState(0);
+
+  const pageChangeHandler = ({ selected }: { selected: number }) => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setCurrentPage(selected);
+    onPageChange(selected);
+  };
+
+  const buttonHandler = () => {
+    setCurrentPage(0);
+    addMoreProductsOnPage();
+  };
+
+  const showMoreProductsBtn = currentPage + 1 !== pageCount &&
+    pageCount !== 1 &&
+    productsLeft !== 0 && (
+      <Button icon={<ArrowDownSvg />} onClick={buttonHandler}>
+        Show more products
+      </Button>
+    );
+
+  return (
+    <div className={classes.footer}>
+      <div className={classes.footer__pages}>
+        <span className={classes.footer__pagesHeader}>Pages:</span>
+        <ReactPaginate
+          previousLabel={false}
+          nextLabel={false}
+          pageCount={pageCount!}
+          onPageChange={pageChangeHandler}
+          containerClassName={classes.footer__pagesPages}
+          activeClassName={classes.footer__pagesActive}
+          forcePage={currentPage}
+        />
+      </div>
+      {showMoreProductsBtn}
+      <div className={classes.footer__stock}>
+        <div className={classes.footer__stockNumber}>
+          <span>{productsLeft}</span>
+        </div>
+        <span className={classes.footer__stockName}>Products</span>
+      </div>
+    </div>
+  );
 }
 
 export default Footer;

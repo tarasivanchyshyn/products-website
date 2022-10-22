@@ -7,12 +7,9 @@ export const productsAPI = createApi({
     baseUrl: 'https://633eccda83f50e9ba3b89507.mockapi.io'
   }),
   endpoints: (build) => ({
-    fetchAllProducts: build.query<IProduct[], number>({
-      query: (limit: number = 5) => ({
-        url: '/products',
-        params: {
-          _limit: limit
-        }
+    fetchAllProducts: build.query<IProduct[], void>({
+      query: () => ({
+        url: '/products'
       })
     })
   })
