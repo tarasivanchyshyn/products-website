@@ -13,6 +13,7 @@ interface ProductsState {
   sortOption: string[];
   currentPage: number;
   productsPerPage: number;
+  activePages: number[];
 }
 
 const initialState: ProductsState = {
@@ -24,7 +25,8 @@ const initialState: ProductsState = {
   choosedPrice: [],
   sortOption: [],
   currentPage: 0,
-  productsPerPage: productsOnPage
+  productsPerPage: productsOnPage,
+  activePages: [0]
 };
 
 const productsSlice = createSlice({
@@ -38,6 +40,9 @@ const productsSlice = createSlice({
       state.searchCategory === action.payload
         ? (state.searchCategory = allCategories)
         : (state.searchCategory = action.payload);
+    },
+    setCategory: (state, action: PayloadAction<string>) => {
+      state.searchCategory = action.payload;
     },
     chooseBrands: (state, action: PayloadAction<string>) => {
       if (!action.payload) {
@@ -86,6 +91,9 @@ const productsSlice = createSlice({
     },
     setProductsPerPage: (state, action: PayloadAction<number>) => {
       state.productsPerPage = action.payload;
+    },
+    setActivePages: (state, action: PayloadAction<number[]>) => {
+      state.activePages = action.payload;
     }
   }
 });

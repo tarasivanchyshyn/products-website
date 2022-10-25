@@ -9,8 +9,7 @@ import Header from '@components/Products/Header/Header';
 import Sorting from '@components/Products/Sorting/Sorting';
 import Main from '@components/Products/Main/Main';
 import Footer from '@components/Products/Footer/Footer';
-import { useAppDispatch, useAppSelector } from 'hooks/redux';
-import { productsActions } from 'store/reducers/ProductsSlice';
+import { useAppSelector } from 'hooks/redux';
 import { allCategories, productsOnPage } from '@constants';
 import { IProduct } from 'models/IProduct';
 import productsSorter from 'helpers/productsSorter';
@@ -30,21 +29,15 @@ const Products: FC<ProductsProps> = ({ data }) => {
   const { isLoading, error, productsCount } = data;
   let { products } = data;
 
-  const dispatch = useAppDispatch();
-  const pageNumber = useAppSelector(
-    (state) => state.productsReducer.currentPage
-  );
-  const productsPerPage = useAppSelector(
-    (state) => state.productsReducer.productsPerPage
-  );
-
   const {
     searchCategory,
     choosedBrands,
     choosedRatings,
     choosedPrice,
     searchValue,
-    sortOption
+    sortOption,
+    currentPage,
+    productsPerPage
   } = useAppSelector((state) => state.productsReducer);
 
   if (searchCategory && products) {
@@ -75,22 +68,22 @@ const Products: FC<ProductsProps> = ({ data }) => {
     products = productsSorter(products, sortOption);
   }
 
+  const errMessage = <h2 className={classes.message}>Error occured</h2>;
   const loadingSpinner = (
     <div className={classes.spinner}>
       <FontAwesomeIcon icon={faSpinner} spinPulse />
     </div>
   );
-  const errMessage = <h2 className={classes.message}>Error occured</h2>;
 
-  const pagesVisited = pageNumber * productsPerPage;
-  const pageCount = products && Math.ceil(products.length / productsPerPage);
+  const pages = [];
+  if (products) {
+    for (let i = 1; i <= Math.ceil(products.length / productsOnPage); i++) {
+      pages.push(i);
+    }
+  }
+  const pagesVisited = currentPage * productsOnPage;
   products = products?.slice(pagesVisited, pagesVisited + productsPerPage);
 
-  const addMoreProductsOnPage = () => {
-    dispatch(
-      productsActions.setProductsPerPage(productsPerPage + productsOnPage)
-    );
-  };
   const productsLeft =
     productsCount && products && productsCount - products.length;
 
@@ -104,11 +97,7 @@ const Products: FC<ProductsProps> = ({ data }) => {
         <>
           <Sorting />
           <Main products={products} />
-          <Footer
-            pageCount={pageCount!}
-            addMoreProductsOnPage={addMoreProductsOnPage}
-            productsLeft={productsLeft!}
-          />
+          <Footer pages={pages} productsLeft={productsLeft!} />
         </>
       )}
     </>

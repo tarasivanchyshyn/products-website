@@ -8,13 +8,14 @@
 
   &__pages {
     @include flex-centerY;
+    gap: 0.5rem;
 
     &Header {
       font: 0.75rem/1rem $open-sans;
       color: $products-footer-pages-header;
     }
 
-    &Pages {
+    &Numbers {
       display: flex;
       gap: 0.5rem;
 
@@ -29,9 +30,7 @@
     }
 
     &Active {
-      a {
-        color: $green;
-      }
+      color: $green;
     }
   }
 
