@@ -42,18 +42,21 @@ const Filters: FC<FilterProps> = () => {
     dispatch(productsActions.searchCategory(category));
     dispatch(productsActions.setCurrentPage(0));
     dispatch(productsActions.setProductsPerPage(productsOnPage));
+    dispatch(productsActions.setActivePages([0]));
   };
 
   const chooseBrandHandler = (brand: string) => {
     dispatch(productsActions.chooseBrands(brand));
     dispatch(productsActions.setCurrentPage(0));
     dispatch(productsActions.setProductsPerPage(productsOnPage));
+    dispatch(productsActions.setActivePages([0]));
   };
 
   const choosePriceHandler = (value: number[]) => {
     dispatch(productsActions.choosePrice(value));
     dispatch(productsActions.setCurrentPage(0));
     dispatch(productsActions.setProductsPerPage(productsOnPage));
+    dispatch(productsActions.setActivePages([0]));
   };
 
   const resetHandler = () => {

@@ -51,6 +51,8 @@ function Footer(props: FooterProps) {
       </Button>
     );
 
+  console.log(activePages);
+
   const renderPageNumbers = pages.map((number) => (
     <li
       key={number}
