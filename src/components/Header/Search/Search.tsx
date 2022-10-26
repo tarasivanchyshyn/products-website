@@ -1,8 +1,8 @@
-import { FC, FormEvent, useEffect, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
-import SearchDropdown from '@components/UI/SearchDropdown';
+import SearchDropdown from '@components/UI/SearchDropdown/SearchDropdown';
 import { productsActions } from 'store/reducers/ProductsSlice';
 import { useAppDispatch } from 'hooks/redux';
 import { allCategories, searchPlaceholder } from '@constants';
@@ -15,7 +15,7 @@ interface SearchProps {
   products?: IProduct[];
 }
 
-const Search: FC<SearchProps> = ({ products }) => {
+const Search = ({ products }: SearchProps) => {
   const [searchValue, setSearchValue] = useState('');
   const dispatch = useAppDispatch();
 
@@ -40,8 +40,8 @@ const Search: FC<SearchProps> = ({ products }) => {
     <div className={classes.main__search}>
       <div className={classes.main__categories}>
         <SearchDropdown options={categories} />
-        <div className={classes.main__divider}></div>
       </div>
+      <hr className={classes.main__divider}></hr>
       <div className={classes.main__inputContainer}>
         <input
           type="text"

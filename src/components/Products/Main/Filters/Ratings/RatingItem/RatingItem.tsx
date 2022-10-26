@@ -1,5 +1,3 @@
-import { FC } from 'react';
-
 import filterStarsConfigurer from 'helpers/filterStarsConfigurer';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
 import { productsActions } from 'store/reducers/ProductsSlice';
@@ -10,7 +8,7 @@ interface RatingItemProps {
   rating: number;
 }
 
-const RatingItem: FC<RatingItemProps> = ({ rating }) => {
+const RatingItem = ({ rating }: RatingItemProps) => {
   const dispatch = useAppDispatch();
   const choosedRatings = useAppSelector(
     (state) => state.productsReducer.choosedRatings

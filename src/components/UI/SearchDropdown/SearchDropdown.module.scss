@@ -5,7 +5,7 @@
   align-items: center;
 }
 
-.button {
+.select {
   border: none;
   background: $bg-grey;
   font: 500 0.95rem $poppins;
@@ -34,7 +34,7 @@
   border-radius: 4px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
   animation: slide-down 300ms ease-out forwards;
-  background: white;
+  background: $white;
   z-index: 20;
 
   &__item {
@@ -46,7 +46,7 @@
 
     &:hover {
       background: $green;
-      color: white;
+      color: $white;
     }
 
     &:first-child {

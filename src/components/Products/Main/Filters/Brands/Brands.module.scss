@@ -1,0 +1,55 @@
+@import 'variables';
+
+.brands {
+  @include flex-column;
+  margin-bottom: 3rem;
+  padding-right: 2.04rem;
+
+  &__list {
+    @include flex-column;
+  }
+
+  &__header {
+    font: 600 1.125rem/1.687rem $poppins;
+    margin-bottom: 1rem;
+    color: $black;
+  }
+
+  &__item {
+    @include flex-centerY;
+    margin-bottom: 1rem;
+
+    &Name {
+      font: 0.875rem/1.187rem $open-sans;
+      color: $black;
+    }
+
+    &Checkbox {
+      height: 1.25rem;
+      width: 1.25rem;
+      margin: 0.125rem 0.625rem 0.125rem 0.125rem;
+
+      &:checked {
+        accent-color: $green;
+      }
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    &:hover {
+      background-image: linear-gradient(to right, $green, $white);
+      border-radius: 4px;
+
+      label {
+        color: $white;
+        font-weight: 600;
+        cursor: pointer;
+      }
+    }
+
+    &:last-child {
+      margin: 0;
+    }
+  }
+}

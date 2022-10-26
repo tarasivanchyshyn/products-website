@@ -1,14 +1,15 @@
-import { FC } from 'react';
 import { Link } from 'react-router-dom';
 
+import Info from '@components/Header/Info/Info';
 import Search from '@components/Header/Search/Search';
-import Dropdown from '@components/UI/Dropdown';
+import Dropdown from '@components/UI/Dropdown/Dropdown';
 import logo from '@assets/logo.svg';
 import user from '@assets/user.svg';
 import cart from '@assets/cart.svg';
 import { checkoutURL, homeURL } from '@constants';
 import { IProduct } from 'models/IProduct';
-import { getAllFarms, getCategoriesData } from 'helpers/dataGetters';
+import { getAllBrands, getCategoriesData } from 'helpers/dataGetters';
+import { useAppSelector } from 'hooks/redux';
 
 import classes from './Header.module.scss';
 
@@ -16,42 +17,22 @@ interface HeaderProps {
   products?: IProduct[];
 }
 
-const Header: FC<HeaderProps> = ({ products }) => {
-  const farms = getAllFarms(products);
+const Header = ({ products }: HeaderProps) => {
+  const brands = getAllBrands(products);
   const categories = getCategoriesData(products);
+  const productsInCart = useAppSelector(
+    (state) => state.productsReducer.cartItemsCount
+  );
 
   const dropdowns = categories.map(({ name }) => (
     <li key={name}>
-      <Dropdown header={name} options={farms} />
+      <Dropdown header={name} options={brands} />
     </li>
   ));
 
   return (
     <header className={classes.header}>
-      <div className={classes.info}>
-        <div className={classes.info__left}>
-          <Link to={'#'} className={classes.info__link}>
-            Chat with us
-          </Link>
-          <a className={classes.info__info} href="tel:+420336775664">
-            +420 336 775 664
-          </a>
-          <a className={classes.info__info} href="mailto:info@freshnesecom.com">
-            info@freshnesecom.com
-          </a>
-        </div>
-        <div className={classes.info__right}>
-          <Link to={'#'} className={classes.info__link}>
-            Blog
-          </Link>
-          <Link to={'#'} className={classes.info__link}>
-            About Us
-          </Link>
-          <Link to={'#'} className={classes.info__link}>
-            Careers
-          </Link>
-        </div>
-      </div>
+      <Info />
       <hr className={classes.line} />
       <div className={classes.main}>
         <div className={classes.main__top}>
@@ -66,7 +47,7 @@ const Header: FC<HeaderProps> = ({ products }) => {
             <div className={classes.main__cart}>
               <Link to={checkoutURL}>
                 <img src={cart} alt="Cart" />
-                <span>4</span>
+                {productsInCart > 0 && <span>{productsInCart}</span>}
               </Link>
             </div>
           </div>

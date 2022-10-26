@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import { Link } from 'react-router-dom';
 
 import { ReactComponent as ArrowRightSvg } from '@assets/arrow-right.svg';
@@ -5,7 +6,7 @@ import { productsURL } from '@constants';
 
 import classes from './Home.module.scss';
 
-function Home() {
+const Home: FC = () => {
   return (
     <div className={classes.container}>
       <h1>Welcome to Freshnesecom!</h1>
@@ -19,6 +20,6 @@ function Home() {
       </div>
     </div>
   );
-}
+};
 
 export default Home;

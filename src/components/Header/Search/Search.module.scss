@@ -6,7 +6,7 @@
   max-width: 30rem;
   border-radius: 12px;
   @include flex-centerY;
-  justify-content: space-between;
+  gap: 1.2rem;
   border: 1px solid $lines-grey;
   background: $bg-grey;
   padding: 0.5rem 1rem;
@@ -26,17 +26,16 @@
   svg {
     color: $green;
     font-size: 0.6rem;
-    margin-right: 1.2rem;
   }
 }
 
 .main__divider {
+  border: none;
   border-left: 1px solid $lines-grey;
   height: 1.3rem;
 }
 
 .main__inputContainer {
-  margin-left: 1.2rem;
   @include flex-centerY;
   position: relative;
   width: 74%;

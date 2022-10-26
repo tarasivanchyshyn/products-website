@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { FC, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
@@ -11,7 +11,7 @@ import DropdownList from './DropdownList/DropdownList';
 
 import classes from './Sorting.module.scss';
 
-function Sorting() {
+const Sorting: FC = () => {
   const [open, setOpen] = useState(false);
   const [title, setTitle] = useState(defaultSortTitle);
   const [selectedSortIcon, setSelectedSortIcon] =
@@ -72,6 +72,6 @@ function Sorting() {
       </div>
     </div>
   );
-}
+};
 
 export default Sorting;

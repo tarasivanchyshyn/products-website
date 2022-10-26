@@ -1,0 +1,63 @@
+@import 'variables';
+
+.categories {
+  @include flex-column;
+  margin-bottom: 3rem;
+  padding-right: 2.04rem;
+
+  &__header {
+    font: 600 1.125rem/1.687rem $poppins;
+    margin-bottom: 1rem;
+    color: $black;
+  }
+
+  &__list {
+    @include flex-column;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+
+    &Name {
+      font: 0.875rem/1.187rem $open-sans;
+      color: $black;
+    }
+
+    &Number {
+      @include flex-center;
+      background: $products-counter-bg;
+      border-radius: 12px;
+      padding: 0 0.5rem;
+      height: 1.125rem;
+      color: $green;
+      font: 600 0.75rem/1.125rem $poppins;
+    }
+
+    &:hover {
+      cursor: pointer;
+      background-image: linear-gradient(to right, $green, $white);
+      transform: scale(1.05);
+
+      .categories__itemName {
+        color: $white;
+        font-weight: 600;
+        padding-left: 1rem;
+      }
+    }
+
+    &:last-child {
+      margin: 0;
+    }
+  }
+}
+
+.active {
+  background-image: linear-gradient(to right, $green, $white);
+
+  .categories__itemName {
+    color: $white;
+    padding-left: 1rem;
+  }
+}

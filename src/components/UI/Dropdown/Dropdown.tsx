@@ -1,32 +1,32 @@
-import { FC, useState } from 'react';
+import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { faChevronUp } from '@fortawesome/free-solid-svg-icons';
 
-import { useAppDispatch, useAppSelector } from 'hooks/redux';
+import { useAppDispatch } from 'hooks/redux';
 import { productsActions } from 'store/reducers/ProductsSlice';
 
-import classes from './SearchDropdown.module.scss';
+import classes from './Dropdown.module.scss';
 
-type SearchDropdownProps = {
+type Dropdownprops = {
+  header: string;
   options: string[];
 };
 
-const SearchDropdown: FC<SearchDropdownProps> = ({ options }) => {
+const Dropdown = ({ header, options }: Dropdownprops) => {
   const [open, setOpen] = useState(false);
-  const choosedCategory = useAppSelector(
-    (state) => state.productsReducer.searchCategory
-  );
   const dispatch = useAppDispatch();
 
   const toggleWindowHandler = () => setOpen(!open);
 
   const chooseOptionHandler = (option: string) => {
     toggleWindowHandler();
-    dispatch(productsActions.searchCategory(option));
+    dispatch(productsActions.setCategory(header));
+    dispatch(productsActions.chooseBrands(''));
+    dispatch(productsActions.chooseBrands(option));
   };
 
-  const { dropdown, button, button__header, button__icon, dropdown__item } =
+  const { dropdown, select, select__header, select__icon, dropdown__item } =
     classes;
 
   const optionsList = (
@@ -51,13 +51,13 @@ const SearchDropdown: FC<SearchDropdownProps> = ({ options }) => {
       onMouseEnter={toggleWindowHandler}
       onMouseLeave={toggleWindowHandler}
     >
-      <button className={button}>
-        <span className={button__header}>{choosedCategory}</span>
-        <FontAwesomeIcon icon={icon} className={button__icon} />
-      </button>
+      <div className={select}>
+        <span className={select__header}>{header}</span>
+        <FontAwesomeIcon icon={icon} className={select__icon} />
+      </div>
       {open && optionsList}
     </div>
   );
 };
 
-export default SearchDropdown;
+export default Dropdown;

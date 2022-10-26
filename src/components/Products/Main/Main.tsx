@@ -1,5 +1,3 @@
-import { FC } from 'react';
-
 import ProductCards from './ProductCards/ProductCards';
 import Filters from './Filters/Filters';
 import { IProduct } from 'models/IProduct';
@@ -10,10 +8,10 @@ interface MainProps {
   products?: IProduct[];
 }
 
-const Main: FC<MainProps> = ({ products }) => {
+const Main = ({ products }: MainProps) => {
   return (
     <div className={classes.main}>
-      <Filters products={products} />
+      <Filters />
       <ProductCards products={products} />
     </div>
   );

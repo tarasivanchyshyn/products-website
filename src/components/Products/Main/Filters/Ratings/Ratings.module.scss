@@ -1,0 +1,17 @@
+@import 'variables.scss';
+
+.rating {
+  @include flex-column;
+  margin-bottom: 3rem;
+  padding-right: 2.04rem;
+
+  &__list {
+    @include flex-column;
+  }
+
+  &__header {
+    font: 600 1.125rem/1.687rem $poppins;
+    margin-bottom: 1rem;
+    color: $black;
+  }
+}
