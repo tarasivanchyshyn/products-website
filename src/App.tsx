@@ -15,9 +15,11 @@ function App() {
     data: products,
     isLoading,
     error
-  } = productsAPI.useFetchAllProductsQuery(2);
+  } = productsAPI.useFetchAllProductsQuery();
 
-  const data = { products, isLoading, error };
+  const productsCount = products?.length;
+
+  const data = { products, isLoading, error, productsCount };
 
   return (
     <>

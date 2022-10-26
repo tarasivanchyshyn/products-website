@@ -2,13 +2,13 @@ import { FC, useState } from 'react';
 import { Slider } from 'antd';
 import 'antd/dist/antd.min.css';
 
+import RatingItem from './RatingItem/RatingItem';
 import { getAllFarms, getCategoriesData } from 'helpers/dataGetters';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
 import { IProduct } from 'models/IProduct';
 import { productsAPI } from 'services/ProductsService';
 import { productsActions } from 'store/reducers/ProductsSlice';
-import { ratings } from '@constants';
-import RatingItem from './RatingItem';
+import { productsOnPage, ratings } from '@constants';
 
 import classes from './Filters.module.scss';
 
@@ -17,7 +17,7 @@ interface FilterProps {
 }
 
 const Filters: FC<FilterProps> = () => {
-  const { data: products } = productsAPI.useFetchAllProductsQuery(2);
+  const { data: products } = productsAPI.useFetchAllProductsQuery();
   const dispatch = useAppDispatch();
 
   const { searchCategory, choosedBrands } = useAppSelector(
@@ -38,19 +38,33 @@ const Filters: FC<FilterProps> = () => {
   const categories = getCategoriesData(products);
   const brands = getAllFarms(products);
 
-  const chooseCategoryHandler = (category: string) =>
+  const setDefaultValues = () => {
+    dispatch(productsActions.setCurrentPage(0));
+    dispatch(productsActions.setProductsPerPage(productsOnPage));
+    dispatch(productsActions.setActivePages([0]));
+  };
+
+  const chooseCategoryHandler = (category: string) => {
     dispatch(productsActions.searchCategory(category));
+    setDefaultValues();
+  };
 
-  const chooseBrandHandler = (brand: string) =>
+  const chooseBrandHandler = (brand: string) => {
     dispatch(productsActions.chooseBrands(brand));
+    setDefaultValues();
+  };
 
-  const choosePriceHandler = (value: number[]) =>
+  const choosePriceHandler = (value: number[]) => {
     dispatch(productsActions.choosePrice(value));
+    setDefaultValues();
+  };
 
   const resetHandler = () => {
     dispatch(productsActions.resetFilters());
     setMin(minPrice);
     setMax(maxPrice);
+    dispatch(productsActions.setCurrentPage(0));
+    dispatch(productsActions.setProductsPerPage(productsOnPage));
   };
 
   return (
@@ -80,10 +94,13 @@ const Filters: FC<FilterProps> = () => {
               <input
                 className={classes.brands__itemCheckbox}
                 type="checkbox"
+                id={brand}
                 checked={choosedBrands.includes(brand)}
                 onChange={() => chooseBrandHandler(brand)}
               />
-              <span className={classes.brands__itemName}>{brand}</span>
+              <label htmlFor={brand} className={classes.brands__itemName}>
+                {brand}
+              </label>
             </li>
           ))}
         </ul>

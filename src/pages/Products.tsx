@@ -8,8 +8,9 @@ import BreadCrumbs from '@components/Products/BreadCrumbs/BreadCrumbs';
 import Header from '@components/Products/Header/Header';
 import Sorting from '@components/Products/Sorting/Sorting';
 import Main from '@components/Products/Main/Main';
+import Footer from '@components/Products/Footer/Footer';
 import { useAppSelector } from 'hooks/redux';
-import { allCategories } from '@constants';
+import { allCategories, productsOnPage } from '@constants';
 import { IProduct } from 'models/IProduct';
 import productsSorter from 'helpers/productsSorter';
 
@@ -20,11 +21,12 @@ interface ProductsProps {
     products?: IProduct[];
     isLoading: boolean;
     error?: FetchBaseQueryError | SerializedError;
+    productsCount?: number;
   };
 }
 
 const Products: FC<ProductsProps> = ({ data }) => {
-  const { isLoading, error } = data;
+  const { isLoading, error, productsCount } = data;
   let { products } = data;
 
   const {
@@ -33,7 +35,9 @@ const Products: FC<ProductsProps> = ({ data }) => {
     choosedRatings,
     choosedPrice,
     searchValue,
-    sortOption
+    sortOption,
+    currentPage,
+    productsPerPage
   } = useAppSelector((state) => state.productsReducer);
 
   if (searchCategory && products) {
@@ -64,21 +68,38 @@ const Products: FC<ProductsProps> = ({ data }) => {
     products = productsSorter(products, sortOption);
   }
 
+  const errMessage = <h2 className={classes.message}>Error occured</h2>;
   const loadingSpinner = (
     <div className={classes.spinner}>
       <FontAwesomeIcon icon={faSpinner} spinPulse />
     </div>
   );
-  const errMessage = <h2 className={classes.message}>Error occured</h2>;
+
+  const pages = [];
+  if (products) {
+    for (let i = 1; i <= Math.ceil(products.length / productsOnPage); i++) {
+      pages.push(i);
+    }
+  }
+  const pagesVisited = currentPage * productsOnPage;
+  products = products?.slice(pagesVisited, pagesVisited + productsPerPage);
+
+  const productsLeft =
+    productsCount && products && productsCount - products.length;
 
   return (
     <>
       <BreadCrumbs />
-      <Header products={products} />
-      <Sorting />
+      <Header productsCount={productsCount} />
       {isLoading && loadingSpinner}
       {error && errMessage}
-      {!isLoading && !error && <Main products={products} />}
+      {!isLoading && !error && (
+        <>
+          <Sorting />
+          <Main products={products} />
+          <Footer pages={pages} productsLeft={productsLeft!} />
+        </>
+      )}
     </>
   );
 };

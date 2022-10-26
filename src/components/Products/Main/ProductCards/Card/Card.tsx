@@ -1,7 +1,8 @@
 import { FC } from 'react';
 
-import arrowRight from '@assets/arrow-right.svg';
-import heart from '@assets/heart.svg';
+import Button from '@components/UI/Button';
+import { ReactComponent as ArrowRightSvg } from '@assets/arrow-right.svg';
+import { ReactComponent as HeartSvg } from '@assets/heart.svg';
 import { IProduct } from 'models/IProduct';
 import starsConfigurer from 'helpers/starsConfigurer';
 
@@ -77,12 +78,14 @@ const Card: FC<CardProps> = ({ product }) => {
             <p className={classes.card__deliveryTime}>Delivery in{deliveryT}</p>
           </div>
           <div className={classes.card__actions}>
-            <button className={classes.card__btnDetail}>
-              <span>Product Detail</span>
-              <img src={arrowRight} alt="arrow" />
-            </button>
+            <Button
+              icon={<ArrowRightSvg />}
+              className={classes.card__btnDetail}
+            >
+              Product Detail
+            </Button>
             <button className={classes.card__btnAddToWish}>
-              <img src={heart} alt="arrow" />
+              <HeartSvg />
               <span>Add to wish list</span>
             </button>
           </div>

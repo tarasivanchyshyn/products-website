@@ -15,6 +15,8 @@ export const byPrice = 'Price';
 export const byRating = 'Rating';
 export const defaultSortTitle = 'Select';
 
+export const productsOnPage = 5;
+
 export const footerGetInTouchLinks = [
   'About Us',
   'Careers',

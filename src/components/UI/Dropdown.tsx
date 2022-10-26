@@ -21,7 +21,7 @@ const Dropdown: FC<Dropdownprops> = ({ header, options }) => {
 
   const chooseOptionHandler = (option: string) => {
     toggleWindowHandler();
-    dispatch(productsActions.searchCategory(header));
+    dispatch(productsActions.setCategory(header));
     dispatch(productsActions.chooseBrands(''));
     dispatch(productsActions.chooseBrands(option));
   };

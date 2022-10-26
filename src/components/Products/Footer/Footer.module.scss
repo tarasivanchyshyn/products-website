@@ -1,0 +1,56 @@
+@import 'variables';
+
+.footer {
+  height: 5rem;
+  padding: 1rem 2.81rem;
+  @include flex-centerY;
+  justify-content: space-between;
+
+  &__pages {
+    @include flex-centerY;
+    gap: 0.5rem;
+
+    &Header {
+      font: 0.75rem/1rem $open-sans;
+      color: $products-footer-pages-header;
+    }
+
+    &Numbers {
+      display: flex;
+      gap: 0.5rem;
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      a {
+        font: 0.75rem/1rem $open-sans;
+        color: $black;
+      }
+    }
+
+    &Active {
+      color: $green;
+    }
+  }
+
+  &__stock {
+    @include flex-centerY;
+
+    &Number {
+      @include flex-center;
+      margin-right: 0.25rem;
+      background: $products-counter-bg;
+      border-radius: 12px;
+      padding: 0 0.5rem;
+      height: 1.125rem;
+      color: $green;
+      font: 600 0.75rem/1.125rem $poppins;
+    }
+
+    &Name {
+      font: 0.75rem/1rem $open-sans;
+      color: $header-amount-heading;
+    }
+  }
+}

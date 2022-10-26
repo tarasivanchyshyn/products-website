@@ -20,6 +20,7 @@ const RatingItem: FC<RatingItemProps> = ({ rating }) => {
 
   const chooseRatingHandler = (rating: number) => {
     dispatch(productsActions.chooseRatings(rating));
+    dispatch(productsActions.setActivePages([0]));
   };
   const checked = choosedRatings.includes(rating);
 

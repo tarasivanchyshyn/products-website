@@ -1,24 +1,19 @@
 import { FC } from 'react';
-
-import { IProduct } from 'models/IProduct';
 import classes from './Header.module.scss';
 
 interface HeaderProps {
-  products?: IProduct[];
+  productsCount?: number;
 }
 
-const Header: FC<HeaderProps> = ({ products }) => {
-  const amountNumber = products?.length;
-  const amountHeaderName = products?.length === 1 ? 'Product' : 'Products';
-
+const Header: FC<HeaderProps> = ({ productsCount }) => {
   return (
     <div className={classes.header}>
       <h1>All products</h1>
       <div className={classes.header__amount}>
         <div className={classes.header__number}>
-          <span>{amountNumber}</span>
+          <span>{productsCount!}</span>
         </div>
-        <span className={classes.header__name}>{amountHeaderName}</span>
+        <span className={classes.header__name}>Products</span>
       </div>
     </div>
   );

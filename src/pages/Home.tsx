@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import { ReactComponent as Arrow } from '@assets/arrow-right.svg';
+import { ReactComponent as ArrowRightSvg } from '@assets/arrow-right.svg';
 import { productsURL } from '@constants';
 
 import classes from './Home.module.scss';
@@ -13,7 +13,7 @@ function Home() {
         <Link to={productsURL}>
           <button className={classes.button}>
             <span>Go to products</span>
-            <Arrow />
+            <ArrowRightSvg />
           </button>
         </Link>
       </div>
