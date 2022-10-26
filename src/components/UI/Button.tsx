@@ -9,7 +9,7 @@ interface ButtonProps {
   onClick?: () => void;
 }
 
-function Button(props: ButtonProps) {
+const Button = (props: ButtonProps) => {
   const { className, type, children, icon, onClick } = props;
 
   return (
@@ -22,6 +22,6 @@ function Button(props: ButtonProps) {
       {icon}
     </button>
   );
-}
+};
 
 export default Button;

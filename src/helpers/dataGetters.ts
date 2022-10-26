@@ -1,6 +1,6 @@
 import { IProduct } from 'models/IProduct';
 
-interface Category {
+export interface Category {
   name: string;
   amount: number;
 }
@@ -25,7 +25,7 @@ export const getCategoriesData = (products?: IProduct[]) => {
   return categories;
 };
 
-export const getAllFarms = (products?: IProduct[]) => {
+export const getAllBrands = (products?: IProduct[]) => {
   let array: string[] = [];
   products?.forEach((product) => array.push(product.farm));
   const set = new Set(array);

@@ -1,11 +1,10 @@
-import { FC } from 'react';
 import classes from './Header.module.scss';
 
 interface HeaderProps {
   productsCount?: number;
 }
 
-const Header: FC<HeaderProps> = ({ productsCount }) => {
+const Header = ({ productsCount }: HeaderProps) => {
   return (
     <div className={classes.header}>
       <h1>All products</h1>

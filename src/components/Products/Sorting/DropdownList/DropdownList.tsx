@@ -1,9 +1,9 @@
-import { FC } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSortDown, faSortUp } from '@fortawesome/free-solid-svg-icons';
 
 import { ascendOrder, descendOrder } from '@constants';
 import { byPrice, byRating, byTitle } from '@constants';
+
 import classes from './DropdownList.module.scss';
 
 interface DropdownListProps {
@@ -11,7 +11,7 @@ interface DropdownListProps {
   resetHandler: () => void;
 }
 
-const DropdownList: FC<DropdownListProps> = (props) => {
+const DropdownList = (props: DropdownListProps) => {
   const { chooseSortingHandler, resetHandler } = props;
 
   const ascendIcon = (

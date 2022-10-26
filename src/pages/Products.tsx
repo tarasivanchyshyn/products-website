@@ -25,7 +25,7 @@ interface ProductsProps {
   };
 }
 
-const Products: FC<ProductsProps> = ({ data }) => {
+const Products = ({ data }: ProductsProps) => {
   const { isLoading, error, productsCount } = data;
   let { products } = data;
 

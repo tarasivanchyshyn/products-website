@@ -1,11 +1,12 @@
+import { FC } from 'react';
 import { Link } from 'react-router-dom';
 
 import { homeURL, productsURL } from '@constants';
 import classes from './BreadCrumbs.module.scss';
 
-const { breadCrumbs, link } = classes;
+const BreadCrumbs: FC = () => {
+  const { breadCrumbs, link } = classes;
 
-function BreadCrumbs() {
   return (
     <div className={breadCrumbs}>
       <Link to={homeURL} className={link}>
@@ -17,6 +18,6 @@ function BreadCrumbs() {
       </Link>
     </div>
   );
-}
+};
 
 export default BreadCrumbs;

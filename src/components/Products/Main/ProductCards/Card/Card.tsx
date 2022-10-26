@@ -1,5 +1,3 @@
-import { FC } from 'react';
-
 import Button from '@components/UI/Button';
 import { ReactComponent as ArrowRightSvg } from '@assets/arrow-right.svg';
 import { ReactComponent as HeartSvg } from '@assets/heart.svg';
@@ -12,7 +10,7 @@ interface CardProps {
   product: IProduct;
 }
 
-const Card: FC<CardProps> = ({ product }) => {
+const Card = ({ product }: CardProps) => {
   const {
     title,
     description,

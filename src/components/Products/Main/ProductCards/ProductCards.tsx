@@ -1,5 +1,3 @@
-import { FC } from 'react';
-
 import Card from './Card/Card';
 import { IProduct } from 'models/IProduct';
 import classes from './ProductCards.module.scss';
@@ -8,7 +6,7 @@ interface ProductCardsProps {
   products?: IProduct[];
 }
 
-const ProductCards: FC<ProductCardsProps> = ({ products }) => {
+const ProductCards = ({ products }: ProductCardsProps) => {
   const content = !products?.length ? (
     <div className={classes.cards}>
       <h1 className={classes.message}>No products</h1>

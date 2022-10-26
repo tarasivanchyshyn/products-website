@@ -6,7 +6,7 @@
   align-items: center;
 }
 
-.button {
+.select {
   border: none;
   background: $bg-grey;
   font: 500 0.95rem $poppins;
@@ -29,7 +29,7 @@
   position: absolute;
   width: 100%;
   min-width: 11rem;
-  top: 1.6rem;
+  top: 1.5rem;
   font: 400 0.95rem $poppins;
   @include flex-column;
   border-radius: 4px;

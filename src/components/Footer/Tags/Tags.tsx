@@ -1,9 +1,11 @@
+import { FC } from 'react';
+
 import { tagsItems } from 'mockedData';
 import classes from './Tags.module.scss';
 
-const { tags, tags__header, tags__list, tags__tag } = classes;
+const Tags: FC = () => {
+  const { tags, tags__header, tags__list, tags__tag } = classes;
 
-function Tags() {
   return (
     <div className={tags}>
       <h2 className={tags__header}>Product tags</h2>
@@ -16,6 +18,6 @@ function Tags() {
       </ul>
     </div>
   );
-}
+};
 
 export default Tags;

@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { faChevronUp } from '@fortawesome/free-solid-svg-icons';
@@ -13,7 +13,7 @@ type Dropdownprops = {
   options: string[];
 };
 
-const Dropdown: FC<Dropdownprops> = ({ header, options }) => {
+const Dropdown = ({ header, options }: Dropdownprops) => {
   const [open, setOpen] = useState(false);
   const dispatch = useAppDispatch();
 
@@ -26,7 +26,7 @@ const Dropdown: FC<Dropdownprops> = ({ header, options }) => {
     dispatch(productsActions.chooseBrands(option));
   };
 
-  const { dropdown, button, button__header, button__icon, dropdown__item } =
+  const { dropdown, select, select__header, select__icon, dropdown__item } =
     classes;
 
   const optionsList = (
@@ -51,10 +51,10 @@ const Dropdown: FC<Dropdownprops> = ({ header, options }) => {
       onMouseEnter={toggleWindowHandler}
       onMouseLeave={toggleWindowHandler}
     >
-      <button className={button}>
-        <span className={button__header}>{header}</span>
-        <FontAwesomeIcon icon={icon} className={button__icon} />
-      </button>
+      <div className={select}>
+        <span className={select__header}>{header}</span>
+        <FontAwesomeIcon icon={icon} className={select__icon} />
+      </div>
       {open && optionsList}
     </div>
   );

@@ -2,9 +2,9 @@ import { FormEvent } from 'react';
 
 import Button from '@components/UI/Button';
 import { ReactComponent as ArrowDownSvg } from '@assets/arrow-down.svg';
+import { productsOnPage } from '@constants';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
 import { productsActions } from 'store/reducers/ProductsSlice';
-import { productsOnPage } from '@constants';
 
 import classes from './Footer.module.scss';
 
@@ -13,13 +13,13 @@ interface FooterProps {
   productsLeft: number;
 }
 
-function Footer(props: FooterProps) {
-  const { pages, productsLeft } = props;
-
+const Footer = ({ pages, productsLeft }: FooterProps) => {
   const dispatch = useAppDispatch();
   const { currentPage, activePages, productsPerPage } = useAppSelector(
     (state) => state.productsReducer
   );
+  const { setCurrentPage, setProductsPerPage, setActivePages } =
+    productsActions;
 
   const lastPage = pages[pages.length - 1];
   const lastPageIndex = lastPage - 1;
@@ -27,19 +27,17 @@ function Footer(props: FooterProps) {
 
   const pageChangeHandler = (e: FormEvent<HTMLLIElement>) => {
     const targetPageIndex = +e.currentTarget.id - 1;
-    dispatch(productsActions.setCurrentPage(targetPageIndex));
-    dispatch(productsActions.setProductsPerPage(productsOnPage));
-    dispatch(productsActions.setActivePages([targetPageIndex]));
+    dispatch(setCurrentPage(targetPageIndex));
+    dispatch(setProductsPerPage(productsOnPage));
+    dispatch(setActivePages([targetPageIndex]));
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const buttonHandler = () => {
-    dispatch(
-      productsActions.setProductsPerPage(productsPerPage + productsOnPage)
-    );
+    dispatch(setProductsPerPage(productsPerPage + productsOnPage));
     const activeCount = productsPerPage / productsOnPage;
     const lastActive = currentPage + activeCount;
-    dispatch(productsActions.setActivePages([currentPage, lastActive]));
+    dispatch(setActivePages([currentPage, lastActive]));
   };
 
   const showMoreProductsBtn = currentPage !== lastPageIndex &&
@@ -82,6 +80,6 @@ function Footer(props: FooterProps) {
       </div>
     </div>
   );
-}
+};
 
 export default Footer;

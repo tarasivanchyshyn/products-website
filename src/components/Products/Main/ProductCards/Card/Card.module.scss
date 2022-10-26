@@ -56,9 +56,7 @@
   &__description {
     font: 0.75rem/1rem $open-sans;
     color: $card-description;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+    @include elipsis;
   }
 
   &__rating {
