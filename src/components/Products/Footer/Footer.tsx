@@ -1,6 +1,6 @@
 import { FormEvent } from 'react';
 
-import Button from '@components/UI/Button';
+import Button from '@components/UI/Button/Button';
 import { ReactComponent as ArrowDownSvg } from '@assets/arrow-down.svg';
 import { productsOnPage } from '@constants';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';

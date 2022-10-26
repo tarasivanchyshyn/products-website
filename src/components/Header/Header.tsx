@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 import Info from '@components/Header/Info/Info';
 import Search from '@components/Header/Search/Search';
-import Dropdown from '@components/UI/Dropdown';
+import Dropdown from '@components/UI/Dropdown/Dropdown';
 import logo from '@assets/logo.svg';
 import user from '@assets/user.svg';
 import cart from '@assets/cart.svg';

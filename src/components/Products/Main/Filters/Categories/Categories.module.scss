@@ -37,11 +37,11 @@
 
     &:hover {
       cursor: pointer;
-      background-image: linear-gradient(to right, $green, white);
+      background-image: linear-gradient(to right, $green, $white);
       transform: scale(1.05);
 
       .categories__itemName {
-        color: white;
+        color: $white;
         font-weight: 600;
         padding-left: 1rem;
       }
@@ -54,10 +54,10 @@
 }
 
 .active {
-  background-image: linear-gradient(to right, $green, white);
+  background-image: linear-gradient(to right, $green, $white);
 
   .categories__itemName {
-    color: white;
+    color: $white;
     padding-left: 1rem;
   }
 }

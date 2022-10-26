@@ -38,11 +38,11 @@
     }
 
     &:hover {
-      background-image: linear-gradient(to right, $green, white);
+      background-image: linear-gradient(to right, $green, $white);
       border-radius: 4px;
 
       label {
-        color: white;
+        color: $white;
         font-weight: 600;
         cursor: pointer;
       }

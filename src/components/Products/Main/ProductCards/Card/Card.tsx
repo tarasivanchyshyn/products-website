@@ -1,4 +1,4 @@
-import Button from '@components/UI/Button';
+import Button from '@components/UI/Button/Button';
 import { ReactComponent as ArrowRightSvg } from '@assets/arrow-right.svg';
 import { ReactComponent as HeartSvg } from '@assets/heart.svg';
 import { IProduct } from 'models/IProduct';

@@ -5,7 +5,7 @@
   margin-bottom: 1rem;
 
   &:hover {
-    background-image: linear-gradient(to right, $green, white);
+    background-image: linear-gradient(to right, $green, $white);
     border-radius: 4px;
   }
 

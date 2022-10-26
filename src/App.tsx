@@ -1,10 +1,10 @@
 import { Route, Routes } from 'react-router-dom';
 
-import Products from '@pages/Products';
-import Product from '@pages/Product';
-import Checkout from '@pages/Checkout';
-import Home from '@pages/Home';
-import NotFound from '@pages/NotFound';
+import Products from '@pages/Products/Products';
+import Product from '@pages/Product/Product';
+import Checkout from '@pages/Checkout/Checkout';
+import Home from '@pages/Home/Home';
+import NotFound from '@pages/NotFound/NotFound';
 import Layout from '@components/Layout/Layout';
 import { productsURL, productURL, checkoutURL } from '@constants';
 import { notFoundURL } from '@constants';

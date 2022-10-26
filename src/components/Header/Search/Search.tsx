@@ -2,7 +2,7 @@ import { FormEvent, useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
-import SearchDropdown from '@components/UI/SearchDropdown';
+import SearchDropdown from '@components/UI/SearchDropdown/SearchDropdown';
 import { productsActions } from 'store/reducers/ProductsSlice';
 import { useAppDispatch } from 'hooks/redux';
 import { allCategories, searchPlaceholder } from '@constants';
@@ -41,7 +41,7 @@ const Search = ({ products }: SearchProps) => {
       <div className={classes.main__categories}>
         <SearchDropdown options={categories} />
       </div>
-      <div className={classes.main__divider}></div>
+      <hr className={classes.main__divider}></hr>
       <div className={classes.main__inputContainer}>
         <input
           type="text"
