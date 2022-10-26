@@ -38,25 +38,25 @@ const Filters: FC<FilterProps> = () => {
   const categories = getCategoriesData(products);
   const brands = getAllFarms(products);
 
-  const chooseCategoryHandler = (category: string) => {
-    dispatch(productsActions.searchCategory(category));
+  const setDefaultValues = () => {
     dispatch(productsActions.setCurrentPage(0));
     dispatch(productsActions.setProductsPerPage(productsOnPage));
     dispatch(productsActions.setActivePages([0]));
+  };
+
+  const chooseCategoryHandler = (category: string) => {
+    dispatch(productsActions.searchCategory(category));
+    setDefaultValues();
   };
 
   const chooseBrandHandler = (brand: string) => {
     dispatch(productsActions.chooseBrands(brand));
-    dispatch(productsActions.setCurrentPage(0));
-    dispatch(productsActions.setProductsPerPage(productsOnPage));
-    dispatch(productsActions.setActivePages([0]));
+    setDefaultValues();
   };
 
   const choosePriceHandler = (value: number[]) => {
     dispatch(productsActions.choosePrice(value));
-    dispatch(productsActions.setCurrentPage(0));
-    dispatch(productsActions.setProductsPerPage(productsOnPage));
-    dispatch(productsActions.setActivePages([0]));
+    setDefaultValues();
   };
 
   const resetHandler = () => {
