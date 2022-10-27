@@ -21,3 +21,24 @@
     @include link;
   }
 }
+
+@media (max-width: 640px) {
+  .contacts__column {
+    @include flex-column;
+    margin-bottom: 1.6rem;
+
+    .contacts__header {
+      margin-bottom: 0.3rem;
+    }
+
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 0;
+
+      .contacts__contact {
+        margin: 0 1rem 0 0;
+      }
+    }
+  }
+}

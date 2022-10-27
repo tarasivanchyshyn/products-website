@@ -75,3 +75,43 @@
     }
   }
 }
+
+@media (max-width: 900px) {
+  .price {
+    padding-right: 2.04rem;
+  }
+}
+
+@media (max-width: 850px) {
+  .price {
+    &__input {
+      input {
+        padding: 0.25rem 0.5rem;
+      }
+    }
+
+    &__dash {
+      margin: 0 0.475rem;
+      padding-top: 1.4rem;
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .price {
+    &__header {
+      font-size: 1.5rem;
+    }
+
+    &__input {
+      label {
+        text-align: center;
+        font-size: 0.85rem;
+      }
+    }
+
+    .slider {
+      margin-bottom: 1.5rem;
+    }
+  }
+}

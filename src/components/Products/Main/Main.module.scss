@@ -2,3 +2,10 @@
   display: flex;
   padding: 4rem 2.81rem 2.12rem;
 }
+
+@media (max-width: 700px) {
+  .main {
+    flex-direction: column;
+    padding: 1rem 1rem;
+  }
+}

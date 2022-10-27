@@ -65,3 +65,9 @@
     transform: translateY(0);
   }
 }
+
+@media (max-width: 700px) {
+  .dropdown__item {
+    height: 2.5rem;
+  }
+}

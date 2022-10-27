@@ -153,11 +153,62 @@
     span {
       font: 700 0.9375rem/1.375rem $poppins;
     }
+
+    svg {
+      min-width: 1rem;
+    }
   }
 }
 
 @media (max-width: 1150px) {
   .card {
     height: 20rem;
+  }
+}
+@media (max-width: 550px) {
+  .card {
+    height: 26rem;
+    flex-direction: column;
+
+    .imgWrapper {
+      width: 100%;
+      height: 45%;
+    }
+
+    &__info {
+      width: 100%;
+      padding: 0.5rem 1rem;
+
+      &Right {
+        align-items: flex-end;
+      }
+    }
+
+    &__detail {
+      margin-bottom: 0.5rem;
+    }
+
+    &__rating {
+      margin-bottom: 0.5rem;
+    }
+
+    &__price {
+      margin-bottom: 0.5rem;
+    }
+
+    &__delivery {
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+@media (max-width: 451px) {
+  .card {
+    height: 29rem;
+  }
+}
+@media (max-width: 449px) {
+  .card {
+    height: 31rem;
   }
 }

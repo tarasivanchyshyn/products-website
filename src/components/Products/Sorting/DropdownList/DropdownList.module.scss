@@ -54,3 +54,13 @@
     }
   }
 }
+
+@media (max-width: 700px) {
+  .sort__dropdownList {
+    .sort__dropdownItem {
+      height: 2.5rem;
+      font: 500 0.9rem/1.5rem $poppins;
+      @include flex-center;
+    }
+  }
+}

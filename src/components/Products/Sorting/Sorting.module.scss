@@ -54,3 +54,31 @@
     }
   }
 }
+
+@media (max-width: 700px) {
+  .wrapper {
+    padding: 1rem;
+    height: 5rem;
+  }
+
+  .sort {
+    gap: 1rem;
+
+    &__header {
+      font: 0.937rem/1.187rem $open-sans;
+      color: $black;
+    }
+
+    &__select {
+      gap: 0.5rem;
+
+      &Title {
+        font: 600 0.937rem/1.5rem $poppins;
+      }
+
+      &Icon {
+        font-size: 0.75rem;
+      }
+    }
+  }
+}
