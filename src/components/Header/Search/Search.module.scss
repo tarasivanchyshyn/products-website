@@ -60,3 +60,11 @@
     transform: scaleX(-1);
   }
 }
+
+@media (max-width: 700px) {
+  .main__search {
+    width: 85%;
+    order: 2;
+    margin: 1rem auto 1rem;
+  }
+}

@@ -49,7 +49,8 @@
   }
 
   .slider {
-    margin: 0 0 1.2rem 0;
+    width: 90%;
+    margin: 0 auto 1.5rem;
 
     div:first-child {
       background: $filters-slider-bar;
@@ -72,6 +73,46 @@
     &:hover div:nth-child(4),
     &:hover div:nth-child(5) {
       border: 1px solid $filters-slider-circle-border;
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .price {
+    padding-right: 2.04rem;
+  }
+}
+
+@media (max-width: 850px) {
+  .price {
+    &__input {
+      input {
+        padding: 0.25rem 0.5rem;
+      }
+    }
+
+    &__dash {
+      margin: 0 0.475rem;
+      padding-top: 1.4rem;
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .price {
+    &__header {
+      font-size: 1.5rem;
+    }
+
+    &__input {
+      label {
+        text-align: center;
+        font-size: 0.85rem;
+      }
+    }
+
+    .slider {
+      margin-bottom: 1.5rem;
     }
   }
 }

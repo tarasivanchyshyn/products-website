@@ -4,11 +4,6 @@
   @include flex-centerY;
   margin-bottom: 1rem;
 
-  &:hover {
-    background-image: linear-gradient(to right, $green, $white);
-    border-radius: 4px;
-  }
-
   &Checkbox {
     height: 1.25rem;
     width: 1.25rem;
@@ -17,10 +12,6 @@
 
     &:checked {
       accent-color: $green;
-    }
-
-    &:hover {
-      cursor: pointer;
     }
   }
 
@@ -35,5 +26,26 @@
 
   &:last-child {
     margin: 0;
+  }
+}
+
+@media (hover: hover) {
+  .rating__item {
+    &:hover {
+      background-image: linear-gradient(to right, $green, $white);
+      border-radius: 4px;
+    }
+
+    &Checkbox {
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .rating__item {
+    height: 2rem;
   }
 }

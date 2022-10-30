@@ -35,18 +35,6 @@
       font: 600 0.75rem/1.125rem $poppins;
     }
 
-    &:hover {
-      cursor: pointer;
-      background-image: linear-gradient(to right, $green, $white);
-      transform: scale(1.05);
-
-      .categories__itemName {
-        color: $white;
-        font-weight: 600;
-        padding-left: 1rem;
-      }
-    }
-
     &:last-child {
       margin: 0;
     }
@@ -59,5 +47,38 @@
   .categories__itemName {
     color: $white;
     padding-left: 1rem;
+  }
+}
+
+@media (hover: hover) {
+  .categories__item:hover {
+    cursor: pointer;
+    background-image: linear-gradient(to right, $green, $white);
+    transform: scale(1.05);
+
+    .categories__itemName {
+      color: $white;
+      font-weight: 600;
+      padding-left: 1rem;
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .categories {
+    &__header {
+      font-size: 1.5rem;
+    }
+
+    &__item {
+      height: 2rem;
+      display: flex;
+      align-items: center;
+
+      &Name {
+        font-size: 1rem;
+        line-height: 1rem;
+      }
+    }
   }
 }

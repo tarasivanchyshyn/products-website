@@ -13,7 +13,14 @@
     color: $white;
   }
 
-  &:hover {
+  &:active {
+    background: $btn-main-hover-bg;
+    cursor: pointer;
+  }
+}
+
+@media (hover: hover) {
+  .button:hover {
     background: $btn-main-hover-bg;
     cursor: pointer;
   }

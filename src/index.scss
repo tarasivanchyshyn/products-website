@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:wght@400;500;600;700&display=swap');
+
 * {
   box-sizing: border-box;
 }
@@ -11,6 +12,12 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   cursor: default;
+
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 h1,
@@ -27,4 +34,10 @@ ul {
 ul {
   padding: 0;
   list-style: none;
+}
+
+@media (max-width: 800px) {
+  html {
+    font-size: 14px;
+  }
 }

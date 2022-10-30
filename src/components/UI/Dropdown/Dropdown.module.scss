@@ -29,7 +29,7 @@
   position: absolute;
   width: 100%;
   min-width: 11rem;
-  top: 1.5rem;
+  top: 1.4rem;
   font: 400 0.95rem $poppins;
   @include flex-column;
   border-radius: 4px;
@@ -45,7 +45,7 @@
     cursor: pointer;
     @include flex-center;
 
-    &:hover {
+    &:active {
       background: $green;
       color: $white;
     }
@@ -60,5 +60,20 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@media (max-width: 700px) {
+  .dropdown__item {
+    height: 2.5rem;
+  }
+}
+
+@media (hover: hover) {
+  .dropdown__item {
+    &:hover {
+      background: $green;
+      color: $white;
+    }
   }
 }

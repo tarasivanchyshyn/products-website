@@ -41,10 +41,14 @@ const Footer = ({ pages, productsLeft }: FooterProps) => {
   };
 
   const showMoreProductsBtn = currentPage !== lastPageIndex &&
-    pages.length &&
+    pages.length > 0 &&
     lastPageIndex !== lastActivePageIndex &&
     productsLeft !== 0 && (
-      <Button icon={<ArrowDownSvg />} onClick={buttonHandler}>
+      <Button
+        icon={<ArrowDownSvg />}
+        onClick={buttonHandler}
+        className={classes.footer__button}
+      >
         Show more products
       </Button>
     );
@@ -68,7 +72,9 @@ const Footer = ({ pages, productsLeft }: FooterProps) => {
   return (
     <div className={classes.footer}>
       <div className={classes.footer__pages}>
-        <span className={classes.footer__pagesHeader}>Pages:</span>
+        {pages.length > 0 && (
+          <span className={classes.footer__pagesHeader}>Pages:</span>
+        )}
         <ul className={classes.footer__pagesNumbers}>{renderPageNumbers}</ul>
       </div>
       {showMoreProductsBtn}
@@ -78,6 +84,7 @@ const Footer = ({ pages, productsLeft }: FooterProps) => {
         </div>
         <span className={classes.footer__stockName}>Products</span>
       </div>
+      <div className={classes.footer__break}></div>
     </div>
   );
 };

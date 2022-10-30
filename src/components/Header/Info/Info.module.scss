@@ -31,8 +31,47 @@
   &__info {
     color: $black;
 
-    &:hover {
+    &:hover,
+    &:active {
+      color: $black;
       text-decoration: underline;
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .info {
+    padding: 1rem;
+
+    &__left a {
+      margin-right: 1.37rem;
+    }
+
+    &__right a {
+      margin-left: 1.37rem;
+    }
+  }
+}
+
+@media (max-width: 560px) {
+  .info {
+    padding: 1rem 1.5rem;
+
+    &__left {
+      width: 100%;
+      justify-content: space-between;
+
+      a:first-child {
+        display: none;
+      }
+
+      a {
+        margin: 0;
+      }
+    }
+
+    &__right {
+      display: none;
     }
   }
 }

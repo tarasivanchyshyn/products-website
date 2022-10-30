@@ -1,7 +1,6 @@
-import { FC, useState } from 'react';
+import { useState } from 'react';
 import 'antd/dist/antd.min.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFilter } from '@fortawesome/free-solid-svg-icons';
+import { Drawer } from 'antd';
 
 import { getAllBrands, getCategoriesData } from 'helpers/dataGetters';
 import { useAppDispatch } from 'hooks/redux';
@@ -9,21 +8,22 @@ import { IProduct } from 'models/IProduct';
 import { productsAPI } from 'services/ProductsService';
 import { productsActions } from 'store/reducers/ProductsSlice';
 import { productsOnPage } from '@constants';
-import Categories from './Categories/Categories';
-import Brands from './Brands/Brands';
-import Ratings from './Ratings/Ratings';
-import Price from './Price/Price';
-import FiltersModal from '@components/UI/FiltersModal/FiltersModal';
-import Button from '@components/UI/Button/Button';
+import Categories from '@components/Products/Main/Filters/Categories/Categories';
+import Brands from '@components/Products/Main/Filters/Brands/Brands';
+import Ratings from '@components/Products/Main/Filters/Ratings/Ratings';
+import Price from '@components/Products/Main/Filters/Price/Price';
+import Button from '../Button/Button';
 
-import classes from './Filters.module.scss';
+import classes from './FiltersModal.module.scss';
 
-const Filters: FC = () => {
+interface FiltersModalProps {
+  open: boolean;
+  onClose: () => void;
+}
+
+const FiltersModal = ({ open, onClose }: FiltersModalProps) => {
   const { data: products } = productsAPI.useFetchAllProductsQuery();
   const dispatch = useAppDispatch();
-
-  const [open, setOpen] = useState(false);
-  const toggleDrawer = () => setOpen(!open);
 
   const prices = products?.map((product: IProduct) => product.price);
   const minPrice = Math.min(...prices!);
@@ -57,31 +57,33 @@ const Filters: FC = () => {
 
   return (
     <>
-      <div className={classes.filtersBtn}>
-        <Button
-          onClick={toggleDrawer}
-          icon={<FontAwesomeIcon icon={faFilter} />}
-        >
-          Filters
-        </Button>
-      </div>
-      {open && <FiltersModal onClose={toggleDrawer} open={open} />}
-      <aside className={classes.filters}>
-        <Categories
-          categories={categories}
-          setDefaultValues={setDefaultValues}
-        />
-        <Brands brands={brands} setDefaultValues={setDefaultValues} />
-        <Ratings />
-        <Price setDefaultValues={setDefaultValues} data={sliderData} />
-        <section className={classes.actions}>
-          <button className={classes.actions__reset} onClick={resetHandler}>
-            Reset
-          </button>
-        </section>
-      </aside>
+      <Drawer
+        placement={'left'}
+        closable={false}
+        onClose={onClose}
+        open={open}
+        className={classes.drawer}
+      >
+        <aside className={classes.filters}>
+          <Categories
+            categories={categories}
+            setDefaultValues={setDefaultValues}
+          />
+          <Brands brands={brands} setDefaultValues={setDefaultValues} />
+          <Ratings />
+          <Price setDefaultValues={setDefaultValues} data={sliderData} />
+          <section className={classes.actions}>
+            <button className={classes.actions__reset} onClick={resetHandler}>
+              Reset
+            </button>
+            <Button className={classes.actions__close} onClick={onClose}>
+              Close
+            </Button>
+          </section>
+        </aside>
+      </Drawer>
     </>
   );
 };
 
-export default Filters;
+export default FiltersModal;

@@ -32,11 +32,16 @@
       &:checked {
         accent-color: $green;
       }
-      &:hover {
-        cursor: pointer;
-      }
     }
 
+    &:last-child {
+      margin: 0;
+    }
+  }
+}
+
+@media (hover: hover) {
+  .brands__item {
     &:hover {
       background-image: linear-gradient(to right, $green, $white);
       border-radius: 4px;
@@ -48,8 +53,29 @@
       }
     }
 
-    &:last-child {
-      margin: 0;
+    &Checkbox {
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .brands {
+    &__header {
+      font-size: 1.5rem;
+    }
+
+    &__item {
+      height: 2rem;
+      display: flex;
+      align-items: center;
+
+      &Name {
+        font-size: 1rem;
+        line-height: 1rem;
+      }
     }
   }
 }
