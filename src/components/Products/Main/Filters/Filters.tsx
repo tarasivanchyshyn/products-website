@@ -23,12 +23,7 @@ const Filters: FC = () => {
   const dispatch = useAppDispatch();
 
   const [open, setOpen] = useState(false);
-  const openDrawer = () => {
-    setOpen(true);
-  };
-  const closeDrawer = () => {
-    setOpen(false);
-  };
+  const toggleDrawer = () => setOpen(!open);
 
   const prices = products?.map((product: IProduct) => product.price);
   const minPrice = Math.min(...prices!);
@@ -63,11 +58,14 @@ const Filters: FC = () => {
   return (
     <>
       <div className={classes.filtersBtn}>
-        <Button onClick={openDrawer} icon={<FontAwesomeIcon icon={faFilter} />}>
+        <Button
+          onClick={toggleDrawer}
+          icon={<FontAwesomeIcon icon={faFilter} />}
+        >
           Filters
         </Button>
       </div>
-      {open && <FiltersModal onClose={closeDrawer} open={open} />}
+      {open && <FiltersModal onClose={toggleDrawer} open={open} />}
       <aside className={classes.filters}>
         <Categories
           categories={categories}

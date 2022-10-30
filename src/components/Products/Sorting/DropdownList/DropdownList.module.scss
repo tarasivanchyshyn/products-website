@@ -22,7 +22,7 @@
     @include flex-centerX;
     gap: 10%;
 
-    &:hover {
+    &:active {
       background: $green;
       color: $white;
     }
@@ -47,7 +47,7 @@
       border-top: 1px solid $sort-reset-border;
       color: $sort-reset-color;
 
-      &:hover {
+      &:active {
         color: $black;
         background: $sort-reset-bg;
       }
@@ -61,6 +61,22 @@
       height: 2.5rem;
       font: 500 0.9rem/1.5rem $poppins;
       @include flex-center;
+    }
+  }
+}
+
+@media (hover: hover) {
+  .sort__dropdownItem {
+    &:hover {
+      background: $green;
+      color: $white;
+    }
+
+    &:last-child {
+      &:hover {
+        color: $black;
+        background: $sort-reset-bg;
+      }
     }
   }
 }

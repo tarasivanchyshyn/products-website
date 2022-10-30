@@ -57,7 +57,13 @@ const FiltersModal = ({ open, onClose }: FiltersModalProps) => {
 
   return (
     <>
-      <Drawer placement={'left'} closable={false} onClose={onClose} open={open}>
+      <Drawer
+        placement={'left'}
+        closable={false}
+        onClose={onClose}
+        open={open}
+        className={classes.drawer}
+      >
         <aside className={classes.filters}>
           <Categories
             categories={categories}

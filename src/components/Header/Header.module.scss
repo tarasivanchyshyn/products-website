@@ -74,28 +74,33 @@
     height: auto;
     padding: 0.81rem 1rem;
 
+    &__dropdowns {
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      gap: 1rem 1.5rem;
+    }
+
     &__top {
       flex-wrap: wrap;
+    }
+
+    &__bottom {
+      padding: 1rem 2.8rem;
     }
   }
 }
 
-@media (max-width: 550px) {
-  .main__bottom {
-    padding: 1rem;
+@media (max-width: 500px) {
+  .main {
+    &__bottom {
+      padding: 1rem 3.5rem;
+    }
   }
 }
-
-@media (max-width: 450px) {
-  .main__dropdowns {
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    gap: 1rem 1.5rem;
-  }
-}
-
 @media (max-width: 400px) {
-  .main__cart {
-    margin-left: 1.5rem;
+  .main {
+    &__cart {
+      margin-left: 1.5rem;
+    }
   }
 }

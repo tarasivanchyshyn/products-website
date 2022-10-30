@@ -31,7 +31,9 @@
   &__info {
     color: $black;
 
-    &:hover {
+    &:hover,
+    &:active {
+      color: $black;
       text-decoration: underline;
     }
   }
