@@ -1,6 +1,7 @@
 import { FormEvent } from 'react';
 
 import Button from '@components/UI/Button/Button';
+import GreenInfoOval from '@components/UI/GreenInfoOval/GreenInfoOval';
 import { ReactComponent as ArrowDownSvg } from '@assets/arrow-down.svg';
 import { productsOnPage } from '@constants';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
@@ -79,9 +80,7 @@ const Footer = ({ pages, productsLeft }: FooterProps) => {
       </div>
       {showMoreProductsBtn}
       <div className={classes.footer__stock}>
-        <div className={classes.footer__stockNumber}>
-          <span>{productsLeft}</span>
-        </div>
+        <GreenInfoOval>{productsLeft}</GreenInfoOval>
         <span className={classes.footer__stockName}>Products</span>
       </div>
       <div className={classes.footer__break}></div>

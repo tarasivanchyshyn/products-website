@@ -1,0 +1,34 @@
+@import 'variables';
+
+.breadCrumbs {
+  padding: 1rem 2.81rem;
+  height: 3rem;
+  @include flex-centerY;
+
+  a,
+  span {
+    color: $breadcrumb-gray;
+    margin-right: 0.5rem;
+    font: 0.75rem/1rem $open-sans;
+    text-decoration: none;
+
+    &:hover {
+      color: $breadcrumb-gray;
+    }
+  }
+
+  a {
+    &:last-child {
+      color: $breadcrumb-current;
+    }
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .breadCrumbs {
+    padding: 1.5rem;
+  }
+}

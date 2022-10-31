@@ -1,0 +1,11 @@
+@import 'variables';
+
+.oval {
+  @include flex-center;
+  background: $products-counter-bg;
+  border-radius: 12px;
+  padding: 0 0.5rem;
+  height: 1.125rem;
+  color: $green;
+  font: 600 0.75rem/1.125rem $poppins;
+}

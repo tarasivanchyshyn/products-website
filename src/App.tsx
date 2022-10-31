@@ -27,7 +27,7 @@ function App() {
         <Route path="/" element={<Layout products={products} />}>
           <Route index element={<Home />} />
           <Route path={productsURL} element={<Products data={data} />} />
-          <Route path={productURL} element={<Product />} />
+          <Route path={productURL} element={<Product products={products} />} />
           <Route path={checkoutURL} element={<Checkout />} />
           <Route path={notFoundURL} element={<NotFound />} />
         </Route>

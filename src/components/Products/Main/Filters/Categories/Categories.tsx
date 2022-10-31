@@ -1,6 +1,7 @@
 import { Category } from 'helpers/dataGetters';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
 import { productsActions } from 'store/reducers/ProductsSlice';
+import GreenInfoOval from '@components/UI/GreenInfoOval/GreenInfoOval';
 
 import classes from './Categories.module.scss';
 
@@ -31,7 +32,7 @@ const Categories = ({ categories, setDefaultValues }: CategoriesProps) => {
             onClick={() => chooseCategoryHandler(name)}
           >
             <span className={classes.categories__itemName}>{name}</span>
-            <span className={classes.categories__itemNumber}>{amount}</span>
+            <GreenInfoOval>{amount}</GreenInfoOval>
           </li>
         ))}
       </ul>
