@@ -19,11 +19,7 @@ const Product = ({ products }: ProductProps) => {
     window.scrollTo(0, 0);
   }, []);
 
-  return (
-    <>
-      <Main product={product} />
-    </>
-  );
+  return <Main product={product} />;
 };
 
 export default Product;
