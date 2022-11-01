@@ -1,0 +1,121 @@
+@import 'variables';
+
+.info__tabs {
+  flex-direction: column;
+  gap: 3rem 0;
+
+  & > :first-child {
+    width: 100%;
+    margin: 0;
+
+    & > :last-child {
+      display: none;
+    }
+    & > :first-child {
+      width: 100%;
+
+      & > :first-child {
+        width: 100%;
+        justify-content: space-between;
+
+        & > :nth-child(1),
+        :nth-child(2),
+        :nth-child(3) {
+          width: 33%;
+          font: 600 1.125rem/1.687rem $poppins;
+          margin: 0;
+
+          div {
+            color: $black;
+            @include flex-centerY;
+            gap: 0 0.5rem;
+          }
+
+          @media (max-width: 850px) {
+            font-size: 0.85rem;
+          }
+        }
+
+        & > :nth-child(2),
+        :nth-child(3) {
+          justify-content: flex-start;
+          padding-left: 2rem;
+
+          @media (max-width: 1050px) {
+            padding: 0;
+          }
+        }
+
+        & > :nth-child(4) {
+          background: $black;
+          height: 1px;
+        }
+      }
+    }
+  }
+
+  & > :last-child {
+    max-height: 13rem;
+    overflow-y: auto;
+  }
+}
+
+.info__tabDescriptionContent {
+  @include flex-column;
+  gap: 2rem;
+
+  h4 {
+    font: 500 0.937rem/1.375rem $poppins;
+    color: $black;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    font: 0.875rem/1.187rem $poppins;
+    color: $black;
+  }
+}
+
+.info__tabReviewContent {
+  ul {
+    @include flex-column;
+    gap: 1rem;
+    font: 400 0.85rem/1.125rem $poppins;
+
+    h4 {
+      color: $green;
+      margin-bottom: 0.2rem;
+      font-weight: 500;
+    }
+
+    li {
+      background: $product-page-tabs-review-review-bg;
+      width: 95%;
+      border-radius: 12px;
+      padding: 0.3rem 1rem;
+    }
+  }
+}
+
+.info__tabQuestionsContent {
+  ul {
+    @include flex-column;
+    gap: 1rem;
+
+    li {
+      background: $product-page-tabs-questions-question-bg;
+      width: 80%;
+      border-radius: 12px;
+      padding: 0.2rem 1rem;
+      font: 600 0.85rem/1.125rem $poppins;
+
+      p:first-child {
+        margin-bottom: 0.5rem;
+      }
+      p:last-child {
+        font-weight: 400;
+        font-style: italic;
+      }
+    }
+  }
+}

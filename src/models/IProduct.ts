@@ -16,9 +16,10 @@ export interface IProduct {
   categories: string[];
   color: string;
   size: string;
+  cooking: string;
   units: string[];
-  reviews: string[];
-  questions: string[];
+  reviews: { id: string; username: string; review: string }[];
+  questions: { id: string; question: string; answear: string }[];
   image: string;
   id: string;
 }
