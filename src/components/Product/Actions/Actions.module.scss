@@ -34,7 +34,7 @@
 }
 
 .info__buttons {
-  display: flex;
+  @include flex-centerY;
   gap: 0 1.5rem;
 }
 
