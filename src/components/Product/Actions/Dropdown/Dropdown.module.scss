@@ -17,8 +17,8 @@
     color: $product-page-dropdown-count;
     border: none;
     padding: 0;
-    width: 1.9rem;
-    background: #f9f9f9;
+    background: $product-page-dropdown-count-bg;
+    cursor: default;
 
     &:focus {
       outline: none;
@@ -55,7 +55,6 @@
         height: 1.5rem;
         text-align: center;
 
-        &:hover,
         &:active {
           background: $green;
           color: $white;
@@ -86,34 +85,19 @@
   }
 }
 
-.a {
-  display: flex;
+.dropdownHoverArea {
+  position: absolute;
+  width: 3.8rem;
+  height: 100%;
+  right: 0;
+  cursor: pointer;
 }
 
-@media (max-width: 700px) {
-  .wrapper {
-    padding: 1rem;
-    height: 5rem;
-  }
-
-  .sort {
-    gap: 1rem;
-
-    &__header {
-      font: 0.937rem/1.187rem $open-sans;
-      color: $black;
-    }
-
-    &__select {
-      gap: 0.5rem;
-
-      &Title {
-        font: 600 0.937rem/1.5rem $poppins;
-      }
-
-      &Icon {
-        font-size: 0.75rem;
-      }
+@media (hover: hover) {
+  .right {
+    li:hover {
+      background: $green;
+      color: $white;
     }
   }
 }

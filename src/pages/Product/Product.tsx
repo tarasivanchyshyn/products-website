@@ -1,9 +1,8 @@
-import { IProduct } from 'models/IProduct';
+import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
-import BreadCrumbs from '@components/Product/BreadCrumbs/BreadCrumbs';
+import { IProduct } from 'models/IProduct';
 import Main from '@components/Product/Main/Main';
-import { useEffect } from 'react';
 
 interface ProductProps {
   products?: IProduct[];
@@ -15,7 +14,6 @@ const Product = ({ products }: ProductProps) => {
   const product = products?.find(
     (el) => el.title.toLowerCase() === productTitle
   );
-  const title = product?.title;
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -23,7 +21,6 @@ const Product = ({ products }: ProductProps) => {
 
   return (
     <>
-      <BreadCrumbs productTitle={title} />
       <Main product={product} />
     </>
   );
