@@ -1,0 +1,44 @@
+@import 'variables';
+
+.info__details {
+  display: flex;
+  width: 100%;
+  gap: 0 10%;
+
+  ul {
+    @include flex-column;
+    gap: 0.75rem;
+    @include elipsis;
+  }
+
+  span {
+    vertical-align: middle;
+  }
+
+  &Item {
+    display: flex;
+    width: 100%;
+
+    span:first-child {
+      display: inline-block;
+      min-width: 5.5rem;
+      margin-right: 1rem;
+      @include elipsis;
+      font: 0.875rem/1.187rem $open-sans;
+      color: $product-page-detail;
+    }
+
+    span:last-child {
+      display: inline-block;
+      font: 0.875rem/1.187rem $open-sans;
+      color: $black;
+      @include elipsis;
+    }
+  }
+}
+
+@media (max-width: 890px) {
+  .info__detailsItem {
+    flex-direction: column;
+  }
+}

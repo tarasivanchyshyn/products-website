@@ -3,7 +3,6 @@ import { SerializedError } from '@reduxjs/toolkit';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
-import BreadCrumbs from '@components/Products/BreadCrumbs/BreadCrumbs';
 import Header from '@components/Products/Header/Header';
 import Sorting from '@components/Products/Sorting/Sorting';
 import Main from '@components/Products/Main/Main';
@@ -88,7 +87,6 @@ const Products = ({ data }: ProductsProps) => {
 
   return (
     <>
-      <BreadCrumbs />
       <Header productsCount={productsCount} />
       {isLoading && loadingSpinner}
       {error && errMessage}

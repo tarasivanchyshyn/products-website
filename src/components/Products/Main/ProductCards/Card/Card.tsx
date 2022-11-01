@@ -5,6 +5,7 @@ import { IProduct } from 'models/IProduct';
 import starsConfigurer from 'helpers/starsConfigurer';
 
 import classes from './Card.module.scss';
+import { Link } from 'react-router-dom';
 
 interface CardProps {
   product: IProduct;
@@ -34,7 +35,9 @@ const Card = ({ product }: CardProps) => {
   return (
     <li className={classes.card}>
       <div className={classes.imgWrapper}>
-        <img src={image} alt="product look" className={classes.card__image} />
+        <Link to={`/products/${title.toLowerCase()}`}>
+          <img src={image} alt="product look" className={classes.card__image} />
+        </Link>
       </div>
       <div className={classes.card__info}>
         <div className={classes.card__infoLeft}>
@@ -76,12 +79,14 @@ const Card = ({ product }: CardProps) => {
             <p className={classes.card__deliveryTime}>Delivery in{deliveryT}</p>
           </div>
           <div className={classes.card__actions}>
-            <Button
-              icon={<ArrowRightSvg />}
-              className={classes.card__btnDetail}
-            >
-              Product Detail
-            </Button>
+            <Link to={`/products/${title.toLowerCase()}`}>
+              <Button
+                icon={<ArrowRightSvg />}
+                className={classes.card__btnDetail}
+              >
+                Product Detail
+              </Button>
+            </Link>
             <button className={classes.card__btnAddToWish}>
               <HeartSvg />
               <span>Add to wish list</span>

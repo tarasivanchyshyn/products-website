@@ -1,0 +1,21 @@
+@import 'variables.scss';
+
+.breadCrumb {
+  padding: 1rem 2.81rem;
+  height: 3rem;
+  @include flex-centerY;
+
+  ol {
+    li:last-child {
+      span:first-child {
+        color: $black;
+      }
+    }
+  }
+
+  a,
+  span {
+    color: $breadcrumb-gray;
+    font: 0.75rem/1rem $open-sans;
+  }
+}

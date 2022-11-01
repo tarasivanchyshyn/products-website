@@ -57,6 +57,18 @@ $tags-bg: #f5f5f5;
 $poppins: 'Poppins', sans-serif;
 $open-sans: 'Open Sans', sans-serif;
 
+$product-page-rating-count: #a9a9a9;
+$product-page-detail: #a9a9a9;
+$product-page-actions-border: #f5f5f5;
+$product-page-priceBefore: #a9a9a9;
+$product-page-dropdown-border: #d1d1d1;
+$product-page-dropdown-bg: #f9f9f9;
+$product-page-dropdown-count: #d1d1d1;
+$product-page-dropdown-count-bg: #f9f9f9;
+$product-page-dropdown-divider: #d1d1d1;
+$product-page-outOfStockMsg: salmon;
+$product-page-wish: #ffff;
+
 @mixin link {
   color: $green;
   cursor: pointer;

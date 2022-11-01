@@ -1,5 +1,12 @@
+import BreadCrumb from '@components/BreadCrumb/BreadCrumb';
+
 function CheckoutForm() {
-  return <div>CheckoutForm</div>;
+  return (
+    <>
+      <BreadCrumb></BreadCrumb>
+      <div>Hello</div>
+    </>
+  );
 }
 
 export default CheckoutForm;
