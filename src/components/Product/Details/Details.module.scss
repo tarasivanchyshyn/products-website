@@ -3,12 +3,16 @@
 .info__details {
   display: flex;
   width: 100%;
-  gap: 0 10%;
+  height: 7rem;
+  @include elipsis;
 
   ul {
     @include flex-column;
-    gap: 0.75rem;
-    @include elipsis;
+    gap: 0.75rem 4rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    flex-wrap: wrap;
+    height: 100%;
   }
 
   span {
@@ -37,8 +41,31 @@
   }
 }
 
+@media (max-width: 1170px) {
+  .info__details {
+    ul {
+      gap: 0.75rem 2rem;
+    }
+  }
+}
+@media (max-width: 1010px) {
+  .info__details {
+    height: 9rem;
+
+    ul {
+      li {
+        flex-direction: column;
+      }
+    }
+  }
+}
 @media (max-width: 890px) {
   .info__detailsItem {
     flex-direction: column;
+  }
+}
+@media (max-width: 840px) {
+  .info__details {
+    height: 12rem;
   }
 }

@@ -1,6 +1,7 @@
 import GreenInfoOval from '@components/UI/GreenInfoOval/GreenInfoOval';
 import Details from '../Details/Details';
 import Actions from '../Actions/Actions';
+import TabsSection from '../Tabs/TabsSection';
 import starsConfigurer from 'helpers/starsConfigurer';
 import { IProduct } from 'models/IProduct';
 
@@ -17,7 +18,8 @@ const Main = ({ product }: MainProps) => {
 
   const { discount, freeShipping, image, title, rating, description } = product;
   const { country, categories, stock, color, units, deliveryTime } = product;
-  const { delivery, priceBefore, price, reviews, size } = product;
+  const { delivery, priceBefore, price, reviews, size, questions, cooking } =
+    product;
 
   const detailsCompData = {
     country,
@@ -30,6 +32,7 @@ const Main = ({ product }: MainProps) => {
     size
   };
   const actionsCompData = { price, priceBefore, units, stock };
+  const tabsData = { description, cooking, reviews, questions };
 
   const stars = starsConfigurer(rating);
   const reviewsCount = reviews.length;
@@ -47,12 +50,12 @@ const Main = ({ product }: MainProps) => {
           <div className={classes.ilustrations__imagesMain}>
             <img src={image} alt={title} />
           </div>
-          <span className={classes.ilustrations__imagesSecondary}>
+          <div className={classes.ilustrations__imagesSecondary}>
             <img src={image} alt={title} />
-          </span>
-          <span className={classes.ilustrations__imagesSecondary}>
+          </div>
+          <div className={classes.ilustrations__imagesSecondary}>
             <img src={image} alt={title} />
-          </span>
+          </div>
         </div>
       </div>
       <div className={classes.info}>
@@ -70,7 +73,9 @@ const Main = ({ product }: MainProps) => {
           <Details data={detailsCompData} />
           <Actions data={actionsCompData} />
         </div>
-        <div className={classes.info__additional}></div>
+        <div className={classes.info__additional}>
+          <TabsSection data={tabsData} />
+        </div>
       </div>
     </div>
   );

@@ -36,8 +36,6 @@ const Details = (props: DetailsProps) => {
           <span>Color:</span>
           <span>{color}</span>
         </li>
-      </ul>
-      <ul>
         <li className={classes.info__detailsItem}>
           <span>Size:</span>
           <span>{size}</span>
