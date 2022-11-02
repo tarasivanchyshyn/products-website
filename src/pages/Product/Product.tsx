@@ -33,7 +33,9 @@ const Product = ({ data }: ProductProps) => {
     <>
       {isLoading && <Spinner />}
       {error && <LoadingError>Error occured</LoadingError>}
-      {!isLoading && !error && <Main product={product} />}
+      {!isLoading && !error && product && products && (
+        <Main product={product} products={products} />
+      )}
     </>
   );
 };

@@ -63,7 +63,7 @@ const Card = ({ product }: CardProps) => {
             <li className={classes.card__detail}>
               <span className={classes.card__detailHeader}>Stock</span>
               <span className={classes.card__detailValue}>
-                {stock} {units.find((el) => el === 'kg')}
+                {stock} {units[0]}
               </span>
             </li>
           </ul>

@@ -1,0 +1,79 @@
+@import 'variables.scss';
+
+.card {
+  @include flex-column;
+  gap: 1rem;
+  width: 21.75%;
+  position: relative;
+
+  &__discount {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+  }
+
+  img {
+    width: 100%;
+    height: 10rem;
+    object-fit: cover;
+    border-radius: 12px;
+  }
+
+  &__info {
+    @include flex-column;
+    gap: 1rem;
+  }
+
+  &__header {
+    @include flex-column;
+    gap: 0.25rem;
+
+    h4 {
+      font: 500 0.937rem/1.375 $poppins;
+      color: $black;
+    }
+
+    p {
+      @include elipsis;
+      height: 1rem;
+      font: 0.75rem/1rem $open-sans;
+      color: $product-page-recomend-card-desc;
+    }
+  }
+
+  &__actions {
+    @include flex-centerY;
+    justify-content: space-between;
+
+    & > span {
+      font: 600 1.125rem/1.687rem $poppins;
+      color: $black;
+    }
+
+    button {
+      padding: 0.406rem 0.75rem;
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .card {
+    img {
+      height: 14rem;
+    }
+  }
+}
+@media (max-width: 1000px) {
+  .card__actions {
+    flex-direction: column;
+  }
+}
+@media (max-width: 750px) {
+  .card {
+    width: 47%;
+
+    &__actions {
+      flex-direction: row;
+    }
+  }
+}
