@@ -16,10 +16,12 @@ const Main = ({ product }: MainProps) => {
     return <div className={classes.error}>Error occured</div>;
   }
 
-  const { discount, freeShipping, image, title, rating, description } = product;
+  const { discount, freeShipping, image, rating, description } = product;
   const { country, categories, stock, color, units, deliveryTime } = product;
   const { delivery, priceBefore, price, reviews, size, questions, cooking } =
     product;
+  let { title } = product;
+  title = title.charAt(0).toUpperCase() + title.slice(1);
 
   const detailsCompData = {
     country,

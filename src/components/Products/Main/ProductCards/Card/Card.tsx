@@ -13,7 +13,6 @@ interface CardProps {
 
 const Card = ({ product }: CardProps) => {
   const {
-    title,
     description,
     image,
     rating,
@@ -27,6 +26,8 @@ const Card = ({ product }: CardProps) => {
     freeShipping,
     deliveryTime
   } = product;
+  let { title } = product;
+  title = title.charAt(0).toUpperCase() + title.slice(1);
 
   const stars = starsConfigurer(rating);
   const deliveryT =
@@ -62,7 +63,7 @@ const Card = ({ product }: CardProps) => {
             <li className={classes.card__detail}>
               <span className={classes.card__detailHeader}>Stock</span>
               <span className={classes.card__detailValue}>
-                {stock} {units}
+                {stock} {units.find((el) => el === 'kg')}
               </span>
             </li>
           </ul>

@@ -1,18 +1,16 @@
 import { FetchBaseQueryError } from '@reduxjs/toolkit/dist/query';
 import { SerializedError } from '@reduxjs/toolkit';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 import Header from '@components/Products/Header/Header';
 import Sorting from '@components/Products/Sorting/Sorting';
 import Main from '@components/Products/Main/Main';
 import Footer from '@components/Products/Footer/Footer';
+import Spinner from '@components/UI/Spinner/Spinner';
+import LoadingError from '@components/UI/LoadingError/LoadingError';
 import { useAppSelector } from 'hooks/redux';
 import { allCategories, productsOnPage } from '@constants';
 import { IProduct } from 'models/IProduct';
 import productsSorter from 'helpers/productsSorter';
-
-import classes from './Products.module.scss';
 
 interface ProductsProps {
   data: {
@@ -66,13 +64,6 @@ const Products = ({ data }: ProductsProps) => {
     products = productsSorter(products, sortOption);
   }
 
-  const errMessage = <h2 className={classes.message}>Error occured</h2>;
-  const loadingSpinner = (
-    <div className={classes.spinner}>
-      <FontAwesomeIcon icon={faSpinner} spinPulse />
-    </div>
-  );
-
   const pages = [];
   if (products) {
     for (let i = 1; i <= Math.ceil(products.length / productsOnPage); i++) {
@@ -88,8 +79,8 @@ const Products = ({ data }: ProductsProps) => {
   return (
     <>
       <Header productsCount={productsCount} />
-      {isLoading && loadingSpinner}
-      {error && errMessage}
+      {isLoading && <Spinner />}
+      {error && <LoadingError>Error occured</LoadingError>}
       {!isLoading && !error && (
         <>
           <Sorting />

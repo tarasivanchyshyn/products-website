@@ -1,15 +1,25 @@
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { FetchBaseQueryError } from '@reduxjs/toolkit/dist/query';
+import { SerializedError } from '@reduxjs/toolkit';
 
-import { IProduct } from 'models/IProduct';
+import Spinner from '@components/UI/Spinner/Spinner';
+import LoadingError from '@components/UI/LoadingError/LoadingError';
 import Main from '@components/Product/Main/Main';
+import { IProduct } from 'models/IProduct';
 
 interface ProductProps {
-  products?: IProduct[];
+  data: {
+    products?: IProduct[];
+    isLoading: boolean;
+    error?: FetchBaseQueryError | SerializedError;
+    productsCount?: number;
+  };
 }
 
-const Product = ({ products }: ProductProps) => {
+const Product = ({ data }: ProductProps) => {
   const { productTitle } = useParams();
+  const { products, isLoading, error } = data;
 
   const product = products?.find(
     (el) => el.title.toLowerCase() === productTitle
@@ -19,7 +29,13 @@ const Product = ({ products }: ProductProps) => {
     window.scrollTo(0, 0);
   }, []);
 
-  return <Main product={product} />;
+  return (
+    <>
+      {isLoading && <Spinner />}
+      {error && <LoadingError>Error occured</LoadingError>}
+      {!isLoading && !error && <Main product={product} />}
+    </>
+  );
 };
 
 export default Product;
