@@ -55,36 +55,34 @@ const TabsSection = (props: TabsProps) => {
     </div>
   );
 
+  const tabs = [
+    {
+      label: `Description`,
+      key: '1',
+      children: descriptionContent
+    },
+    {
+      label: (
+        <div>
+          Reviews <GreenInfoOval>{reviews.length}</GreenInfoOval>
+        </div>
+      ),
+      key: '2',
+      children: reviewsContent
+    },
+    {
+      label: (
+        <div>
+          Questions <GreenInfoOval>{questions.length}</GreenInfoOval>
+        </div>
+      ),
+      key: '3',
+      children: questionsContent
+    }
+  ];
+
   return (
-    <Tabs
-      className={classes.info__tabs}
-      defaultActiveKey="1"
-      items={[
-        {
-          label: `Description`,
-          key: '1',
-          children: descriptionContent
-        },
-        {
-          label: (
-            <div>
-              Reviews <GreenInfoOval>{reviews.length}</GreenInfoOval>
-            </div>
-          ),
-          key: '2',
-          children: reviewsContent
-        },
-        {
-          label: (
-            <div>
-              Questions <GreenInfoOval>{questions.length}</GreenInfoOval>
-            </div>
-          ),
-          key: '3',
-          children: questionsContent
-        }
-      ]}
-    />
+    <Tabs className={classes.info__tabs} defaultActiveKey="1" items={tabs} />
   );
 };
 
