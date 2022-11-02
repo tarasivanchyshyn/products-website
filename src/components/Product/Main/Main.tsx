@@ -14,10 +14,26 @@ interface MainProps {
 }
 
 const Main = ({ product, products }: MainProps) => {
-  const { discount, freeShipping, image, rating, description } = product;
-  const { country, categories, stock, color, units, deliveryTime } = product;
-  const { delivery, priceBefore, price, reviews, size, questions, cooking } =
-    product;
+  const {
+    discount,
+    freeShipping,
+    image,
+    rating,
+    description,
+    country,
+    categories,
+    stock,
+    color,
+    units,
+    deliveryTime,
+    delivery,
+    priceBefore,
+    price,
+    reviews,
+    size,
+    questions,
+    cooking
+  } = product;
   let { title } = product;
   title = title.charAt(0).toUpperCase() + title.slice(1);
 

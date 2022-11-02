@@ -19,7 +19,7 @@ const Recomended = ({ products }: RecomendedProps) => {
     setMaxCards(4);
   }, []);
 
-  const isDisabled = maxCards >= products.length ? true : false;
+  const isDisabled = maxCards >= products.length;
 
   const showMore = () => {
     myRef.current?.scrollIntoView();
