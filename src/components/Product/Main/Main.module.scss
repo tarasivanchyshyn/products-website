@@ -53,7 +53,7 @@
 
 .info {
   @include flex-column;
-  padding-bottom: 2rem;
+  padding-bottom: 1rem;
   gap: 2rem 0;
 
   &__main {
@@ -96,10 +96,10 @@
     font: 1.063rem/1.437rem $open-sans;
     color: $black;
   }
-}
 
-.error {
-  @include flex-centerX;
+  &__additional {
+    height: 17rem;
+  }
 }
 
 @media (min-width: 1300px) {
