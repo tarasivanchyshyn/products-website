@@ -1,8 +1,8 @@
 import GreenInfoOval from '@components/UI/GreenInfoOval/GreenInfoOval';
-import Details from '../Details/Details';
-import Actions from '../Actions/Actions';
-import TabsSection from '../Tabs/TabsSection';
-import Recomended from '../Recomended/Recomended';
+import Details from './Details/Details';
+import Actions from './Actions/Actions';
+import TabsSection from './Tabs/TabsSection';
+import Recomended from './Recomended/Recomended';
 import starsConfigurer from 'helpers/starsConfigurer';
 import { IProduct } from 'models/IProduct';
 

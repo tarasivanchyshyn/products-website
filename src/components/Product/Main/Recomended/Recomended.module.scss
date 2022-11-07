@@ -66,3 +66,15 @@
     }
   }
 }
+
+@media (max-width: 850px) {
+  .recomended {
+    padding: 4.375rem 2.656rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .recomended {
+    padding: 2rem 1rem;
+  }
+}

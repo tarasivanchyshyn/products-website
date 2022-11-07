@@ -104,3 +104,11 @@
     }
   }
 }
+@media (max-width: 310px) {
+  .main {
+    &__top {
+      gap: 1rem 3rem;
+      justify-content: center;
+    }
+  }
+}

@@ -17,11 +17,16 @@ interface ActionsProps {
 }
 
 const Actions = (props: ActionsProps) => {
-  const { price, priceBefore, units, stock } = props.data;
+  const { units, stock } = props.data;
+  let { price, priceBefore } = props.data;
   const [amount, setAmount] = useState(1);
   const [unit, setUnit] = useState('kg');
 
   const dropdownData = { unit, amount, setUnit, setAmount, units, stock };
+
+  price = unit === 'kg' ? price : Number((price / 2.205).toFixed(2));
+  priceBefore =
+    unit === 'kg' ? priceBefore : Number((priceBefore / 2.205).toFixed(2));
 
   return (
     <div className={classes.info__actions}>

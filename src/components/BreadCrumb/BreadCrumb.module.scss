@@ -19,3 +19,9 @@
     font: 0.75rem/1rem $open-sans;
   }
 }
+
+@media (max-width: 600px) {
+  .breadCrumb {
+    padding: 0 1rem;
+  }
+}
