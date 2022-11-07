@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import Button from '@components/UI/Button/Button';
 import Card from './Card/Card';
@@ -13,7 +13,6 @@ interface RecomendedProps {
 
 const Recomended = ({ products }: RecomendedProps) => {
   const [maxCards, setMaxCards] = useState(0);
-  const myRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setMaxCards(4);
@@ -22,7 +21,6 @@ const Recomended = ({ products }: RecomendedProps) => {
   const isDisabled = maxCards >= products.length;
 
   const showMore = () => {
-    myRef.current?.scrollIntoView();
     setMaxCards((prevValue) => prevValue + 4);
   };
 
@@ -53,7 +51,6 @@ const Recomended = ({ products }: RecomendedProps) => {
           ))
           .slice(0, maxCards)}
       </div>
-      <div ref={myRef}></div>
     </div>
   );
 };
